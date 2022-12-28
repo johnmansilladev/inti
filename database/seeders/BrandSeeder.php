@@ -1,0 +1,143 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Brand;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
+class BrandSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $brands = [
+            ['name'=>'agco','slug'=>'agco'],
+            ['name'=>'alientech','slug'=>'alientech'],
+            ['name'=>'alldata','slug'=>'alldata'],
+            ['name'=>'allison','slug'=>'allison'],
+            ['name'=>'arbos','slug'=>'arbos'],
+            ['name'=>'autodata','slug'=>'autodata'],
+            ['name'=>'bell','slug'=>'bell'],
+            ['name'=>'bendix','slug'=>'bendix'],
+            ['name'=>'bmw','slug'=>'bmw'],
+            ['name'=>'bobcat','slug'=>'bobcat'],
+            ['name'=>'bomag','slug'=>'bomag'],
+            ['name'=>'bosch','slug'=>'bosch'],
+            ['name'=>'carrier','slug'=>'carrier'],
+            ['name'=>'caterpillar','slug'=>'caterpillar'],
+            ['name'=>'cesab','slug'=>'cesab'],
+            ['name'=>'chrysler','slug'=>'chrysler'],
+            ['name'=>'claas','slug'=>'claas'],
+            ['name'=>'clark','slug'=>'clark'],
+            ['name'=>'cnh','slug'=>'cnh'],
+            ['name'=>'comap','slug'=>'comap'],
+            ['name'=>'crown','slug'=>'crown'],
+            ['name'=>'cummins','slug'=>'cummins'],
+            ['name'=>'daf','slug'=>'daf'],
+            ['name'=>'delphi','slug'=>'delphi'],
+            ['name'=>'denso','slug'=>'denso'],
+            ['name'=>'detroit-diesel','slug'=>'detroit-diesel'],
+            ['name'=>'deutz','slug'=>'deutz'],
+            ['name'=>'dicatec','slug'=>'dicatec'],
+            ['name'=>'diesel-laptops','slug'=>'diesel-laptops'],
+            ['name'=>'doosan','slug'=>'doosan'],
+            ['name'=>'dynapac','slug'=>'dynapac'],
+            ['name'=>'eaton','slug'=>'eaton'],
+            ['name'=>'etka','slug'=>'etka'],
+            ['name'=>'fendt','slug'=>'fendt'],
+            ['name'=>'ferrari','slug'=>'ferrari'],
+            ['name'=>'ford','slug'=>'ford'],
+            ['name'=>'general-motors','slug'=>'general-motors'],
+            ['name'=>'genesis','slug'=>'genesis'],
+            ['name'=>'hiab','slug'=>'hiab'],
+            ['name'=>'hino','slug'=>'hino'],
+            ['name'=>'hitachi','slug'=>'hitachi'],
+            ['name'=>'honda','slug'=>'honda'],
+            ['name'=>'hyster','slug'=>'hyster'],
+            ['name'=>'hyundai','slug'=>'hyundai'],
+            ['name'=>'international','slug'=>'international'],
+            ['name'=>'isuzu','slug'=>'isuzu'],
+            ['name'=>'iveco','slug'=>'iveco'],
+            ['name'=>'jaguar-land-rover','slug'=>'jaguar-land-rover'],
+            ['name'=>'jcb','slug'=>'jcb'],
+            ['name'=>'john-deere','slug'=>'john-deere'],
+            ['name'=>'jungheinrich','slug'=>'jungheinrich'],
+            ['name'=>'k-suite','slug'=>'k-suite'],
+            ['name'=>'kawasaki','slug'=>'kawasaki'],
+            ['name'=>'kia','slug'=>'kia'],
+            ['name'=>'knorr','slug'=>'knorr'],
+            ['name'=>'kobelco','slug'=>'kobelco'],
+            ['name'=>'komatsu','slug'=>'komatsu'],
+            ['name'=>'kubota','slug'=>'kubota'],
+            ['name'=>'landini','slug'=>'landini'],
+            ['name'=>'laser-cat','slug'=>'laser-cat'],
+            ['name'=>'liebherr','slug'=>'liebherr'],
+            ['name'=>'linde','slug'=>'linde'],
+            ['name'=>'mack','slug'=>'mack'],
+            ['name'=>'man','slug'=>'man'],
+            ['name'=>'massey','slug'=>'massey'],
+            ['name'=>'mazda','slug'=>'mazda'],
+            ['name'=>'mccormick','slug'=>'mccormick'],
+            ['name'=>'mercedes-benz','slug'=>'mercedes-benz'],
+            ['name'=>'mitchell','slug'=>'mitchell'],
+            ['name'=>'mitsubishi','slug'=>'mitsubishi'],
+            ['name'=>'motor-heavy-truck','slug'=>'motor-heavy-truck'],
+            ['name'=>'mtu','slug'=>'mtu'],
+            ['name'=>'navistar','slug'=>'navistar'],
+            ['name'=>'nexiq','slug'=>'nexiq'],
+            ['name'=>'nissan','slug'=>'nissan'],
+            ['name'=>'noregon','slug'=>'noregon'],
+            ['name'=>'olympian','slug'=>'olympian'],
+            ['name'=>'op-com','slug'=>'op-com'],
+            ['name'=>'oreinstein','slug'=>'oreinstein'],
+            ['name'=>'paccar','slug'=>'paccar'],
+            ['name'=>'palfinger','slug'=>'palfinger'],
+            ['name'=>'patac','slug'=>'patac'],
+            ['name'=>'perkins','slug'=>'perkins'],
+            ['name'=>'raymond','slug'=>'raymond'],
+            ['name'=>'renault','slug'=>'renault'],
+            ['name'=>'rocla','slug'=>'rocla'],
+            ['name'=>'saic-motor','slug'=>'saic-motor'],
+            ['name'=>'scania','slug'=>'scania'],
+            ['name'=>'shibaura','slug'=>'shibaura'],
+            ['name'=>'ssang-yong','slug'=>'ssang-yong'],
+            ['name'=>'still-steds','slug'=>'still-steds'],
+            ['name'=>'subaru','slug'=>'subaru'],
+            ['name'=>'sumimoto','slug'=>'sumimoto'],
+            ['name'=>'sunflower','slug'=>'sunflower'],
+            ['name'=>'tadano','slug'=>'tadano'],
+            ['name'=>'tcm-corporation','slug'=>'tcm-corporation'],
+            ['name'=>'tec-alliance','slug'=>'tec-alliance'],
+            ['name'=>'terex','slug'=>'terex'],
+            ['name'=>'tesla','slug'=>'tesla'],
+            ['name'=>'thermo-king','slug'=>'thermo-king'],
+            ['name'=>'toyota','slug'=>'toyota'],
+            ['name'=>'truck-tool','slug'=>'truck-tool'],
+            ['name'=>'vehicle-fleet-manager','slug'=>'vehicle-fleet-manager'],
+            ['name'=>'volvo','slug'=>'volvo'],
+            ['name'=>'wabco','slug'=>'wabco'],
+            ['name'=>'webasto','slug'=>'webasto'],
+            ['name'=>'white','slug'=>'white'],
+            ['name'=>'winols','slug'=>'winols'],
+            ['name'=>'wirtgen','slug'=>'wirtgen'],
+            ['name'=>'wolkswagen','slug'=>'wolkswagen'],
+            ['name'=>'yale','slug'=>'yale'],
+            ['name'=>'yamaha','slug'=>'yamaha'],
+            ['name'=>'yanmar','slug'=>'yanmar'],
+            ['name'=>'you','slug'=>'you'],
+            ['name'=>'zetor','slug'=>'zetor'],
+            ['name'=>'zexel','slug'=>'zexel'],
+            ['name'=>'zf','slug'=>'zf']
+        ];
+
+        foreach ($brands as $brand) {
+            Brand::create($brand);
+        }
+    }
+}

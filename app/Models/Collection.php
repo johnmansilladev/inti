@@ -9,7 +9,11 @@ class Collection extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     // relacion muchos a muchos inversa
     public function products(){

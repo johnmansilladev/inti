@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Specification;
+use App\Models\SpecificationGroup;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,31 +17,49 @@ class SpecificationSeeder extends Seeder
     {
         $specifications = [
             [
-                'specification_group_id' => 1,
                 'field_type_id' => 1,
                 'name' => 'tipo de software',
-                'filter' => true,
+                'position' => 1,
+                'required' => true
             ],
             [
-                'specification_group_id' => 1,
+                'field_type_id' => 1,
+                'name' => 'marca',
+                'position' => 2,
+                'required' => true
+            ],
+            [
+                'field_type_id' => 1,
+                'name' => 'interface',
+                'position' => 3,
+                'required' => true
+            ],
+            [
                 'field_type_id' => 1,
                 'name' => 'sistema operativo',
+                'position' => 4,
+                'required' => true
             ],
             [
-                'specification_group_id' => 1,
                 'field_type_id' => 1,
-                'filter' => true,
                 'name' => 'idioma',
+                'position' => 5,
+                'required' => true
             ],
             [
-                'specification_group_id' => 1,
                 'field_type_id' => 1,
                 'name' => 'tamaño',
+                'position' => 6,
+                'required' => true
             ],
         ];
 
-        foreach ($specifications as $specification) {
-            Specification::create($specification);
+        $specification_groups = SpecificationGroup::all();
+
+        foreach ($specification_groups as $specification_group) {
+            foreach ($specifications as $specification) {
+                $specification_group->specifications()->create($specification);
+            }
         }
     }
 }

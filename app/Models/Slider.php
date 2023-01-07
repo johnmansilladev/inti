@@ -9,7 +9,9 @@ class Slider extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
 
-    
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 }

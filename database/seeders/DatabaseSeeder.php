@@ -4,9 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\CurrencyType;
-use App\Models\Specification;
-use App\Models\SpecificationValue;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,19 +23,19 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(SliderSeeder::class);
-        $this->call(BrandSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(BrandSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(InterfaseSeeder::class);
-        $this->call(CollectionSeeder::class);
-        $this->call(BannerSeeder::class);
         $this->call(ServiceSeeder::class);
-        $this->call(CurrencyTypeSeeder::class);
-        $this->call(ServiceStockKeepingUnitSeeder::class);
+        $this->call(ServiceSkuPriceSeeder::class);
         $this->call(FieldTypeSeeder::class);
-        $this->call(SpecificationGroupSeeder::class);
-        $this->call(SpecificationSeeder::class);
-        $this->call(SpecificationValueSeeder::class);
-        $this->call(SpecificationAssociationSeeder::class);
+        // $this->call(SpecificationGroupSeeder::class);
+        // $this->call(SpecificationSeeder::class);
+        // $this->call(PromotionSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(SectionQuestionSeeder::class);
+        $this->call(FrequentQuestionSeeder::class);
+        
     }
 }

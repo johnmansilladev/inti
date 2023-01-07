@@ -9,13 +9,18 @@ class Interfase extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
 
-    // relacion muchos a muchos inversa
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    // Relacion muchos a muchos inversa
     public function products(){
         return $this->belongsToMany(Product::class)->withTimestamps();
     }
 
+    // URL amigable
     public function getRouteKeyName()
     {
         return 'slug';

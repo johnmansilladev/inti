@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FieldType extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id','active'];
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 }

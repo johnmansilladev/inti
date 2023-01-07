@@ -1,4 +1,6 @@
+
 <div>
+    @livewire('frontend.products.product-quickviews')
     <section class="float-container">
         <div class="group hover:cursor-pointer">
             <svg class="w-7 h-7 group-hover:transform transition duration-500 hover:scale-125" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,73 +73,84 @@
             </div>
         </div>
     </section>
-    <section>
-        <div style="background-image: url({{ Storage::url('images/bg-newsletter.png') }})">
-            <div class="max-w-[70%] mx-auto py-16">
-                <div class="grid grid-cols-2 gap-40">
-                    <div class="">
-                        <h1 class="text-4xl font-extrabold text-white">¡Suscríbete!</h1>
-                        <p class="mt-3 max-w-3xl text-lg text-white">Entérate de todas nuestras novedades y promociones.</p>
-                    </div>
-                    <div class="">
-                        <div class="flex mb-3">
-                            <label for="cta-email" class="sr-only">Correo Electrónico</label>
-                            <input id="cta-email" type="email" class="block w-full border border-transparent rounded-md px-5 py-1.5 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent" placeholder="Nombres y apellidos">
-                        </div>
-                        <div class="flex mb-4">
-                            <label for="cta-email" class="sr-only">Fecha de Nacimiento</label>
-                            <input id="cta-email" type="email" class="block w-full border border-transparent rounded-md px-5 py-1.5 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent" placeholder="Correo Electrónico">
-                        </div>
-                        <div class="flex mb-3">
-                            <div class="flex items-center h-5">
-                                <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-white focus:ring-theme-yellow dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="ml-2 text-sm">
-                                <label for="helper-checkbox" class="text-base text-white">Aceptar la protección de política de guardar datos.</label>
-                            </div>
-                        </div>
-                        <div class="flex mb-3">
-                            <div class="flex items-center h-5">
-                                <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-white focus:ring-theme-yellow dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="ml-2 text-sm">
-                                <label for="helper-checkbox" class="text-base text-white">Aceptar los términos y condiciones.</label>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <button type="button" class="flex items-center justify-center px-10 py-2 border border-transparent text-base font-bold rounded-md text-white bg-theme-gray">Suscribirse</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @livewire('subscription')
     <footer aria-labelledby="footer-heading" style="background-image: url({{ Storage::url('images/bg-footer.png') }})">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="max-w-[80%] mx-auto w-full py-12">
             <div class="grid grid-cols-12 md:gap-x-8 gap-y-12">
                 <div class="col-span-12 lg:col-span-4">
-                    <div class="max-w-sm flex justify-center items-center">
-                        <img class="text-center" src="{{ Storage::url('images/logo-inti-lite.png') }}" alt="Company name">
-                    </div>
+                    <a href="/" class="max-w-sm flex justify-center items-center">
+                        <img class="text-center" src="{{ Storage::url('images/logo-inti-lite.png') }}" title="Inti Diesel" alt="Inti Diesel">
+                    </a>
                     <p class="max-w-sm text-white text-sm text-justify tracking-wider mt-10">
-                        Inti diesel provides software solutions for diagnosis, calibration, maintenance, 
-                        re-programming and spare parts in light and heavy vehicles, agricultural and heavy machinery, 
-                        trucks, engines and more.
+                        Inti diesel proporciona soluciones de software para diagnóstico, calibración, 
+                        mantenimiento, reprogramación y piezas de repuesto en vehículos ligeros y pesados, maquinaria agrícola y pesada, 
+                        camiones, motores y más.
                     </p>
+                </div>
+                <div class="col-span-6 md:col-span-3 lg:col-span-3">
+                    <h3 class="text-base font-bold text-white tracking-wider">Enlaces de Interés</h3>
+                    <ul role="list" class="mt-4 space-y-3">
+                        <li>
+                            <a href="/" class="text-sm text-white hover:text-theme-yellow"> Inicio</a>
+                        </li>
+                        <li>
+                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow"> Categorias</a>
+                        </li>
+                        <li>
+                            <a href="/shop/interfaces" class="text-sm text-white hover:text-theme-yellow"> Interfaces</a>
+                        </li>
+                        <li>
+                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow"> Ultimas Actualizaciones</a>
+                        </li>
+                        <li>
+                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow">Promociones</a>
+                        </li>
+                        <li>
+                            <a href="/login" class="text-sm text-white hover:text-theme-yellow"> Inicio de sesión</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-6 md:col-span-3 lg:col-span-3">
+                    <h3 class="text-base font-bold text-white tracking-wider">Te ayudamos</h3>
+                    <ul role="list" class="mt-4 space-y-3">
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=51930825355" class="text-sm text-white hover:text-theme-yellow">Atención por WhatsApp</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Cómo comprar</a>
+                        </li>
+                        <li>
+                            <a href="/about/frequent-questions" class="text-sm text-white hover:text-theme-yellow">Preguntas frecuentes</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Boletas y facturas</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Términos y condiciones</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Políticas de privacidad</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-span-6 md:col-span-3 lg:col-span-2">
                     <div class="grid grid-rows-2 grid-flow-col gap-4">
                         <div>
-                            <h3 class="text-base font-bold text-white tracking-wider">Lima y Provincias</h3>
-                            <div class="mt-4">
-                                <a href="#" class="text-2xl text-white">(01) 654 6700</a>
-                            </div>
+                            <h3 class="text-base font-bold text-white tracking-wider">Contáctanos</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li>
+                                    <a href="tel:+5151930825355" class="text-sm text-white hover:text-theme-yellow"> Llámanos al (51) 999 345 678 las 24 horas del día</a>
+                                </li>
+                                <li>
+                                    <a href="mailto:intidiesel@gmail.com" class="text-sm text-white hover:text-theme-yellow"> Escríbenos para dudas o consultas intidiesel@gmail.com</a>
+                                </li>
+                            </ul>
                         </div>
                         <div>
-                            <h3 class="text-base font-bold text-white tracking-wider">Siguenos en:</h3>
+                            <h3 class="text-base font-bold text-white tracking-wider">Contáctanos en:</h3>
                             <div class="flex space-x-2 mt-6">
-                                <a href="#"
+                                <a href="https://www.facebook.com/IntiDieselpe" target="_blank" title="Facebook Inti diesel"
                                     class="border-2 border-theme-yellow text-theme-yellow rounded-full p-2 transition duration-500 group hover:bg-theme-yellow">
                                     <span class="sr-only">Facebook</span>
                                     <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -146,7 +159,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </a>
-                                <a href="#"
+                                <a href="https://www.instagram.com/inti_diesel/" target="_blank" title="Instragram Inti diesel"
                                     class="border-2 border-theme-yellow text-theme-yellow rounded-full transition duration-500 p-2 group hover:bg-theme-yellow">
                                     <span class="sr-only">Instagram</span>
                                     <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -155,74 +168,16 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </a>
-                                <a href="#"
+                                <a href="https://www.youtube.com/@intidiesel53" target="_blank" title="Youtube Inti diesel"
                                     class="border-2 border-theme-yellow text-theme-yellow rounded-full transition duration-500 p-2 group hover:bg-theme-yellow">
-                                    <span class="sr-only">Twitter</span>
-                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path class="group-hover:fill-black"
-                                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="border-2 border-theme-yellow text-theme-yellow rounded-full transition duration-500 p-2 group hover:bg-theme-yellow">
-                                    <span class="sr-only">Facebook</span>
-                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path class="group-hover:fill-black" fill-rule="evenodd"
-                                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                            clip-rule="evenodd" />
-                                    </svg>
+                                    <span class="sr-only">Youtube</span>
+                                    <svg  class="h-5 w-5" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="group-hover:fill-black" d="M20.162 3.74025C20.162 3.74025 19.9675 2.37115 19.3715 1.76855C18.6158 0.977221 17.769 0.973082 17.3808 0.926728C14.6004 0.725585 10.4277 0.725586 10.4277 0.725586H10.4194C10.4194 0.725586 6.2484 0.725585 3.46633 0.926728C3.07729 0.973082 2.23133 0.977221 1.47477 1.76855C0.882927 2.36784 0.689233 3.74025 0.689233 3.74025C0.565073 4.80783 0.498481 5.88132 0.489746 6.95606V8.45842C0.498481 9.53316 0.565073 10.6066 0.689233 11.6742C0.689233 11.6742 0.882927 13.0433 1.47808 13.6459C2.23381 14.4397 3.22711 14.4182 3.66913 14.501C5.25924 14.6541 10.4252 14.7005 10.4252 14.7005C10.4252 14.7005 14.6004 14.6947 17.3783 14.4935C17.7665 14.4472 18.6133 14.443 19.3691 13.6517C19.965 13.0491 20.1596 11.68 20.1596 11.68C20.2843 10.6105 20.3517 9.53512 20.3615 8.45842V6.95274C20.3522 5.87913 20.2856 4.80677 20.162 3.74025ZM8.37323 10.2869V4.70458L13.7395 7.50568L8.37323 10.2869Z" fill="#FDC700"/>
+                                    </svg>  
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-2">
-                    <h3 class="text-base font-bold text-white tracking-wider">Enlaces de Interés</h3>
-                    <ul role="list" class="mt-4 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm text-white"> Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Categorias</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Interfaces</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Ultimas Actualizaciones</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Promociones</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Inicio de sesión</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-2">
-                    <h3 class="text-base font-bold text-white tracking-wider">Te ayudamos</h3>
-                    <ul role="list" class="mt-4 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm text-white"> News and Popular</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Hands picked colletions</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-2">
-                    <h3 class="text-base font-bold text-white tracking-wider">Lorem Ipsum</h3>
-                    <ul role="list" class="mt-4 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm text-white"> Categories</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Brands</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white"> Deals and Steals</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -230,47 +185,47 @@
             <ul role="list" class="max-w-[80%] mx-auto grid grid-cols-9 gap-6">
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/visa.png') }}" alt="">
+                        <img src="{{ Storage::url('images/visa.png') }}" alt="visa">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/mastercard.png') }}" alt="">
+                        <img src="{{ Storage::url('images/mastercard.png') }}" alt="mastercard">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/yape.png') }}" alt="">
+                        <img src="{{ Storage::url('images/yape.png') }}" alt="yape">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/plin.png') }}" alt="">
+                        <img src="{{ Storage::url('images/plin.png') }}" alt="plin">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/bcp.png') }}" alt="">
+                        <img src="{{ Storage::url('images/bcp.png') }}" alt="bcp">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/interbank.png') }}" alt="">
+                        <img src="{{ Storage::url('images/interbank.png') }}" alt="interbank">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/bbva.png') }}" alt="">
+                        <img src="{{ Storage::url('images/bbva.png') }}" alt="bbva">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/scotiabank.png') }}" alt="">
+                        <img src="{{ Storage::url('images/scotiabank.png') }}" alt="scotiabank">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/paypal.png') }}" alt="">
+                        <img src="{{ Storage::url('images/paypal.png') }}" alt="paypal">
                     </a>
                 </li>
             </ul>

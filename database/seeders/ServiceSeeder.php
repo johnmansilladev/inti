@@ -20,7 +20,7 @@ class ServiceSeeder extends Seeder
             ['name'=>'archivos+crack (desbloqueado)','slug'=>'archivos+crack-(desbloqueado)'],
             ['name'=>'archivos+keygen (desbloqueado)','slug'=>'archivos+keygen-(desbloqueado)'],
             ['name'=>'archivos+keygen (bloque pc)','slug'=>'archivos+keygen-(bloque-pc)'],
-            ['name'=>'archivos  (no se requiere crack/activación)','slug'=>'archivos--(no-se-requiere-crack/activacion)'],
+            ['name'=>'archivos  (no se requiere crack/activación)','slug'=>'archivos-(no-se-requiere-crack/activacion)'],
             ['name'=>'archivos+licencia (desbloqueada) código de activación','slug'=>'archivos+licencia-(desbloqueada)-código-de-activacion'],
         ];
 

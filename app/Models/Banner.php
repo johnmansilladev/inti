@@ -9,12 +9,15 @@ class Banner extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
 
-    //Relacion uno a muchos inversa
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    // Relacion uno a muchos inversa
     public function clustered()
     {
         return $this->belongsTo(Collection::class,'cluster_id');
     }
-
 }

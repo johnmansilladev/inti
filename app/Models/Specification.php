@@ -9,5 +9,15 @@ class Specification extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    // Relacion uno a muchos inversa
+    public function specificationGroup()
+    {
+        return $this->belongsTo(SpecificationGroup::class);
+    }
 }

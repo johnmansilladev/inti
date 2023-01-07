@@ -9,25 +9,36 @@ class StockKeepingUnit extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
 
-    //Relacion muchos a muchos
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
+    // Relación muchos a muchos
     public function services()
     {
-        return $this->belongsToMany(Service::class)->withPivot('currency_type_id','cost_price','markup','base_price')->withTimestamps();
+        return $this->belongsToMany(Service::class,'service_sku_prices')
+                    ->withPivot('cost_price','markup','base_price','dcto','sale_price')
+                    ->wherePivot('apply_to',2)
+                    ->withTimestamps();
     }
 
-    //Relacion uno a muchos inversa
+    // Relación uno a muchos inversa
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    //Relacion uno a muchos polimorfica
+    // Relación uno a muchos polimorfica
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function videos()
+    {
+        return $this->morphMany(Video::class, 'videoable');
     }
 
     // URL amigable

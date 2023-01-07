@@ -9,21 +9,25 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     public function categories()
     {
         return $this->hasMany(Category::class);
     }
 
-    // public function subcategories()
-    // {
-    //     return $this->hasMany(Category::class)->with('categories');
-    // }
-
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function specificationGroups() 
+    {
+        return $this->hasMany(SpecificationGroup::class);
     }
 
     //Relacion uno a muchos a traves de una tabla
@@ -32,11 +36,7 @@ class Category extends Model
         return $this->hasManyThrough(StockKeepingUnit::class, Product::class);
     }
 
-    // public function relatedProducts()
-    // {
-    //     return $this->hasManyThrough(StockKeepingUnit::class, Product::class)->take(10);
-    // }
-
+    // URL amigable
     public function getRouteKeyName()
     {
         return 'slug';

@@ -11,4 +11,3 @@ class SpecificationAssociation extends Model
 
     protected $guarded = ['id'];
 }
-    

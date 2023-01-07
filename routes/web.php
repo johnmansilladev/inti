@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\InterfaseController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+use App\Http\Livewire\Frontend\Abouts\ContactController;
+use App\Http\Livewire\Frontend\Abouts\AboutController;
+use App\Http\Livewire\Frontend\Abouts\FrequentquestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',HomeController::class)->name('home');
-Route::get('category/{category}', [CategoryController::class,'index'])->name('category.index');
-Route::get('interface/{interface}', [InterfaseController::class,'index'])->name('interface.index');
+Route::get('shop/{shop_section}/{shop_section_url?}', [ShopController::class,'shop'])->name('shop');
 Route::get('product/{product}', [ProductController::class, 'index'])->name('product.index');
-
-Route::get('about',function(){
-    return view('about');
-});
+Route::get('about/contact',ContactController::class)->name('contact');
+Route::get('about',AboutController::class)->name('about');
+Route::get('about/frequent-questions',FrequentquestionController::class)->name('frequent-question');
 
 // Route::get('/', function () {
 //     return view('welcome');

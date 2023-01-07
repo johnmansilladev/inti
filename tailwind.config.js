@@ -21,6 +21,7 @@ module.exports = {
                 "theme-gray": "#323232",
                 "theme-lgray": "#D9D9D9",
                 "theme-lgray2": "#4c4a4a",
+                "theme-lgray3": "#EAEAEA",
                 "theme-lwgray": "#F2F2F2",
                 "theme-swhite": "#FAFAFA",
                 "theme-bblack": "#00000096",
@@ -29,5 +30,5 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('tailwind-scrollbar')],
+    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography'),require('tailwind-scrollbar')],
 };

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\SpecificationGroup;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -34,9 +35,14 @@ class SpecificationGroupSeeder extends Seeder
             ],
         ];
 
-        foreach ($specification_groups as $specification_group) {
-            SpecificationGroup::create($specification_group);
+        $categories = Category::all();
+
+        foreach ($categories as $key => $category) {
+            foreach ($specification_groups as $specification_group) {
+                $category->specificationGroups()->create($specification_group);
+            }
         }
 
+        
     }
 }

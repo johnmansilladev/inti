@@ -9,11 +9,18 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','active'];
 
-    // relacion muchos a muchos inversa
-    public function stockKeepingUnits(){
-        return $this->belongsToMany(StockKeepingUnit::class,'service_prices ')->withTimestamps();
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    // Relación muchos a muchos inversa
+    public function stockKeepingUnits()
+    {
+        return $this->belongsToMany(StockKeepingUnit::class,'service_sku_prices')->withTimestamps();
     }
 
+    
+    
 }

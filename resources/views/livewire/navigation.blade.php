@@ -1,4 +1,10 @@
-<div x-data class="bg-white sticky top-0 z-10">
+<div x-data="{ 
+    openMenu: false,
+    firstLevelMenu : @entangle('firstLevelMenu'),
+    secondLevelMenu : @entangle('secondLevelMenu')
+    }" 
+    @keydown.window.escape="openMenu = false" class="bg-white sticky top-0 z-10">
+    <!-- Mobile menu -->
     <header class="relative bg-white">
         <nav id="navbar-info-header" class="bg-gradient-to-r from-theme-yellow to-theme-orange">
             <p class="flex h-10 items-center justify-center px-4 text-sm font-medium text-black"> Get free delivery on orders over $100</p>
@@ -6,8 +12,7 @@
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
             <div class="mx-auto max-w-[80%]">
                 <div class="flex h-[4.5rem] items-center">
-                    <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
-                    <button type="button" class="mr-8">
+                    <button @click="openMenu = !openMenu" type="button" class="mr-8">
                         <span class="sr-only">Open menu</span>
                         <!-- Heroicon name: outline/bars-3 -->
                         <svg width="31" height="20" viewBox="0 0 31 20" fill="none"
@@ -85,7 +90,6 @@
                                 </x-slot>
                             </x-jet-dropdown>
                         @else
-                            {{--  --}}
                             <x-jet-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <a role="button" class="flex items-center text-white mr-10">
@@ -121,7 +125,7 @@
                        
 
                         <!-- Cart -->
-                        <a type="button" @click="$wire.emit('show')"
+                        <a type="button" wire:click="$emit('show')"
                             class="relative -m-2 p-2 flex items-center hover:cursor-pointer">
                             <span class="sr-only">Cart</span>
                             <svg class="w-10 h-10" viewBox="0 0 45 45" fill="none"
@@ -146,6 +150,86 @@
                 </div>
             </div>
         </nav>
+        <div x-show="openMenu" x-init="$watch('openMenu', toggleOverflow)" class="absolute inset-x-0 top-full text-sm h-screen bg-theme-bblack" @click.away="openMenu = false" style="display: none">
+            <div class="absolute inset-0 w-full h-full" @click="openMenu=false"></div>
+            <div class="relative">
+                <div class="mx-auto max-w-[80%]">
+                    <div class="grid grid-cols-12 gap-y-10 gap-x-0 h-[400px] mt-1">
+                        <div class="col-span-2 bg-[#000000e3] py-8" :class="firstLevelMenu=='' ? 'rounded-xl' : 'rounded-l-xl'">
+                            <div class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                                <ul role="list" class="space-y-10">
+                                    <li class="relative py-2 px-10">
+                                        <a href="{{ route('shop','categories') }}" @mouseover="firstLevelMenu = 'categories'" class="flex text-base font-bold {{ $firstLevelMenu=='categories' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
+                                            <span>Categorias</span>
+                                        </a>
+                                    </li>
+                                    <li class="relative py-2 px-10">
+                                        <a href="{{ route('shop','interfaces') }}" @mouseover="firstLevelMenu = 'interfaces'" class="flex text-base font-bold {{ $firstLevelMenu=='interfaces' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
+                                            <span>Interfaces</span>
+                                        </a>
+                                    </li>
+                                    <li class="relative py-2 px-10">
+                                        <a href="{{ route('about') }}" @mouseover="firstLevelMenu = ''" class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
+                                            <span>Nosotros</span>
+                                        </a>
+                                    </li>
+                                    <li class="relative py-2 px-10">
+                                        <a href="{{ route('contact') }}" @mouseover="firstLevelMenu = ''" class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
+                                            <span>Contacto</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div x-show="firstLevelMenu!=''" class="col-span-2 bg-[#000000e3] py-8" :class="firstLevelMenu=='' ? 'rounded-xl' : secondLevelMenu == '' ? 'rounded-r-xl' : ''">
+                            <div x-show="firstLevelMenu=='categories'" class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                                <ul role="list" class="space-y-2">
+                                    @foreach ($categories as $category)
+                                        <li class="relative py-2 px-6">
+                                            <a href="" @mouseover="secondLevelMenu='{{ $category->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$category->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow capitalize">
+                                                <span>{{ $category->name }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div x-show="firstLevelMenu=='interfaces'" class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                                <ul>
+                                    @foreach ($interfaces as $interface)
+                                        <li class="relative py-2 px-6">
+                                            <a href="" @mouseover="secondLevelMenu='{{ $interface->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$interface->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow">
+                                                <span class="capitalize">{{ $interface->name }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div x-show="secondLevelMenu!=''"  class="col-span-2 bg-[#000000e3] rounded-r-xl py-8" >
+                            <div class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                                <ul>
+                                    @foreach ($dataSecondLevelMenu as $item)
+                                    <li class="relative py-2 px-6">
+                                        <a href="{{ route('product.index',$item->slug) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
+                                            <span class="capitalize">{{ $item->name }}</span>
+                                        </a>
+                                    </li>
+                                    @endforeach
+
+                                    @if ($firstLevelMenu!='')
+                                    <li class="relative py-2 px-6">
+                                        <a href="{{ route('shop',$firstLevelMenu) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
+                                            <span class="capitalize">ver todo</span>
+                                        </a>
+                                    </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <nav class="bg-white shadow-3xl">
         <ul role="list" class="max-w-screen-2xl mx-auto flex items-center justify-center py-1.5">

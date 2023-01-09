@@ -30,8 +30,6 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-        <x-jet-banner />
-
         <div class="min-h-screen">
             @livewire('navigation')
 

@@ -1,12 +1,12 @@
 <section>
     <div style="background-image: url({{ Storage::url('images/bg-newsletter.png') }})">
-        <div class="md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
-            <div class="grid grid-cols-2 gap-40">
-                <div class="my-auto">
-                    <h1 class="text-5xl font-extrabold text-center text-white">¡Suscríbete!</h1>
-                    <p class="mt-3 max-w-3xl text-base font-bold text-theme-gray">Entérate de todas nuestras promociones y últimas novedades</p>
+        <div class="max-w-[80%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
+            <div class="grid grid-cols-2 gap-4 md:gap-40">
+                <div class="my-auto col-span-2 md:col-span-1 text-white">
+                    <h1 class="text-5xl font-extrabold text-center">¡Suscríbete!</h1>
+                    <p class="mt-3 max-w-3xl text-base text-center md:text-left font-bold">Entérate de todas nuestras promociones y últimas novedades</p>
                 </div>
-                <div class="">
+                <div class="col-span-2 md:col-span-1">
                     <div class="flex">
                         <label for="subscriber-name" class="sr-only">Nombres y apellidos</label>
                         <input type="text" wire:model="name" id="subscriber-name" placeholder="Nombre" class="form-control @error('name')border border-red-500 @enderror border-white placeholder:font-semibold">

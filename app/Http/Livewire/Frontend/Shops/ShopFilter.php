@@ -44,14 +44,14 @@ class ShopFilter extends Component
             case 'category':
                 $this->data_section = Category::where('slug',$this->shop_section_url)->first();
 
-                $this->filters['brands'] = Brand::whereHas('products',function (Builder $query){
-                    $query->whereHas('category',function(Builder $query){
+                $this->filters['brands'] = Brand::whereHas('products',function ($query){
+                    $query->whereHas('category',function($query){
                         $query->where('id', $this->data_section->id);
                     });
                 })->get()->toArray();
 
-                $this->filters['interfaces'] = Interfase::whereHas('products',function (Builder $query){
-                    $query->whereHas('category',function(Builder $query){
+                $this->filters['interfaces'] = Interfase::whereHas('products',function ($query){
+                    $query->whereHas('category',function($query){
                         $query->where('id', $this->data_section->id);
                     });
                 })->get()->toArray();
@@ -62,14 +62,14 @@ class ShopFilter extends Component
             case 'interface':
                 $this->data_section = Interfase::where('slug',$this->shop_section_url)->first();
 
-                $this->filters['brands'] = Brand::whereHas('products',function (Builder $query){
-                    $query->whereHas('interfases',function(Builder $query){
+                $this->filters['brands'] = Brand::whereHas('products',function ($query){
+                    $query->whereHas('interfases',function($query){
                         $query->where('interfases.id', $this->data_section->id);
                     });
                 })->get()->toArray();
 
-                $this->filters['categories'] = Category::whereHas('products',function (Builder $query){
-                    $query->whereHas('interfases',function(Builder $query){
+                $this->filters['categories'] = Category::whereHas('products',function ($query){
+                    $query->whereHas('interfases',function($query){
                         $query->where('interfases.id', $this->data_section->id);
                     });
                 })->get()->toArray();
@@ -110,7 +110,7 @@ class ShopFilter extends Component
         if ($this->shop_section == 'category') {
             $productsQuery = $productsQuery->where([['category_id',$this->data_section->id],['active',true]]);
         } else if ($this->shop_section == 'interface') {
-            $productsQuery = $productsQuery->whereHas('interfases',function(Builder $query){
+            $productsQuery = $productsQuery->whereHas('interfases',function($query){
                 $query->where('interfases.id',$this->data_section->id);
             });
         } else if ($this->shop_section == 'collection') {
@@ -138,16 +138,16 @@ class ShopFilter extends Component
             $productsQuery = $productsQuery->whereHas('stockKeepingUnits', function($query){
                 $query->orderBy('release_date','desc');
             });
-            
-            // ->orderBy('reviews_count','desc');
         } else if ($this->sortFilter == 'OrderByNameASC') {
             $productsQuery = $productsQuery->orderBy('name');
         } else if ($this->sortFilter == 'OrderByNameDESC') {
             $productsQuery = $productsQuery->orderBy('name','desc');
         } else if ($this->sortFilter == 'OrderByPriceASC') {
-           
+            // $productsQuery = $productsQuery->whereHas('stockKeepingUnits',function($query){
+            //     $query->first()->services()->first()->orderByPivot('sale_price','asc');
+            // });
         } else if ($this->sortFilter == 'OrderByPriceDESC') {
-           
+            
         }
         
         $products = $productsQuery->paginate(12);

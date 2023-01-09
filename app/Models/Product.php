@@ -24,6 +24,11 @@ class Product extends Model
             get: fn () => ($this->reviews_count) ? number_format(round($this->reviews->avg('rating'),1),1) : number_format(5,1)
         );
     }
+    
+    //Scopes
+    public function scopeLike($query,$field,$value) {
+        return $query->where($field, 'LIKE', "%$value%");
+    }
 
     // Relacion uno a muchos inversa
     public function brand()
@@ -56,6 +61,7 @@ class Product extends Model
     {
         return $this->belongsToMany(Interfase::class)->withTimestamps();
     }
+    
 
     // URL amigable
     public function getRouteKeyName()

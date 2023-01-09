@@ -41,6 +41,22 @@ class ShopFilter extends Component
     public function mount()
     {
         switch ($this->shop_section) {
+            case 'search':
+                $this->data_section = [];
+
+                $this->filters['brands'] = Brand::whereHas('products',function ($query){
+                    $query->like('name',$this->shop_section_url);
+                })->get()->toArray();
+
+                $this->filters['interfaces'] = Interfase::whereHas('products',function ($query){
+                    $query->like('name',$this->shop_section_url);
+                })->get()->toArray();
+
+                $this->filters['categories'] = Category::whereHas('products',function ($query){
+                    $query->like('name',$this->shop_section_url);
+                })->get()->toArray();;
+
+                break;
             case 'category':
                 $this->data_section = Category::where('slug',$this->shop_section_url)->first();
 
@@ -104,14 +120,16 @@ class ShopFilter extends Component
 
     public function render()
     {
-
         $productsQuery = Product::query();
-
-        if ($this->shop_section == 'category') {
+        
+        if ($this->shop_section == 'search') {
+            $productsQuery = $productsQuery->like('name',$this->shop_section_url);
+           
+        }else if ($this->shop_section == 'category') {
             $productsQuery = $productsQuery->where([['category_id',$this->data_section->id],['active',true]]);
         } else if ($this->shop_section == 'interface') {
             $productsQuery = $productsQuery->whereHas('interfases',function($query){
-                $query->where('interfases.id',$this->data_section->id);
+                $query->where([['interfases.id',$this->data_section->id],['active',true]]);
             });
         } else if ($this->shop_section == 'collection') {
             // $productsQuery = ;
@@ -143,9 +161,7 @@ class ShopFilter extends Component
         } else if ($this->sortFilter == 'OrderByNameDESC') {
             $productsQuery = $productsQuery->orderBy('name','desc');
         } else if ($this->sortFilter == 'OrderByPriceASC') {
-            // $productsQuery = $productsQuery->whereHas('stockKeepingUnits',function($query){
-            //     $query->first()->services()->first()->orderByPivot('sale_price','asc');
-            // });
+            
         } else if ($this->sortFilter == 'OrderByPriceDESC') {
             
         }

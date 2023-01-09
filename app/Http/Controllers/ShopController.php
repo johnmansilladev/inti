@@ -21,6 +21,7 @@ class ShopController extends Controller
             case 'collection':
                 $data_section = Collection::where('slug',$shop_section_url)->first();
                 break;
+            case 'search':
             case 'categories':
             case 'interfaces':
                 $data_section = [];

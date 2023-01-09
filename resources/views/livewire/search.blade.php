@@ -1,10 +1,10 @@
 <div class="w-full" x-data>
-    <form action="" autocomplete="off">
+    <form wire:submit.prevent="searchProduct" autocomplete="off">
         <div class="flex items-center justify-center">
-            <input type="text"
-            class="w-full rounded-l-md border border-transparent px-5 py-[0.4rem] text-base text-theme-gray focus:outline-none focus:border-transparent focus:ring-theme-yellow">
-            <button
-                class="px-5 py-[0.45rem] text-white rounded-r-md bg-gradient-to-r from-theme-yellow to-theme-orange">
+            <input type="search" wire:model="searchTerm" wire:keydown.enter="searchProduct"
+            class="w-full rounded-l-md border border-transparent px-5 py-2 text-sm text-black focus:outline-none focus:border-transparent focus:ring-theme-yellow">
+            <button type="submit"
+                class="px-5 py-[0.45rem] text-white rounded-r-md bg-gradient-to-r from-theme-yellow to-theme-orange hover:bg-gradient-to-l">
                 <svg class="w-6 h-6" viewBox="0 0 18 18" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -14,8 +14,4 @@
             </button>
         </div>
     </form>
-
-    {{-- <div class="absolute w-full mt-1 hidden" >
-        
-    </div> --}}
 </div>

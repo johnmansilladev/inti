@@ -76,54 +76,68 @@
             <h2 id="products-heading" class="sr-only">Products</h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
-                <!-- Filters -->
-                <div class="sticky min-h-[500px] bg-white rounded-lg shadow-xl col-span-1 py-4 px-4">
-                    {{-- <h3 class="text-lg text-theme-black font-semibold uppercase border-b border-gray-200 pb-2">Filtros</h3> --}}
 
-                    @foreach ($filters as $keyFilter => $filter)
-                        @if (count($filter))
-                            <div x-data="{ open: true }" class="border-b border-gray-200 py-4">
-                                <h3 class="-my-3 flow-root">
-                                <button type="button" class="py-3 w-full flex items-center justify-between text-sm text-theme-black" aria-controls="filter-section-category" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
-                                    <span class="text-theme-black font-bold uppercase">{{ $keyFilter }}</span>
-                                    <span class="ml-6 flex items-center">
-                                    <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="display: none;">
-                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    </span>
-                                </button>
-                                </h3>
-                                <div class="mt-4 max-h-[300px] overflow-auto scrollbar scrollbar-thumb-theme-orange scrollbar-track-gray-100 scrollbar-theme" id="filter-section-category" x-show="open">
-                                    <div class="space-y-4">
-                                        @foreach ($filter as $keyItem => $item)
-                                            <div class="flex items-center m-2">
-                                                <input id="filter-{{ $keyFilter }}-{{ $keyItem }}" type="checkbox" wire:model="filtersApplied.{{ $keyFilter }}" value="{{ $item['id'] }}" class="h-4 w-4 border-gray-300 rounded text-theme-yellow focus:ring-theme-yellow">
-                                                <label for="filter-{{ $keyFilter }}-{{ $keyItem }}" class="ml-3 text-sm text-theme-black truncate">
-                                                    {{ Str::title($item['name']) }}
-                                                </label>
-                                            </div>
-                                        @endforeach
+                @if ($products->count())
+                    <!-- Filters -->
+                    <div class="sticky min-h-[500px] bg-white rounded-lg shadow-xl col-span-1 py-4 px-4">
+                        {{-- <h3 class="text-lg text-theme-black font-semibold uppercase border-b border-gray-200 pb-2">Filtros</h3> --}}
+
+                        @foreach ($filters as $keyFilter => $filter)
+                            @if (count($filter))
+                                <div x-data="{ open: true }" class="border-b border-gray-200 py-4">
+                                    <h3 class="-my-3 flow-root">
+                                    <button type="button" class="py-3 w-full flex items-center justify-between text-sm text-theme-black" aria-controls="filter-section-category" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
+                                        <span class="text-theme-black font-bold uppercase">{{ $keyFilter }}</span>
+                                        <span class="ml-6 flex items-center">
+                                        <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="display: none;">
+                                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        </span>
+                                    </button>
+                                    </h3>
+                                    <div class="mt-4 max-h-[300px] overflow-auto scrollbar scrollbar-thumb-theme-orange scrollbar-track-gray-100 scrollbar-theme" id="filter-section-category" x-show="open">
+                                        <div class="space-y-4">
+                                            @foreach ($filter as $keyItem => $item)
+                                                <div class="flex items-center m-2">
+                                                    <input id="filter-{{ $keyFilter }}-{{ $keyItem }}" type="checkbox" wire:model="filtersApplied.{{ $keyFilter }}" value="{{ $item['id'] }}" class="h-4 w-4 border-gray-300 rounded text-theme-yellow focus:ring-theme-yellow">
+                                                    <label for="filter-{{ $keyFilter }}-{{ $keyItem }}" class="ml-3 text-sm text-theme-black truncate">
+                                                        {{ Str::title($item['name']) }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
-                            </div>    
-                        @endif
-                    @endforeach
-                </div>
-
-                <!-- Product grid -->
-                <div class="col-span-3 flex flex-col">
-                    <div class="grid grid-cols-4 gap-x-6 gap-y-8">
-                        @foreach ($products as $item)
-                            <x-box-product :item="$item" />
+                                </div>    
+                            @endif
                         @endforeach
                     </div>
-                    <div class="mt-20">
-                        {{ $products->links() }}
+
+                    <!-- Product grid -->
+                    <div class="col-span-3 flex flex-col">
+                        <div class="grid grid-cols-4 gap-x-6 gap-y-8">
+                            @foreach ($products as $item)
+                                <x-box-product :item="$item" />
+                            @endforeach
+                        </div>
+                        <div class="mt-20">
+                            {{ $products->links() }}
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="col-span-4 mx-auto">
+                        <div class="flex flex-col justify-center items-center py-10">
+                            <svg class="w-12 h-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path class="fill-theme-gray" d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"></path>
+                            </svg>
+                            <p class="font-bold text-theme-gray">No se encontraron productos</p>
+                        </div>
+                    </div>
+                @endif
+
+                
             </div>
         </div>
     </div>

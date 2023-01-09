@@ -25,17 +25,3 @@ Route::get('product/{product}', [ProductController::class, 'index'])->name('prod
 Route::get('about/contact',ContactController::class)->name('contact');
 Route::get('about',AboutController::class)->name('about');
 Route::get('about/frequent-questions',FrequentQuestionController::class)->name('frequent-question');
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });

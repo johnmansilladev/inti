@@ -186,7 +186,7 @@
                                 <ul role="list" class="space-y-2">
                                     @foreach ($categories as $category)
                                         <li class="relative py-2 px-6">
-                                            <a href="" @mouseover="secondLevelMenu='{{ $category->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$category->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow capitalize">
+                                            <a role="button" @click="secondLevelMenu='{{ $category->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$category->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow capitalize">
                                                 <span>{{ $category->name }}</span>
                                             </a>
                                         </li>
@@ -197,7 +197,7 @@
                                 <ul>
                                     @foreach ($interfaces as $interface)
                                         <li class="relative py-2 px-6">
-                                            <a href="" @mouseover="secondLevelMenu='{{ $interface->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$interface->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow">
+                                            <a role="button" @click="secondLevelMenu='{{ $interface->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$interface->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow">
                                                 <span class="capitalize">{{ $interface->name }}</span>
                                             </a>
                                         </li>

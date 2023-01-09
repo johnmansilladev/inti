@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Livewire\Frontend\Abouts\ContactController;
 use App\Http\Livewire\Frontend\Abouts\AboutController;
-use App\Http\Livewire\Frontend\Abouts\FrequentquestionController;
+use App\Http\Livewire\Frontend\Abouts\FrequentQuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +24,7 @@ Route::get('shop/{shop_section}/{shop_section_url?}', [ShopController::class,'sh
 Route::get('product/{product}', [ProductController::class, 'index'])->name('product.index');
 Route::get('about/contact',ContactController::class)->name('contact');
 Route::get('about',AboutController::class)->name('about');
-Route::get('about/frequent-questions',FrequentquestionController::class)->name('frequent-question');
+Route::get('about/frequent-questions',FrequentQuestionController::class)->name('frequent-question');
 
 // Route::get('/', function () {
 //     return view('welcome');

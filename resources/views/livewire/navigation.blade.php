@@ -218,7 +218,7 @@
 
                                     @if ($firstLevelMenu!='')
                                     <li class="relative py-2 px-6">
-                                        <a href="{{ route('shop',$firstLevelMenu) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
+                                        <a href="{{ route('shop',['shop_section'=>($firstLevelMenu=='categories'?'category':'interface'),'shop_section_url'=>$secondLevelMenu]) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
                                             <span class="capitalize">ver todo</span>
                                         </a>
                                     </li>

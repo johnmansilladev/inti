@@ -108,9 +108,9 @@
                                     </svg>
                                 </div>
                                 <p class="text-sm text-theme-gray mb-2">¡Tu carrito de compras esta vacío!</p>
-                                <p class="text-sm text-theme-gray">Para seguir comprando, navega por nuestras
-                                    categorías
-                                    y descubre todo lo que tenemos para ti.</p>
+                                <p class="text-sm text-theme-gray">
+                                    Para seguir comprando, navega por nuestras
+                                    categorías y descubre todo lo que tenemos para ti.</p>
                             </div>
                         </div>
                         @endif
@@ -119,7 +119,7 @@
                     <div class="border-t border-gray-200 py-6 px-5">
                         <div class="flex justify-between text-base font-bold text-theme-gray uppercase">
                             <p>Total:</p>
-                            <p>USD 0.00</p>
+                            <p>$ {{ $total }}</p>
                         </div>
                         <div class="mt-6 space-y-3">
                             <a role="button" @click="open = false" class="flex items-center justify-center rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">

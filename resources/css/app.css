@@ -46,6 +46,16 @@
       @apply text-xs text-red-500 italic
     }
 
+    .bg-image-newsletter
+    {
+      background-image: url('/storage/app/public/images/bg-newsletter.png')
+    }
+
+    .bg-layer-newsletter
+    {
+      background-color: rgba(253, 199, 0, .9);
+    }
+
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button {
       -webkit-appearance: none;

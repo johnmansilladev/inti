@@ -78,7 +78,9 @@ class ProductQuickviews extends Component
                 'service_name' => $this->service_selected->name,
                 'service_slug' => $this->service_selected->slug,
                 'service_price' => $this->service_selected->pivot->base_price
-            )
+            ),
+            'associatedModel' => $this->product
+
         ];
 
         Cart::add($item);

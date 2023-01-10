@@ -15,7 +15,7 @@
         </a>
     </div>
     <div class="px-6 pb-2 flex-1 flex flex-col">
-        <a href="{{ route('product.index',$item) }}"><h1 class="text-base font-bold text-black mb-1">{{ Str::limit(Str::title($item->name), 50, ' ...') }}</h1></a>
+        <a href="{{ route('product.index',$item) }}"><h1 class="text-base font-bold text-black uppercase mb-1">{{ Str::limit(Str::title($item->name), 50, ' ...') }}</h1></a>
         <p class="text-sm font-semibold mb-1">{{ Str::title($item->brand->name) }}</p>
         <div class="flex items-center mb-1">
             <ul class="flex items-center space-x-1 text-xs mb-1 mr-2">

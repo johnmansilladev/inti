@@ -67,12 +67,13 @@
                                                             </p>
                                                             
                                                             <div class="w-fit bg-theme-yellow p-1 rounded-md">
-                                                                <button type="button" wire:click="decrementCart({{ $item->id }})"
+                                                                <button type="button" {{ $item->quantity <= 1 ? 'disabled' : '' }}
+                                                                wire:loading.attr="disabled" wire:target="decrementCart" wire:click="decrementCart({{$item->id}})"
                                                                 class="inline-flex items-center px-1.5 py-1 bg-white border border-transparent rounded-md font-semibold text-xs text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                                                     −
                                                                 </button>
                                                                 <span class="mx-2 text-theme-gray text-xs font-semibold">{{ $item->quantity }}</span>
-                                                                <button type="button" wire:click="incrementCart({{ $item->id }})"
+                                                                <button type="button" wire:loading.attr="disabled" wire:target="incrementCart" wire:click="incrementCart({{$item->id}})" 
                                                                 class="inline-flex items-center px-1.5 py-1 bg-white border border-transparent rounded-md font-semibold text-xs text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                                                     +
                                                                 </button>
@@ -122,10 +123,10 @@
                             <p>$ {{ $total }}</p>
                         </div>
                         <div class="mt-6 space-y-3">
-                            <a role="button" @click="open = false" class="flex items-center justify-center rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
+                            <button role="button" @click="open = false" class="flex items-center justify-center rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
                                 Seguir viendo
-                            </a>
-                            <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
+                            </button>
+                            <a href="{{route('cart')}}" class="flex items-center justify-center rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
                                 Comprar
                             </a>
                         </div>

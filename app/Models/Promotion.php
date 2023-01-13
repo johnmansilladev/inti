@@ -24,7 +24,15 @@ class Promotion extends Model
     const SERVICE = 2;
 
     // Relación muchos a muchos inversa
-    public function serviceSkuPrices(){
-        return $this->belongsToMany(ServiceSkuPrice::class,'service_sku_promotion')->withTimestamps();
+    public function stockKeepingUnits()
+    {
+        return $this->belongsToMany(StockKeepingUnit::class,'service_sku_promotion')->withTimestamps();
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class,'service_sku_promotion')->withTimestamps();
+    }
+
+
 }

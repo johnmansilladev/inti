@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('specification_groups', function (Blueprint $table) {
+        Schema::create('category_specification_group', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->smallInteger('position')->default(0);
-            $table->boolean('active')->default(true);
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('specification_group_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('specification_group_id')->references('id')->on('specification_groups');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specification_groups');
+        Schema::dropIfExists('category_specification_group');
     }
 };

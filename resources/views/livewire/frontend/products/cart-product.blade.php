@@ -123,10 +123,10 @@
                             <p>$ {{ $total }}</p>
                         </div>
                         <div class="mt-6 space-y-3">
-                            <button role="button" @click="open = false" class="flex items-center justify-center rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
+                            <button role="button" @click="open = false" class="flex items-center justify-center w-full rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
                                 Seguir viendo
                             </button>
-                            <a href="{{route('cart')}}" class="flex items-center justify-center rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
+                            <a href="{{route('cart')}}" class="flex items-center justify-center w-full rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
                                 Comprar
                             </a>
                         </div>

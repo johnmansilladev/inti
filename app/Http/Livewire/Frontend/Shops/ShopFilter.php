@@ -153,9 +153,7 @@ class ShopFilter extends Component
 
         //  Order products
         if ($this->sortFilter == 'OrderByRecommended') {
-            $productsQuery = $productsQuery->whereHas('stockKeepingUnits', function($query){
-                $query->orderBy('release_date','desc');
-            });
+            $productsQuery = $productsQuery->skuOrder();
         } else if ($this->sortFilter == 'OrderByNameASC') {
             $productsQuery = $productsQuery->orderBy('name');
         } else if ($this->sortFilter == 'OrderByNameDESC') {

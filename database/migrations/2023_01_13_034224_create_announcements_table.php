@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('specification_groups', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->smallInteger('position')->default(0);
+            $table->string('title');
+            $table->string('content');
+            $table->enum('type',[Announcement::INFO,Announcement::TIMER]);
+            $table->dateTime('date_from');
+            $table->dateTime('date_to');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specification_groups');
+        Schema::dropIfExists('announcements');
     }
 };

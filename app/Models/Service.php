@@ -21,6 +21,11 @@ class Service extends Model
         return $this->belongsToMany(StockKeepingUnit::class,'service_sku_prices')->withTimestamps();
     }
 
+    public function promotions()
+    {
+        return $this->belongsToMany(Promotion::class,'service_sku_promotion')->withTimestamps();
+    }
+
     
     
 }

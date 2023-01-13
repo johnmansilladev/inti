@@ -7,7 +7,18 @@
     <!-- Mobile menu -->
     <header class="relative bg-white">
         <nav id="navbar-info-header" class="bg-gradient-to-r from-theme-yellow to-theme-orange">
-            <p class="flex h-10 items-center justify-center px-4 text-sm font-medium text-black"> Get free delivery on orders over $100</p>
+            <div class="h-10 flex items-center justify-center">
+                <div class="flex items-center">
+                    <p class="px-4 text-base font-bold text-black">50% DSCTO EN LA INSTALACIÓN</p>
+                    <p class="text-sm font-semibold text-black">lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy ribid.</p>
+                </div>
+                <div class="ml-10">
+                    <div class="flex items-center justify-center flex-col leading-none ">
+                        <div class="text-base font-bold">06</div>
+                        <div class="text-xs font-semibold">dias</div>
+                    </div>
+                </div>
+            </div>
         </nav>
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
             <div class="mx-auto max-w-[80%]">

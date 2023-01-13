@@ -201,7 +201,9 @@
                     <li class="col-span-1">
                         <a href="{{ route('shop', ['shop_section' => 'category','shop_section_url'=> $category->slug]) }}" class="flex flex-col items-center justify-center w-full h-full bg-theme-yellow rounded-lg shadow-xl p-6 group hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange hover:cursor-pointer transform transition duration-500 hover:scale-110">
                             <div class="flex items-center justify-center">
-                                <img src="{{ Storage::url($category->icon) }}" title="{{ $category->meta_title }}" alt="{{ $category->keywords }}">
+                                {{-- <img src="{{ Storage::url($category->icon) }}" title="{{ $category->meta_title }}" alt="{{ $category->keywords }}"> --}}
+                                {{-- {!! Storage::get($category->icon) !!} --}}
+                                <embed class="w-24 h-auto" src="{{ Storage::url($category->icon) }}" type="image/svg+xml" >
                             </div>
                             <div class="pt-4">
                                 <h1 class="text-lg font-extrabold text-theme-gray text-center uppercase">{{ $category->name }}</h1>

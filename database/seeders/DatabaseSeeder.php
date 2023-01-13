@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FieldTypeSeeder::class);
         // $this->call(SpecificationGroupSeeder::class);
         // $this->call(SpecificationSeeder::class);
-        // $this->call(PromotionSeeder::class);
+        $this->call(PromotionSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(SectionQuestionSeeder::class);
         $this->call(FrequentQuestionSeeder::class);

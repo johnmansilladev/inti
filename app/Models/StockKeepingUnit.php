@@ -24,6 +24,14 @@ class StockKeepingUnit extends Model
                     ->withTimestamps();
     }
 
+    public function promotions()
+    {
+        return $this->belongsToMany(Promotion::class,'service_sku_promotion')
+                    ->withPivot('service_id')
+                    ->withTimestamps();
+    }
+
+
     // Relación uno a muchos inversa
     public function product()
     {

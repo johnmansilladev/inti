@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Product extends Model
 {
     use HasFactory;
@@ -28,6 +27,29 @@ class Product extends Model
     //Scopes
     public function scopeLike($query,$field,$value) {
         return $query->where($field, 'LIKE', "%$value%");
+    }
+
+    public function scopeSkuOrder($query) 
+    {
+        return $query->with(['stockKeepingUnits' => function ($q) {
+            $q->orderBy('release_date','desc');
+        }]);
+    }
+
+    public function scopeSkuOrderPriceSale($query,$direction = 'asc')
+    {
+        return $query->join('stock_keeping_units','products.id','=','stock_keeping_units.product_id')
+                    ->join('');
+    }
+
+    public function scopeSkuFirstImage($query)
+    {
+        return $query->stockKeepingUnits->first()->images->first()->url; 
+    }
+
+    public function scopeSkuFirstService($query)
+    {
+        return $query->stockKeepingUnits->first()->services->first()->pivot->sale_price;
     }
 
     // Relacion uno a muchos inversa

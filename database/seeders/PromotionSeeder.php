@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use App\Models\Promotion;
-use App\Models\ServiceSkuPrice;
 use Illuminate\Database\Seeder;
+use App\Models\StockKeepingUnit;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PromotionSeeder extends Seeder
@@ -28,9 +28,12 @@ class PromotionSeeder extends Seeder
 
         
 
-        $sku_prices = ServiceSkuPrice::all();
-        foreach ($sku_prices as $key => $sku_price) {
-            $promotion->serviceSkuPrices()->attach($sku_price);
+        $skus = StockKeepingUnit::all();
+        foreach ($skus as $key => $sku) {
+            foreach ($sku->services as $service) {
+                $sku->promotions()->attach($promotion,['service_id'=>$service->id]);
+            }
+            
         }
     }
 }

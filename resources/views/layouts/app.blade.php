@@ -39,6 +39,7 @@
 
         @livewireScripts
 
+        
         <script>
             function showModalQuickViewsProduct(item) {
                 window.Livewire.emit('showModalQuickviewsProduct',item);                    

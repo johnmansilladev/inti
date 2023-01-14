@@ -3,10 +3,8 @@
     firstLevelMenu: @entangle('firstLevelMenu'),
     secondLevelMenu: @entangle('secondLevelMenu'),
     showNavbar: true
-    }" 
-    x-init="showNavbar = (window.pageYOffset < 60) ? true : false"
-    @keydown.window.escape="openMenu = false"
-    @scroll.window.debounce.0="showNavbar = (window.pageYOffset < 60) ? true : false" class="bg-white sticky top-0 z-10">
+}" @keydown.window.escape="openMenu = false"
+    @scroll.window.debounce.0="showNavbar = (window.pageYOffset < 80) ? true : false" class="bg-white sticky top-0 z-10">
 
     <!-- Mobile menu -->
     {{-- Aqui ira --}}
@@ -14,7 +12,7 @@
     <header class="relative bg-white">
         <nav id="navbar-info-header" class="announcement-container"
             :class="{ 'hidden transition duration-500': !showNavbar }" x-data x-init="swiper = new Swiper($refs.container, {
-                loop: false,
+                loop: true,
                 autoplay: {
                     delay: 6000,
                     disableOnInteraction: false,
@@ -25,11 +23,42 @@
                 <div class="swiper-wrapper">
                     @foreach ($announcements as $key => $announcement)
                         <div class="swiper-slide">
-                            @livewire('frontend.banners.announcement',['announcement' => $announcement],key($announcement->id))
+                            <div class="announcement-item" id="announcement-{{ $key }}">
+                                <div class="announcement-description">
+                                    <p class="px-4 text-base font-bold text-black">{{ $announcement->title }}</p>
+                                    <p class="text-sm font-medium text-black">{{ $announcement->content }}</p>
+                                </div>
+                                @if ($announcement->type == App\Models\Announcement::TIMER)
+                                <div class="announcement-countdown">
+                                    {{-- <div class="clock">
+                                        <div class="clock-time">04</div>
+                                        <div class="clock-text">días</div>
+                                    </div>
+                                    <div class="clock">
+                                        <div class="clock-time">04</div>
+                                        <div class="clock-text">hrs</div>
+                                    </div>
+                                    <div class="clock">
+                                        <div class="clock-time">04</div>
+                                        <div class="clock-text">min</div>
+                                    </div>
+                                    <div class="clock">
+                                        <div class="clock-time">04</div>
+                                        <div class="clock-text">seg</div>
+                                    </div> --}}
+                                    <div data-value="days"></div>
+                                    <div data-value="hours"></div>
+                                    <div data-value="minutes"></div>
+                                    <div data-value="seconds"></div>
+                                </div>
+                                @endif
+                            </div>
                         </div>
                     @endforeach
                 </div>
             </div>
+
+
         </nav>
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
             <div class="mx-auto max-w-[80%]">

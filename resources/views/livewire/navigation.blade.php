@@ -1,19 +1,16 @@
 <div x-data="{
     openMenu: false,
     firstLevelMenu: @entangle('firstLevelMenu'),
-    secondLevelMenu: @entangle('secondLevelMenu'),
-    showNavbar: true
+    secondLevelMenu: @entangle('secondLevelMenu')
     }" 
-    x-init="showNavbar = (window.pageYOffset < 60) ? true : false"
     @keydown.window.escape="openMenu = false"
-    @scroll.window.debounce.0="showNavbar = (window.pageYOffset < 60) ? true : false" class="bg-white sticky top-0 z-10">
+    class="bg-white sticky top-0 z-10">
 
     <!-- Mobile menu -->
     {{-- Aqui ira --}}
 
-    <header class="relative bg-white">
-        <nav id="navbar-info-header" class="announcement-container"
-            :class="{ 'hidden transition duration-500': !showNavbar }" x-data x-init="swiper = new Swiper($refs.container, {
+    <header id="header-webpage" class="relative bg-white">
+        <nav id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: false,
                 autoplay: {
                     delay: 6000,

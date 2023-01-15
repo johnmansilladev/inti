@@ -17,5 +17,8 @@
         "tailwind-scrollbar": "^2.0.1",
         "tailwindcss": "^3.1.0",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "jquery": "^3.6.3"
     }
 }

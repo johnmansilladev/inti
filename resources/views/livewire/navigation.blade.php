@@ -12,7 +12,7 @@
     <header id="header-webpage" class="relative bg-white">
         <nav id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: false,
-                slidesPerView: 'auto'
+                slidesPerView: 'auto',
                 autoplay: {
                     delay: 6000,
                     disableOnInteraction: false,

@@ -127,7 +127,7 @@
                                 Seguir viendo
                             </button>
                             <a href="{{route('cart')}}" class="flex items-center justify-center w-full rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
-                                Comprar
+                                Comprar 
                             </a>
                         </div>
                     </div>

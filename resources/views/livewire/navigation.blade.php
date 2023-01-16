@@ -10,7 +10,7 @@
     {{-- Aqui ira --}}
 
     <header id="header-webpage" class="relative bg-white">
-        <nav id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
+        <div id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: false,
                 slidesPerView: 'auto',
                 autoplay: {
@@ -28,7 +28,7 @@
                     @endforeach
                 </div>
             </div>
-        </nav>
+        </div>
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
             <div class="mx-auto max-w-[80%]">
                 <div class="flex h-[4.5rem] items-center">

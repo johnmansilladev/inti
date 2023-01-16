@@ -9,6 +9,47 @@
       font-family: 'Exo', sans-serif;
     }
 
+
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet,
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    {
+      @apply opacity-100 w-3 h-3;
+    }
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active ,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    {
+      @apply w-3 h-3;
+    }
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet,
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active 
+    {
+      @apply bg-white;
+    }
+
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active 
+    {
+      @apply bg-theme-gray;
+    }
+
+    .container-offers {
+      @apply bg-gradient-to-b from-theme-yellow to-theme-orange;
+    }
+
+    .container-last-updateds {
+      @apply py-20;
+    }
+
     .float-container {
       @apply fixed left-0 grid grid-rows-4 grid-flow-col gap-6 bg-black rounded-r-3xl py-6 px-3 z-10;
       top: calc(100vh - 60%);

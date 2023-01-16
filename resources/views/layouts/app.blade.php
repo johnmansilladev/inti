@@ -40,19 +40,23 @@
         @livewireScripts
 
         <script>
-            const header_webpage = document.getElementById("header-webpage");
-            const navbar_info_header = document.getElementById("navbar-info-header");
+           
+            window.addEventListener('DOMContentLoaded', (event) => {
+                
+                const header_webpage = document.getElementById("header-webpage");
+                const navbar_info_header = document.getElementById("navbar-info-header");
 
-            window.onscroll = () => { scrollFunction(); }
+                window.onscroll = () => { scrollFunction(); }
 
-            const scrollFunction = () => {
-                console.log(document.body.scrollTop);
-                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                    if (navbar_info_header) { $(navbar_info_header).slideUp(200); }
-                } else {
-                    if (navbar_info_header) { $(navbar_info_header).slideDown(200); }
-                }
-            }
+                const scrollFunction = () => {
+                    if (document.body.scrollTop > 110 || document.documentElement.scrollTop > 110) {
+                        if (navbar_info_header) { $(navbar_info_header).slideUp(200); }
+                    } else {
+                        if (navbar_info_header) { $(navbar_info_header).slideDown(200); }
+                    }
+                }  
+            });
+
 
             const showModalQuickViewsProduct = (item) => {
                 window.Livewire.emit('showModalQuickviewsProduct',item);   
@@ -65,6 +69,7 @@
             const toggleOverflow = () => {
                 document.body.classList.toggle('overflow-hidden');
             }
+
         </script>
 
         @stack('script')

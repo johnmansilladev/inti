@@ -3,7 +3,7 @@
 
     @if ($sliders->count())
         <section>
-            <div x-data x-init="swiper = new Swiper($refs.container, {
+            <div class="container-slider" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: true,
                 autoplay: {
                     delay: 4500,
@@ -63,7 +63,7 @@
     </section>
     @if ($last_updates->count())
     <section>
-        <div class="bg-gradient-to-b from-theme-yellow to-theme-orange">
+        <div class="container-offers">
             <div class="py-20">
                 <h1 class="text-4xl font-extrabold text-white text-center uppercase mb-4">SÚPER OFERTAS DEL AÑO</h1>
                 <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
@@ -131,7 +131,7 @@
     @endif
     @if ($last_updates->count())
     <section class="bg-theme-swhite">
-        <div class="py-20">
+        <div class="container-last-updateds">
             <h1 class="text-4xl font-extrabold text-theme-gray text-center uppercase">Últimas Actualizaciones</h1>
             <p class="max-w-4xl mx-auto text-lg text-theme-gray text-center mt-4">Se requieren algunos activos para instalar, utilizar y actualizar software, ofrecemos servicio y soporte técnico para todos los programas.⁣⁣</p>
             <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {

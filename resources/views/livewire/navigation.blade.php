@@ -1,22 +1,31 @@
-<div x-data="{ 
+<div x-data="{
     openMenu: false,
-    firstLevelMenu : @entangle('firstLevelMenu'),
-    secondLevelMenu : @entangle('secondLevelMenu')
+    firstLevelMenu: @entangle('firstLevelMenu'),
+    secondLevelMenu: @entangle('secondLevelMenu')
     }" 
-    @keydown.window.escape="openMenu = false" class="bg-white sticky top-0 z-10">
+    @keydown.window.escape="openMenu = false"
+    class="bg-white sticky top-0 z-10">
+
     <!-- Mobile menu -->
-    <header class="relative bg-white">
-        <nav id="navbar-info-header" class="bg-gradient-to-r from-theme-yellow to-theme-orange">
-            <div class="h-10 flex items-center justify-center">
-                <div class="flex items-center">
-                    <p class="px-4 text-base font-bold text-black">50% DSCTO EN LA INSTALACIÓN</p>
-                    <p class="text-sm font-semibold text-black">lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy ribid.</p>
-                </div>
-                <div class="ml-10">
-                    <div class="flex items-center justify-center flex-col leading-none ">
-                        <div class="text-base font-bold">06</div>
-                        <div class="text-xs font-semibold">dias</div>
-                    </div>
+    {{-- Aqui ira --}}
+
+    <header id="header-webpage" class="relative bg-white">
+        <nav id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
+                loop: false,
+                slidesPerView: 'auto'
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                }
+            })">
+
+            <div class="swiper slider-container" x-ref="container">
+                <div class="swiper-wrapper">
+                    @foreach ($announcements as $key => $announcement)
+                        <div class="swiper-slide">
+                            @livewire('frontend.banners.announcement',['announcement' => $announcement],key($announcement->id))
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </nav>
@@ -72,28 +81,30 @@
                                         </svg>
                                         <div class="flex-1 flex flex-col">
                                             <span class="ml-3 text-sm font-medium">Hola,</span>
-                                            <span class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->name, 2, '') }}</span>
+                                            <span
+                                                class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->name, 2, '') }}</span>
                                         </div>
                                     </a>
                                 </x-slot>
-            
+
                                 <x-slot name="content">
                                     <!-- Account Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('Manage Account') }}
                                     </div>
-            
+
                                     <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                         {{ __('Profile') }}
                                     </x-jet-dropdown-link>
-            
+
                                     <div class="border-t border-gray-100"></div>
-            
+
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-            
-                                        <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+
+                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
                                                             this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-jet-dropdown-link>
@@ -133,7 +144,7 @@
                                 </x-slot>
                             </x-jet-dropdown>
                         @endauth
-                       
+
 
                         <!-- Cart -->
                         <a type="button" wire:click="$emit('show')"
@@ -155,60 +166,76 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <span class="absolute -right-0 -top-0 w-5 h-5 border border-theme-yellow rounded-full flex items-center justify-center bg-theme-yellow text-xs font-bold">{{ $totalQuantityCart }}</span>
+                            <span
+                                class="absolute -right-0 -top-0 w-5 h-5 border border-theme-yellow rounded-full flex items-center justify-center bg-theme-yellow text-xs font-bold">{{ $totalQuantityCart }}</span>
                         </a>
                     </div>
                 </div>
             </div>
         </nav>
-        <div x-show="openMenu" x-init="$watch('openMenu', toggleOverflow)" class="absolute inset-x-0 top-full text-sm h-screen bg-theme-bblack" @click.away="openMenu = false" style="display: none">
+        <div x-show="openMenu" x-init="$watch('openMenu', toggleOverflow)"
+            class="absolute inset-x-0 top-full text-sm h-screen bg-theme-bblack" @click.away="openMenu = false"
+            style="display: none">
             <div class="absolute inset-0 w-full h-full" @click="openMenu=false"></div>
             <div class="relative">
                 <div class="mx-auto max-w-[80%]">
                     <div class="grid grid-cols-12 gap-y-10 gap-x-0 h-[400px] mt-1">
-                        <div class="col-span-2 bg-[#000000e3] py-8" :class="firstLevelMenu=='' ? 'rounded-xl' : 'rounded-l-xl'">
-                            <div class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                        <div class="col-span-2 bg-[#000000e3] py-8"
+                            :class="firstLevelMenu == '' ? 'rounded-xl' : 'rounded-l-xl'">
+                            <div
+                                class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
                                 <ul role="list" class="space-y-10">
                                     <li class="relative py-2 px-10">
-                                        <a href="{{ route('shop','categories') }}" @mouseover="firstLevelMenu = 'categories'" class="flex text-base font-bold {{ $firstLevelMenu=='categories' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
+                                        <a href="{{ route('shop', 'categories') }}"
+                                            @mouseover="firstLevelMenu = 'categories'"
+                                            class="flex text-base font-bold {{ $firstLevelMenu == 'categories' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
                                             <span>Categorias</span>
                                         </a>
                                     </li>
                                     <li class="relative py-2 px-10">
-                                        <a href="{{ route('shop','interfaces') }}" @mouseover="firstLevelMenu = 'interfaces'" class="flex text-base font-bold {{ $firstLevelMenu=='interfaces' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
+                                        <a href="{{ route('shop', 'interfaces') }}"
+                                            @mouseover="firstLevelMenu = 'interfaces'"
+                                            class="flex text-base font-bold {{ $firstLevelMenu == 'interfaces' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
                                             <span>Interfaces</span>
                                         </a>
                                     </li>
                                     <li class="relative py-2 px-10">
-                                        <a href="{{ route('about') }}" @mouseover="firstLevelMenu = ''" class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
+                                        <a href="{{ route('about') }}" @mouseover="firstLevelMenu = ''"
+                                            class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
                                             <span>Nosotros</span>
                                         </a>
                                     </li>
                                     <li class="relative py-2 px-10">
-                                        <a href="{{ route('contact') }}" @mouseover="firstLevelMenu = ''" class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
+                                        <a href="{{ route('contact') }}" @mouseover="firstLevelMenu = ''"
+                                            class="flex text-base font-bold text-white text-center hover:text-theme-yellow uppercase">
                                             <span>Contacto</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div x-show="firstLevelMenu!=''" class="col-span-2 bg-[#000000e3] py-8" :class="firstLevelMenu=='' ? 'rounded-xl' : secondLevelMenu == '' ? 'rounded-r-xl' : ''">
-                            <div x-show="firstLevelMenu=='categories'" class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                        <div x-show="firstLevelMenu!=''" class="col-span-2 bg-[#000000e3] py-8"
+                            :class="firstLevelMenu == '' ? 'rounded-xl' : secondLevelMenu == '' ? 'rounded-r-xl' : ''">
+                            <div x-show="firstLevelMenu=='categories'"
+                                class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
                                 <ul role="list" class="space-y-2">
                                     @foreach ($categories as $category)
                                         <li class="relative py-2 px-6">
-                                            <a role="button" @click="secondLevelMenu='{{ $category->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$category->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow capitalize">
+                                            <a role="button" @click="secondLevelMenu='{{ $category->slug }}'"
+                                                class="flex text-sm font-semibold {{ $secondLevelMenu == $category->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow capitalize">
                                                 <span>{{ $category->name }}</span>
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
-                            <div x-show="firstLevelMenu=='interfaces'" class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                            <div x-show="firstLevelMenu=='interfaces'"
+                                class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
                                 <ul>
                                     @foreach ($interfaces as $interface)
                                         <li class="relative py-2 px-6">
-                                            <a role="button" @click="secondLevelMenu='{{ $interface->slug }}'" class="flex text-sm font-semibold {{ $secondLevelMenu==$interface->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow">
+                                            <a role="button" @click="secondLevelMenu='{{ $interface->slug }}'"
+                                                class="flex text-sm font-semibold {{ $secondLevelMenu == $interface->slug ? 'text-theme-yellow' : 'text-white' }} hover:text-theme-yellow">
                                                 <span class="capitalize">{{ $interface->name }}</span>
                                             </a>
                                         </li>
@@ -216,23 +243,26 @@
                                 </ul>
                             </div>
                         </div>
-                        <div x-show="secondLevelMenu!=''"  class="col-span-2 bg-[#000000e3] rounded-r-xl py-8" >
-                            <div class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
+                        <div x-show="secondLevelMenu!=''" class="col-span-2 bg-[#000000e3] rounded-r-xl py-8">
+                            <div
+                                class="h-[400px] overflow-auto scrollbar scrollbar-thumb-white scrollbar-track-black scrollbar-theme">
                                 <ul>
                                     @foreach ($dataSecondLevelMenu as $item)
-                                    <li class="relative py-2 px-6">
-                                        <a href="{{ route('product.index',$item->slug) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
-                                            <span class="capitalize">{{ $item->name }}</span>
-                                        </a>
-                                    </li>
+                                        <li class="relative py-2 px-6">
+                                            <a href="{{ route('product.index', $item->slug) }}"
+                                                class="flex text-sm font-semibold text-white hover:text-theme-yellow">
+                                                <span class="capitalize">{{ $item->name }}</span>
+                                            </a>
+                                        </li>
                                     @endforeach
 
-                                    @if ($firstLevelMenu!='')
-                                    <li class="relative py-2 px-6">
-                                        <a href="{{ route('shop',['shop_section'=>($firstLevelMenu=='categories'?'category':'interface'),'shop_section_url'=>$secondLevelMenu]) }}" class="flex text-sm font-semibold text-white hover:text-theme-yellow">
-                                            <span class="capitalize">ver todo</span>
-                                        </a>
-                                    </li>
+                                    @if ($firstLevelMenu != '')
+                                        <li class="relative py-2 px-6">
+                                            <a href="{{ route('shop', ['shop_section' => $firstLevelMenu == 'categories' ? 'category' : 'interface', 'shop_section_url' => $secondLevelMenu]) }}"
+                                                class="flex text-sm font-semibold text-white hover:text-theme-yellow">
+                                                <span class="capitalize">ver todo</span>
+                                            </a>
+                                        </li>
                                     @endif
                                 </ul>
                             </div>
@@ -257,4 +287,3 @@
     <!-- Pop out cart shopping -->
     @livewire('frontend.products.cart-product')
 </div>
-

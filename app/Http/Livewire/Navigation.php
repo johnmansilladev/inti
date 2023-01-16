@@ -3,13 +3,18 @@
 namespace App\Http\Livewire;
 
 use Cart;
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Interfase;
+use App\Models\Announcement;
 
 class Navigation extends Component
 {
 
+    public $categories=[];
+    public $interfaces=[];
+    public $announcements=[];
     public $totalQuantityCart = 0;
     public $firstLevelMenu = '';
     public $secondLevelMenu = '';
@@ -18,6 +23,13 @@ class Navigation extends Component
     protected $listeners = [
         'sumTotalQuantityCart' => 'getTotalQuantityCart'
     ];
+
+    public function mount()
+    {
+        $this->categories = Category::all();
+        $this->interfaces = Interfase::all();
+        $this->announcements = Announcement::active()->get();
+    }
 
     public function getTotalQuantityCart() 
     {
@@ -49,9 +61,6 @@ class Navigation extends Component
     {
         $this->getTotalQuantityCart();
 
-        return view('livewire.navigation',[
-            'categories' => Category::all(),
-            'interfaces' => Interfase::all()
-        ]);
+        return view('livewire.navigation');
     }
 }

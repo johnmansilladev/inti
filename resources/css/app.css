@@ -56,6 +56,42 @@
       background-color: rgba(253, 199, 0, .9);
     }
 
+    .announcement-container {
+      @apply w-full flex items-center justify-center bg-gradient-to-r from-theme-yellow to-theme-orange px-[10px] py-[10px] h-[40px];
+    }
+
+    .announcement-container .announcement-item {
+      @apply flex items-center justify-center
+    }
+
+    .announcement-description {
+      @apply flex items-center;
+    }
+
+    .announcement-title {
+      @apply text-sm font-medium text-black leading-[2.25rem];
+    }
+
+    .announcement-content {
+      @apply pl-4 text-sm font-medium text-black leading-[2.25rem];
+    }
+
+    .announcement-countdown {
+      @apply flex justify-center items-center pl-8 space-x-6;
+    }
+
+    .announcement-countdown .clock {
+      @apply inline-block text-center leading-none;
+    }
+
+    .announcement-countdown .clock .clock-time {
+      @apply text-base text-sm font-bold leading-none;
+    }
+
+    .announcement-countdown .clock .clock-text {
+      @apply text-[10px] text-center font-semibold uppercase leading-none;
+    }
+
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button {
       -webkit-appearance: none;
@@ -69,6 +105,7 @@
     .custom-number-input button:focus {
       outline: none !important;
     }
+    
 }
 
 @layer utilities {

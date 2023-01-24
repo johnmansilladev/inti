@@ -1,6 +1,6 @@
 
 <div>
-    @livewire('frontend.products.product-quickviews')
+    {{-- @livewire('frontend.products.product-quickviews')
     <section class="float-container">
         <div class="group hover:cursor-pointer">
             <svg class="w-7 h-7 group-hover:transform transition duration-500 hover:scale-125" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,44 +29,44 @@
                 <path class="group-hover:fill-theme-yellow" d="M30.0332 17.0155C30.0409 17.6141 29.5768 18.0991 28.9757 18.1143C28.3975 18.1295 27.8878 17.6369 27.8725 17.0534C27.8573 16.4699 28.3442 15.9697 28.9377 15.9621C29.5463 15.9545 30.0256 16.4168 30.0332 17.0155V17.0155Z" fill="white"/>
             </svg> 
         </div>
-    </section>
+    </section> --}}
     <section>
         <div class="bg-theme-lgray py-6">
             <div class="max-w-[80%] mx-auto">
                 <ul role="list" class="grid grid-cols-2 gap-6 lg:grid-cols-7">
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/mtu.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/mtu.png') }}" title="mtu" alt="mtu">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/scania.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/scania.png') }}" title="scania" alt="scania">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/internacional.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/internacional.png') }}" title="internacional" alt="internacional">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/doosan.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/doosan.png') }}" title="doosan" alt="doosan">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/caterpiller.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/caterpiller.png') }}" title="caterpiller" alt="caterpiller">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/jcb.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/jcb.png') }}" title="jcb" alt="jcb">
                         </a>
                     </li>
                     <li class="w-full flex items-center justify-center">
                         <a href="">
-                            <img src="{{ Storage::url('brands/bobcat.png') }}" alt="">
+                            <img src="{{ Storage::url('brands/bobcat.png') }}" title="bobcat" alt="bobcat">
                         </a>
                     </li>
                 </ul>
@@ -76,80 +76,137 @@
     @livewire('subscription')
     <footer aria-labelledby="footer-heading" style="background-image: url({{ Storage::url('images/bg-footer.png') }})">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
-        <div class="max-w-[80%] mx-auto w-full py-12">
-            <div class="grid grid-cols-12 md:gap-x-8 gap-y-12">
+        <div class="max-w-[85%] md:max-w-[80%] mx-auto w-full py-8 md:py-12">
+            <div class="grid grid-cols-12 gap-y-4 md:gap-x-8 md:gap-y-12">
                 <div class="col-span-12 lg:col-span-4">
                     <a href="/" class="max-w-sm flex justify-center items-center">
                         <img class="text-center" src="{{ Storage::url('images/logo-inti-lite.png') }}" title="Inti Diesel" alt="Inti Diesel">
                     </a>
-                    <p class="max-w-sm text-white text-sm text-justify tracking-wider mt-10">
+                    <p class="max-w-sm text-white text-xs md:text-sm text-justify tracking-wider mt-6 md:mt-10">
                         Inti diesel proporciona soluciones de software para diagnóstico, calibración, 
                         mantenimiento, reprogramación y piezas de repuesto en vehículos ligeros y pesados, maquinaria agrícola y pesada, 
                         camiones, motores y más.
                     </p>
                 </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-3">
-                    <h3 class="text-base font-bold text-white tracking-wider">Enlaces de Interés</h3>
-                    <ul role="list" class="mt-4 space-y-3">
+                <div class="col-span-12 md:col-span-6 lg:col-span-3" x-data="{ open: true }">
+                    <button type="button" 
+                        class="group relative w-full flex justify-between items-center text-left border-b-2 pb-2 md:border-none md:pb-0 pointer-events-auto md:pointer-events-none"
+                        @click="open = !open">
+                        <h3 class="text-sm md:text-base font-bold text-white tracking-wider">Enlaces de Interés</h3>
+                        <span class="ml-6 flex items-center md:hidden">
+                            <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                                style="display: none;">
+                                <path class="fill-white" fill-rule="evenodd"
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path class="fill-white" fill-rule="evenodd"
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul x-show="open" role="list" class="mt-4 space-y-3">
                         <li>
-                            <a href="/" class="text-sm text-white hover:text-theme-yellow"> Inicio</a>
+                            <a href="/" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Inicio</a>
                         </li>
                         <li>
-                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow"> Categorias</a>
+                            <a href="/shop/categories" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Categorias</a>
                         </li>
                         <li>
-                            <a href="/shop/interfaces" class="text-sm text-white hover:text-theme-yellow"> Interfaces</a>
+                            <a href="/shop/interfaces" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Interfaces</a>
                         </li>
                         <li>
-                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow"> Ultimas Actualizaciones</a>
+                            <a href="/shop/categories" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Ultimas Actualizaciones</a>
                         </li>
                         <li>
-                            <a href="/shop/categories" class="text-sm text-white hover:text-theme-yellow">Promociones</a>
+                            <a href="/shop/categories" class="text-xs md:text-sm text-white hover:text-theme-yellow">Promociones</a>
                         </li>
                         <li>
-                            <a href="/login" class="text-sm text-white hover:text-theme-yellow"> Inicio de sesión</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-3">
-                    <h3 class="text-base font-bold text-white tracking-wider">Te ayudamos</h3>
-                    <ul role="list" class="mt-4 space-y-3">
-                        <li>
-                            <a href="https://api.whatsapp.com/send?phone=51930825355" class="text-sm text-white hover:text-theme-yellow">Atención por WhatsApp</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Cómo comprar</a>
-                        </li>
-                        <li>
-                            <a href="/about/frequent-questions" class="text-sm text-white hover:text-theme-yellow">Preguntas frecuentes</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Boletas y facturas</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Términos y condiciones</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-sm text-white hover:text-theme-yellow">Políticas de privacidad</a>
+                            <a href="/login" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Inicio de sesión</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-span-6 md:col-span-3 lg:col-span-2">
-                    <div class="grid grid-rows-2 grid-flow-col gap-4">
-                        <div>
-                            <h3 class="text-base font-bold text-white tracking-wider">Contáctanos</h3>
-                            <ul role="list" class="mt-4 space-y-3">
+                <div class="col-span-12 md:col-span-6 lg:col-span-3" x-data="{ open: true }">
+                    <button type="button" 
+                            class="group relative w-full flex justify-between items-center text-left border-b-2 pb-2 md:border-none md:pb-0 pointer-events-auto md:pointer-events-none"
+                            @click="open = !open">
+                        <h3 class="text-sm md:text-base font-bold text-white tracking-wider">Te ayudamos</h3>
+                        <span class="ml-6 flex items-center md:hidden">
+                            <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                                style="display: none;">
+                                <path class="fill-white" fill-rule="evenodd"
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path class="fill-white" fill-rule="evenodd"
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul x-show="open" role="list" class="mt-4 space-y-3">
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=51930825355" class="text-xs md:text-sm text-white hover:text-theme-yellow">Atención por WhatsApp</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-xs md:text-sm text-white hover:text-theme-yellow">Cómo comprar</a>
+                        </li>
+                        <li>
+                            <a href="/about/frequent-questions" class="text-xs md:text-sm text-white hover:text-theme-yellow">Preguntas frecuentes</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-xs md:text-sm text-white hover:text-theme-yellow">Boletas y facturas</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-xs md:text-sm text-white hover:text-theme-yellow">Términos y condiciones</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-xs md:text-sm text-white hover:text-theme-yellow">Políticas de privacidad</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-2">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div x-data="{ open: true }">
+                            <button type="button" 
+                                    class="group relative w-full flex justify-between items-center text-left border-b-2 pb-2 md:border-none md:pb-0 pointer-events-auto md:pointer-events-none"
+                                    @click="open = !open">
+                                <h3 class="text-sm md:text-base font-bold text-white tracking-wider">Contáctanos</h3>
+                                <span class="ml-6 flex items-center md:hidden">
+                                    <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                                        style="display: none;">
+                                        <path class="fill-white" fill-rule="evenodd"
+                                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path class="fill-white" fill-rule="evenodd"
+                                            d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <ul x-show="open" role="list" class="mt-4 space-y-3">
                                 <li>
-                                    <a href="tel:+51930825355" class="text-sm text-white hover:text-theme-yellow"> Llámanos al (51) 930 825 355 las 24 horas del día</a>
+                                    <a href="tel:+51930825355" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Llámanos al (51) 930 825 355 las 24 horas del día</a>
                                 </li>
                                 <li>
-                                    <a href="mailto:intidiesel@gmail.com" class="text-sm text-white hover:text-theme-yellow"> Escríbenos para dudas o consultas intidiesel@gmail.com</a>
+                                    <a href="mailto:intidiesel@gmail.com" class="text-xs md:text-sm text-white hover:text-theme-yellow"> Escríbenos para dudas o consultas intidiesel@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-base font-bold text-white tracking-wider">Contáctanos en:</h3>
-                            <div class="flex space-x-2 mt-6">
+                            <h3 class="text-sm md:text-base font-bold text-white text-center md:tex-left tracking-wider">Contáctanos en:</h3>
+                            <div class="flex justify-center md:justify-start space-x-2 mt-6">
                                 <a href="https://www.facebook.com/IntiDieselpe" target="_blank" title="Facebook Inti diesel"
                                     class="border-2 border-theme-yellow text-theme-yellow rounded-full p-2 transition duration-500 group hover:bg-theme-yellow">
                                     <span class="sr-only">Facebook</span>
@@ -181,57 +238,57 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white py-1">
-            <ul role="list" class="max-w-[80%] mx-auto grid grid-cols-9 gap-6">
+        <div class="bg-white py-4 md:py-1">
+            <ul role="list" class="max-w-[80%] mx-auto grid grid-cols-3 md:grid-cols-9 gap-6">
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/visa.png') }}" alt="visa">
+                        <img src="{{ Storage::url('images/visa.png') }}" title="visa" alt="visa">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/mastercard.png') }}" alt="mastercard">
+                        <img src="{{ Storage::url('images/mastercard.png') }}" title="mastercard" alt="mastercard">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/yape.png') }}" alt="yape">
+                        <img src="{{ Storage::url('images/yape.png') }}" title="yape" alt="yape">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/plin.png') }}" alt="plin">
+                        <img src="{{ Storage::url('images/plin.png') }}" title="plin" alt="plin">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/bcp.png') }}" alt="bcp">
+                        <img src="{{ Storage::url('images/bcp.png') }}" title="bcp" alt="bcp">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/interbank.png') }}" alt="interbank">
+                        <img src="{{ Storage::url('images/interbank.png') }}" title="interbank" alt="interbank">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/bbva.png') }}" alt="bbva">
+                        <img src="{{ Storage::url('images/bbva.png') }}" title="bbva" alt="bbva">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/scotiabank.png') }}" alt="scotiabank">
+                        <img src="{{ Storage::url('images/scotiabank.png') }}" title="scotiabank" alt="scotiabank">
                     </a>
                 </li>
                 <li class="w-full flex items-center justify-center">
                     <a href="">
-                        <img src="{{ Storage::url('images/paypal.png') }}" alt="paypal">
+                        <img src="{{ Storage::url('images/paypal.png') }}" title="paypal" alt="paypal">
                     </a>
                 </li>
             </ul>
         </div>
         <div class="py-3">
-            <p class="text-sm text-white text-center">&copy; {{ now()->year }} Inti Diesel. Reservados todos los derechos.</p>
+            <p class="text-xs md:text-sm text-white text-center">&copy; {{ now()->year }} Inti Diesel. Reservados todos los derechos.</p>
         </div>
     </footer>
 </div>

@@ -75,10 +75,10 @@ class AddCartItemService extends Component
             switch ($promotion->type_promotion) {
                 case Promotion::PERCENTAGE:
                     $dcto = round($promotion->discount_rate);
-                    $sale_price = round($price_base - (($price_base * $dcto) / 100),1);
+                    $sale_price = round($base_price - (($base_price * $dcto) / 100),1);
                     break;
                 case Promotion::FIXED_AMOUNT:
-                    $sale_price = round($price_base - $promotion->discount_rate,1);
+                    $sale_price = round($base_price - $promotion->discount_rate,1);
                     break;
                 default:
                     break;

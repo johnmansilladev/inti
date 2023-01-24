@@ -4,7 +4,7 @@
             <div class="max-w-[80%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
                 <div class="grid grid-cols-2 gap-4 md:gap-40">
                     <div class="my-auto col-span-2 md:col-span-1 text-white">
-                        <h1 class="text-5xl font-extrabold text-center">¡Suscríbete!</h1>
+                        <h1 class="text-3xl md:text-5xl font-extrabold text-center">¡Suscríbete!</h1>
                         <p class="mt-3 max-w-3xl text-base text-center md:text-left font-bold">Entérate de todas nuestras promociones y últimas novedades</p>
                     </div>
                     <div class="col-span-2 md:col-span-1">

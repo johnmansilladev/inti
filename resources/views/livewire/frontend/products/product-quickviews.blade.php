@@ -34,16 +34,26 @@
 
                             <section aria-labelledby="information-heading" class="mt-2">
                                 <h3 id="information-heading" class="sr-only">Product information</h3>
-
                                 @if (!empty($service_selected->pivot))
                                 <div class="flex items-end">
-                                    <p class="text-2xl font-bold text-theme-yellow mr-3">$ {{ $service_selected->pivot->sale_price }}</p> 
-                                    @if ($service_selected->pivot->sale_price <  $service_selected->pivot->base_price)
-                                    <p class="text-lg font-bold text-theme-gray line-through">$ {{ $service_selected->pivot->base_price }}</p>                                          
-                                    @endif 
+                                    @if ($sku_selected->hasPromotionsService($service_selected->id))
+                                        @php
+                                            $promotion = $sku_selected->discountedPriceService($service_selected->id);  
+                                            $base_price = $service_selected->pivot->base_price;
+                                                
+                                            if ($promotion->type_promotion == 1) {
+                                                $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
+                                            }else {
+                                                $sale_price = round($base_price - $promotion->discount_rate,1);
+                                            }
+                                        @endphp
+                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{ $sale_price }}</p> 
+                                        <p class="text-lg font-bold text-theme-gray line-through">S/. {{ $base_price }}</p> 
+                                    @else
+                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{ $base_price }}</p> 
+                                    @endif
                                 </div>
                                 @endif
-                                
                                 <div class="mt-2">
                                     <p class="text-sm text-justify">{{ $product->description_short }}</p>
                                 </div>

@@ -21,9 +21,7 @@ return new class extends Migration
             $table->enum('apply_to',[ServiceSkuPrice::PRODUCT,ServiceSkuPrice::SERVICE])->default(ServiceSkuPrice::SERVICE);
             $table->decimal('cost_price', 14, 2)->default(0);
             $table->decimal('markup', 14, 2)->default(0);
-            $table->decimal('base_price', 14, 2)->default(0);
-            $table->decimal('dcto', 14, 2)->default(0); 
-            $table->decimal('sale_price', 14, 2)->default(0);      
+            $table->decimal('base_price', 14, 2)->default(0);   
             $table->foreign('service_id')->references('id')->on('services');
             $table->foreign('stock_keeping_unit_id')->references('id')->on('stock_keeping_units');
             $table->timestamps();

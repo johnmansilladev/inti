@@ -34,6 +34,7 @@ class Subscription extends Component
     public function subscribe() 
     {
         $this->validate();
+        
         subscribe::create([
             'email' => $this->email,
             'data' => [

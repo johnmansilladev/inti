@@ -24,9 +24,35 @@ class Product extends Model
         );
     }
     
-    //Scopes
+    // Scopes
     public function scopeLike($query,$field,$value) {
         return $query->where($field, 'LIKE', "%$value%");
+    }
+
+    public function scopeActive($query) 
+    {
+        return $query->where('active',1);
+    }
+
+    public function scopeFirstSku($query)
+    {
+        return $this->stockKeepingUnits()->active()->orderBy('release_date', 'desc')->first();
+    }
+
+    public function scopeWhereSkuSlug($query,$slug) 
+    {
+        return $this->stockKeepingUnits()
+                    ->where('slug',$slug)
+                    ->active()
+                    ->first();
+    }
+
+    public function scopeFirstSkuImage($query)
+    {
+        return $this->stockKeepingUnits()
+                    ->orderBy('release_date', 'desc')
+                    ->first()
+                    ->images()->first();
     }
 
     public function scopeSkuOrder($query) 
@@ -34,22 +60,6 @@ class Product extends Model
         return $query->with(['stockKeepingUnits' => function ($q) {
             $q->orderBy('release_date','desc');
         }]);
-    }
-
-    public function scopeSkuOrderPriceSale($query,$direction = 'asc')
-    {
-        return $query->join('stock_keeping_units','products.id','=','stock_keeping_units.product_id')
-                    ->join('');
-    }
-
-    public function scopeSkuFirstImage($query)
-    {
-        return $query->stockKeepingUnits->first()->images->first()->url; 
-    }
-
-    public function scopeSkuFirstService($query)
-    {
-        return $query->stockKeepingUnits->first()->services->first()->pivot->sale_price;
     }
 
     // Relacion uno a muchos inversa

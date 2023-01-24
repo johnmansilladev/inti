@@ -22,6 +22,9 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        <!-- Styles Package laravel-tel-input -->
+        @laravelTelInputStyles
     </head>
     <body class="antialiased">
         <div class="min-h-screen">
@@ -38,6 +41,8 @@
         @stack('modals')
 
         @livewireScripts
+
+        @laravelTelInputScripts
 
         <script>
            
@@ -57,6 +62,8 @@
                 }  
             });
 
+            
+
 
             const showModalQuickViewsProduct = (item) => {
                 window.Livewire.emit('showModalQuickviewsProduct',item);   
@@ -68,9 +75,10 @@
 
             const toggleOverflow = () => {
                 document.body.classList.toggle('overflow-hidden');
-            }
-
+            }        
         </script>
+
+        
 
         @stack('script')
     </body>

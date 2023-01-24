@@ -3,15 +3,23 @@
     <div class="relative overflow-hidden">
         <a href="{{ route('product.index',$item) }}">
             <figure class="aspect-w-16 aspect-h-9">
-                <img class="object-cover object-center" src="{{ Storage::url($item->stockKeepingUnits->first()->images->first()->url) }}" alt="{{ Str::title($item->name) }}">
+                <img class="object-cover object-center" src="{{ Storage::url($item->firstSkuImage()->url) }}" alt="{{ Str::title($item->name) }}">
             </figure>
-            @if ($item->stockKeepingUnits->first()->services->first()->pivot->dcto > 0)
+
+            @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
             <div class="absolute top-2 left-2">
-                <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2 py-1.5">
-                    <span class="text-xs font-bold text-white">-{{ number_format($item->stockKeepingUnits->first()->services->first()->pivot->dcto) }}%</span>
+                <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2 py-1">
+                    @php
+                        $promotion = $item->firstSku()->discountedPriceService($item->firstSku()->firstService()->id);
+                    @endphp
+                    @if ($promotion->type_promotion == 1)
+                        <span class="text-xs font-bold text-white">-{{ number_format($promotion->discount_rate) }}%</span>
+                    @else
+                        <span class="text-xs font-bold text-white">SALE</span>
+                    @endif
                 </div>
             </div>
-            @endif
+            @endif           
         </a>
     </div>
     <div class="px-6 pb-2 flex-1 flex flex-col">
@@ -36,12 +44,21 @@
             </ul>
             <p class="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-theme-yellow to-theme-orange">{{ $item->rating }}</p>
         </div>
-        <p class="text-base font-semibold mb-2"> 
-            $ {{ $item->stockKeepingUnits->first()->services->first()->pivot->sale_price }}
-            @if ($item->stockKeepingUnits->first()->services->first()->pivot->sale_price < $item->stockKeepingUnits->first()->services->first()->pivot->base_price)
-            <span class="line-through text-gray-500 text-sm text-red-500 ml-3">$ {{ $item->stockKeepingUnits->first()->services->first()->pivot->base_price }}</span> 
-            @endif
-        </p>
+        @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
+            @php
+                $promotion = $item->firstSku()->discountedPriceService($item->firstSku()->firstService()->id);  
+                $base_price = $item->firstSku()->firstService()->pivot->base_price;
+                
+                if ($promotion->type_promotion == 1) {
+                    $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
+                }else {
+                    $sale_price = round($base_price - $promotion->discount_rate,1);
+                }
+            @endphp
+            <p class="text-base font-semibold">S/. {{ number_format($sale_price,2) }}<span class="line-through text-gray-500 text-sm text-red-500 ml-3">S/. {{ number_format($base_price,2) }}</span></p>
+        @else 
+            <p class="text-base font-semibold">S/. {{ number_format($item->firstSku()->firstService()->pivot->base_price,2) }}</p>
+        @endif
     </div>
     <div class="flex flex-row bg-theme-gray rounded-b-3xl">
         <button type="button" onclick="showModalQuickViewsProduct('{{ $item->id }}')" class="flex items-center justify-center w-8/12 py-2 border border-transparent text-base font-bold  text-white uppercase bg-theme-gray">

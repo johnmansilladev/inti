@@ -1,23 +1,38 @@
 <div x-data>
     <div class="flex flex-col mt-6">
-        @if ($service_selected->pivot->sale_price < $service_selected->pivot->base_price)
-        <div class="flex justify-between items-center">
-            <p class="text-sm font-medium text-theme-gray">Normal</p>
-            <p class="text-sm font-medium text-theme-gray line-through">
-                $ {{  $service_selected->pivot->base_price }}
-            </p>
-        </div>
-        <div class="flex justify-between items-center pt-1">
-            <p class="text-sm font-semibold text-red-500">Oferta</p>
-            <p class="text-sm font-semibold text-red-500">$ {{ $service_selected->pivot->sale_price }}</p>
-        </div>
+      
+        @if ($sku_selected->hasPromotionsService($service_selected->id))
+
+            @php
+                $promotion = $sku_selected->discountedPriceService($service_selected->id);  
+                $base_price = $service_selected->pivot->base_price;
+                    
+                if ($promotion->type_promotion == 1) {
+                    $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
+                }else {
+                    $sale_price = round($base_price - $promotion->discount_rate,1);
+                }
+            @endphp
+
+            <div class="flex justify-between items-center">
+                <p class="text-sm font-medium text-theme-gray">Normal</p>
+                <p class="text-sm font-medium text-theme-gray line-through">S/. {{ number_format($base_price,2) }}</p>
+            </div>
+            <div class="flex justify-between items-center pt-1">
+                <p class="text-sm font-semibold text-red-500">Oferta</p>
+                <div class="flex justify-center items-center">
+                    @if ($promotion->type_promotion == 1)
+                    <span class="bg-[#FF0000] rounded-lg text-xs font-semibold text-white px-2 mr-2">-{{number_format($promotion->discount_rate)  }}%</span>
+                    @endif
+                    <p class="text-sm font-semibold text-red-500">S/. {{ number_format($sale_price,2) }}</p>
+                </div>
+            </div>
         @else
-        <div class="flex justify-between items-center">
-            <p class="text-sm font-medium text-theme-gray">Normal</p>
-            <p class="text-sm font-medium text-theme-gray">
-                $ {{  $service_selected->pivot->sale_price }}
-            </p>
-        </div>
+            <div class="flex justify-between items-center">
+                <p class="text-sm font-medium text-theme-gray">Normal</p>
+                <p class="text-sm font-medium text-theme-gray">S/. {{  number_format($service_selected->pivot->base_price,2) }}
+                </p>
+            </div>
         @endif
     </div>
     <div class="mt-6">

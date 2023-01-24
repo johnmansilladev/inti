@@ -140,7 +140,7 @@
                             <h3 class="text-base font-bold text-white tracking-wider">Contáctanos</h3>
                             <ul role="list" class="mt-4 space-y-3">
                                 <li>
-                                    <a href="tel:+5151930825355" class="text-sm text-white hover:text-theme-yellow"> Llámanos al (51) 999 345 678 las 24 horas del día</a>
+                                    <a href="tel:+51930825355" class="text-sm text-white hover:text-theme-yellow"> Llámanos al (51) 930 825 355 las 24 horas del día</a>
                                 </li>
                                 <li>
                                     <a href="mailto:intidiesel@gmail.com" class="text-sm text-white hover:text-theme-yellow"> Escríbenos para dudas o consultas intidiesel@gmail.com</a>

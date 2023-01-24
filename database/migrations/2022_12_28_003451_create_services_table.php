@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
+            $table->integer('position')->default(0);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

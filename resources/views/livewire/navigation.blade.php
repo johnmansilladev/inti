@@ -10,6 +10,7 @@
     {{-- Aqui ira --}}
 
     <header id="header-webpage" class="relative bg-white">
+        @if ($announcements->count())
         <div id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: false,
                 slidesPerView: 'auto',
@@ -29,6 +30,7 @@
                 </div>
             </div>
         </div>
+        @endif  
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
             <div class="mx-auto max-w-[80%]">
                 <div class="flex h-[4.5rem] items-center">
@@ -82,7 +84,7 @@
                                         <div class="flex-1 flex flex-col">
                                             <span class="ml-3 text-sm font-medium">Hola,</span>
                                             <span
-                                                class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->name, 2, '') }}</span>
+                                                class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->firstname, 2, '') }}</span>
                                         </div>
                                     </a>
                                 </x-slot>

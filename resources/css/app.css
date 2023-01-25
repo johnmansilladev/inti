@@ -153,7 +153,7 @@
     }
 
     .container {
-      @apply max-w-[85%] md:max-w-[80%] mx-auto;
+      @apply max-w-[90%] md:max-w-[80%] mx-auto;
     }
 
     .title-section {

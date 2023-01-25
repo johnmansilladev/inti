@@ -196,7 +196,7 @@
     @endif
     @if ($categories->count())
     <section>
-        <div class="max-w-[85%] md:max-w-[60%] mx-auto py-10 md:py-20">
+        <div class="max-w-[90%] md:max-w-[60%] mx-auto py-10 md:py-20">
             <h1 class="title-section mb-10">categorías</h1>
             <ul role="list" class="grid grid-cols-2 gap-6 md:gap-12 sm:grid-cols-3 lg:grid-cols-4">
                 @foreach ($categories as $category)

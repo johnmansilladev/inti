@@ -1,7 +1,7 @@
 <section>
     <div class="bg-image-newsletter">
         <div class="bg-layer-newsletter">
-            <div class="max-w-[85%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
+            <div class="max-w-[90%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
                 <div class="grid grid-cols-2 gap-4 md:gap-40">
                     <div class="my-auto col-span-2 md:col-span-1 text-white">
                         <h1 class="text-3xl md:text-5xl font-extrabold text-center">¡Suscríbete!</h1>

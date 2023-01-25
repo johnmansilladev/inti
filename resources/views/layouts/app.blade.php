@@ -62,9 +62,6 @@
                 }  
             });
 
-            
-
-
             const showModalQuickViewsProduct = (item) => {
                 window.Livewire.emit('showModalQuickviewsProduct',item);   
             }

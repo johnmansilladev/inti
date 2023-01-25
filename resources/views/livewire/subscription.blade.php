@@ -1,7 +1,7 @@
 <section>
     <div class="bg-image-newsletter">
         <div class="bg-layer-newsletter">
-            <div class="max-w-[80%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
+            <div class="max-w-[85%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
                 <div class="grid grid-cols-2 gap-4 md:gap-40">
                     <div class="my-auto col-span-2 md:col-span-1 text-white">
                         <h1 class="text-3xl md:text-5xl font-extrabold text-center">¡Suscríbete!</h1>
@@ -10,12 +10,12 @@
                     <div class="col-span-2 md:col-span-1">
                         <div class="flex">
                             <label for="subscriber-name" class="sr-only">Nombres y apellidos</label>
-                            <input type="text" wire:model="name" id="subscriber-name" placeholder="Nombre" class="form-control @error('name')border border-red-500 @enderror border-white placeholder:font-semibold">
+                            <input type="text" wire:model="name" id="subscriber-name" placeholder="Nombre" class="form-control @error('name')border border-red-500 @enderror border-none placeholder:font-semibold">
                         </div>
                         @error('name') <span class="error italic text-xs text-red-600">*{{ $message }}</span> @enderror
                         <div class="flex mt-3">
                             <label for="subscriber-email" class="sr-only">Correo Electrónico</label>
-                            <input type="email" wire:model="email" id="subscriber-email" placeholder="Correo" class="form-control @error('email')border border-red-500 @enderror border-white placeholder:font-semibold">
+                            <input type="email" wire:model="email" id="subscriber-email" placeholder="Correo" class="form-control @error('email')border border-red-500 @enderror border-none placeholder:font-semibold">
                         </div>
                         @error('email') <span class="error italic text-xs text-red-600">*{{ $message }}</span> @enderror
                         <div class="flex mt-4">

@@ -48,7 +48,7 @@
     }
 
     .container-last-updateds {
-      @apply py-20;
+      @apply py-10 md:py-20;
     }
 
     .float-container {
@@ -61,7 +61,7 @@
     }
 
     .form-control {
-      @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-transparent focus:ring-theme-yellow sm:text-sm;
+      @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-transparent focus:ring-theme-yellow text-sm;
     }
 
     .btn{
@@ -147,6 +147,117 @@
     .custom-number-input button:focus {
       outline: none !important;
     }
+
+    .container-last-updates-section {
+      @apply bg-theme-swhite;
+    }
+
+    .container {
+      @apply max-w-[85%] md:max-w-[80%] mx-auto;
+    }
+
+    .title-section {
+      @apply text-xl md:text-4xl font-extrabold text-theme-gray text-center uppercase;
+    }
+
+    .description-section {
+      @apply max-w-[85%] md:max-w-4xl mx-auto text-base md:text-lg text-center text-theme-gray mt-4 mb-10;
+    }
+
+
+    .container-brands {
+      @apply bg-white md:bg-theme-lgray py-6;
+    }
+    /******* INPUT SEARCH *******/
+    .input-search {
+      @apply w-full rounded-l-md border border-transparent px-5 py-1.5 md:py-2 text-sm text-black focus:outline-none focus:border-transparent focus:ring-theme-yellow
+    }
+
+    .btn-search {
+      @apply px-3 md:px-5 py-[0.313rem] md:py-[0.45rem] text-white rounded-r-md bg-gradient-to-r from-theme-yellow to-theme-orange hover:bg-gradient-to-l;
+    }
+    /******* INPUT SEARCH *******/
+
+    /******* HEADER *******/
+    .navbar {
+      @apply row items-center justify-between py-3;
+    }
+
+    .cart-count {
+      @apply absolute -right-0 top-1 md:-top-0 w-4 h-4 md:w-5 md:h-5 border border-theme-yellow rounded-full flex items-center justify-center bg-theme-yellow text-xs font-bold
+    }
+
+    /******* HEADER *******/
+
+    /******* GENERAL *******/
+
+    .row {
+      @apply flex flex-wrap;
+    }
+    /******* GENERAL *******/
+
+
+    /***** BOX PRODUCT *****/
+    .box-product {
+      @apply relative bg-white flex flex-col h-full overflow-hidden rounded-2xl shadow-xl;
+    }
+
+    .box-product-image {
+      @apply relative overflow-hidden
+    }
+
+    .box-product-details {
+      @apply px-3 md:px-6 pb-2 flex-1 flex flex-col;
+    }
+
+    .box-product-detail-title {
+      @apply text-sm md:text-base font-bold text-black uppercase mb-1;
+    }
+
+    .box-product-detail-brand {
+      @apply text-sm font-semibold mb-1;
+    }
+
+    .box-product-detail-rating {
+      @apply flex items-center mb-1;
+    }
+
+    .box-product-detail-rating ul {
+      @apply flex items-center space-x-1 text-xs mb-1 mr-2;
+    }
+
+    .box-product-detail-rating ul .level-rating {
+      @apply text-sm md:text-xl;
+    }
+
+    .box-product-detail-rating ul .level-rating.active {
+      @apply text-transparent bg-clip-text bg-gradient-to-r from-theme-yellow to-theme-orange;
+    }
+
+    .box-product-detail-rating ul .level-rating.no-active {
+      @apply text-gray-200;
+    }
+
+    .box-product-detail-rating p {
+      @apply text-base md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-theme-yellow to-theme-orange;
+    }
+
+    .box-product-detail-price-sale {
+      @apply text-sm md:text-base font-semibold;
+    }
+
+    .box-product-detail-price-base {
+      @apply line-through text-gray-500 text-xs md:text-sm text-red-500 ml-3;
+    }
+
+    .box-product-btn-preview {
+      @apply flex items-center justify-center w-8/12 py-1 px-2 md:py-2 md:px-0 border border-transparent text-xs md:text-base font-bold  text-white uppercase bg-theme-gray;
+    }
+
+    .box-product-btn-add-cart {
+      @apply flex items-center justify-center w-4/12 py-2 border border-transparent text-base font-bold rounded-tl-2xl rounded-br-2xl text-theme-gray uppercase bg-theme-yellow hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange;
+    }
+    /***** BOX PRODUCT *****/
     
 }
 

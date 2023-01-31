@@ -1,4 +1,4 @@
-<section>
+<section class="{{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
     <div class="bg-image-newsletter">
         <div class="bg-layer-newsletter">
             <div class="max-w-[90%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">

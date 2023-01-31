@@ -193,5 +193,7 @@
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Firstname": "Nombres",
-    "Lastname": "Apellidos"
+    "Lastname": "Apellidos",
+    "Category": "Categorias",
+    "category": "categorias"
 }

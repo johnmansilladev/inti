@@ -273,7 +273,7 @@
             </div>
         </div>
     </header>
-    <nav class="bg-white shadow-3xl">
+    <nav class="bg-white shadow-3xl {{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
         <ul role="list" class="container flex items-center justify-center py-1.5">
             <li class="flex items-center justify-center">
                 <picture>

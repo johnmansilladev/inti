@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Promotion;
-use App\Models\OrderDetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -21,6 +19,11 @@ class StockKeepingUnit extends Model
     public function scopeActive($query) 
     {
         return $query->where('active',1);
+    }
+
+    public function scopeWithSpecifications($query)
+    {
+        return $query;
     }
 
     public function scopeFirstService($query)
@@ -94,7 +97,12 @@ public function product()
         return $this->morphMany(Video::class, 'videoable');
     }
 
-    // Relación uno a muchos 
+    // Relación uno a muchos
+    public function specificationAssociations()
+    {
+        return $this->hasMany(SpecificationAssociation::class);
+    }
+    
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);

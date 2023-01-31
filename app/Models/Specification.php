@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Specification extends Model
 {
@@ -19,5 +19,11 @@ class Specification extends Model
     public function specificationGroup()
     {
         return $this->belongsTo(SpecificationGroup::class);
+    }
+
+    // Relación uno a muchos
+    public function specificationValues()
+    {
+        return $this->hasMany(SpecificationValue::class);
     }
 }

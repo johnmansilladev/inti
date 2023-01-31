@@ -5,6 +5,7 @@
         <section>
             <div class="container-slider" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: true,
+                lazy: true,
                 autoplay: {
                     delay: 4500,
                     disableOnInteraction: false,
@@ -70,6 +71,7 @@
                 <h1 class="title-section text-white">SÚPER OFERTAS DEL AÑO</h1>
                 <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
                     loop: true,
+                    lazy: true,
                     slidesPerView: 2,
                     spaceBetween: 10,
                     pagination: {
@@ -138,6 +140,7 @@
             <p class="description-section mb-0 md:mb-10 ">Se requieren algunos activos para instalar, utilizar y actualizar software, ofrecemos servicio y soporte técnico para todos los programas.⁣⁣</p>
             <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
                 loop: true,
+                lazy: true,
                 slidesPerView: 2,
                 spaceBetween: 10,
                 pagination: {
@@ -198,21 +201,20 @@
     <section>
         <div class="max-w-[90%] md:max-w-[60%] mx-auto py-10 md:py-20">
             <h1 class="title-section mb-10">categorías</h1>
-            <ul role="list" class="grid grid-cols-2 gap-6 md:gap-12 sm:grid-cols-3 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-6 md:gap-12 sm:grid-cols-3 lg:grid-cols-4">
                 @foreach ($categories as $category)
-                    <li class="col-span-1">
-                        <a href="{{ route('shop', ['shop_section' => 'category','shop_section_url'=> $category->slug]) }}" class="flex flex-col items-center justify-center w-full h-full bg-theme-yellow rounded-lg shadow-xl p-6 group hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange hover:cursor-pointer transform transition duration-500 hover:scale-110">
-                            <div class="flex items-center justify-center">
-                                <embed class="w-16 md:w-24 h-auto" src="{{ Storage::url($category->icon) }}" type="image/svg+xml" >
-                            </div>
+                    <a href="{{ route('shop', ['shop_section' => 'category','shop_section_url'=> $category->slug]) }}" class="relative">
+                        <div class="flex flex-col items-center justify-center w-full h-full bg-theme-yellow rounded-lg shadow-xl p-6 group hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange hover:cursor-pointer transform transition duration-500 hover:scale-110">
+                            <img src="{{ Storage::url($category->icon) }}" class="w-16 md:w-24 h-auto" title="{{ $category->name }}" alt="{{ $category->name }}">
                             <div class="pt-4">
                                 <h1 class="text-base md:text-lg font-extrabold text-theme-gray text-center uppercase">{{ $category->name }}</h1>
                             </div>
-                        </a>
-                    </li>
+                        </div>
+                    </a>
+                    
                 @endforeach
 
-            </ul>
+            </div>
         </div>
     </section>
     @endif

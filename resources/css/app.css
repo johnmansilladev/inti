@@ -18,6 +18,8 @@
     .container-offers .swiper-pagination .swiper-pagination-bullet-active,
     .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
     .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    .container-related-products .swiper-pagination .swiper-pagination-bullet,
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
     {
       @apply opacity-100 w-3 h-3;
     }
@@ -25,6 +27,7 @@
     .container-slider .swiper-pagination .swiper-pagination-bullet-active,
     .container-offers .swiper-pagination .swiper-pagination-bullet-active ,
     .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active,
     {
       @apply w-3 h-3;
     }
@@ -38,7 +41,8 @@
     }
 
     .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
-    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active 
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active,
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
     {
       @apply bg-theme-gray;
     }
@@ -52,7 +56,7 @@
     }
 
     .float-container {
-      @apply fixed left-0 grid grid-rows-4 grid-flow-col gap-6 bg-black rounded-r-3xl py-6 px-3 z-10;
+      @apply hidden md:fixed left-0 grid grid-rows-4 grid-flow-col gap-6 bg-black rounded-r-3xl py-6 px-3 z-10;
       top: calc(100vh - 60%);
     }
 
@@ -164,10 +168,6 @@
       @apply max-w-[85%] md:max-w-4xl mx-auto text-base md:text-lg text-center text-theme-gray mt-4 mb-10;
     }
 
-
-    .container-brands {
-      @apply bg-white md:bg-theme-lgray py-6;
-    }
     /******* INPUT SEARCH *******/
     .input-search {
       @apply w-full rounded-l-md border border-transparent px-5 py-1.5 md:py-2 text-sm text-black focus:outline-none focus:border-transparent focus:ring-theme-yellow
@@ -192,10 +192,35 @@
     /******* GENERAL *******/
 
     .row {
-      @apply flex flex-wrap;
+      @apply flex flex-wrap flex-row;
     }
     /******* GENERAL *******/
 
+    /******* BRANDS CONTAINER *******/
+    .container-brands {
+      @apply bg-white md:bg-theme-lgray py-6;
+    }
+
+    .container-brands ul {
+      @apply grid grid-cols-3 gap-2 md:gap-6 lg:grid-cols-9;
+    }
+
+    .container-brands ul li {
+      @apply flex items-center justify-center;
+    }
+
+    .container-brands ul li .brand-item {
+      @apply max-md:flex max-md:justify-center max-md:items-center max-md:bg-theme-lgray max-md:w-full max-md:h-20 max-md:rounded-lg max-md:p-2
+    }
+
+    /******* BRANDS CONTAINER *******/
+
+    /********** SHOP PRODUCT **********/
+    .btn-grid.active svg path,
+    .btn-list.active svg path {
+      @apply stroke-theme-yellow;
+    }
+    /********** SHOP PRODUCT **********/
 
     /***** BOX PRODUCT *****/
     .box-product {
@@ -254,16 +279,107 @@
       @apply flex items-center justify-center w-8/12 py-1 px-2 md:py-2 md:px-0 border border-transparent text-xs md:text-base font-bold  text-white uppercase bg-theme-gray;
     }
 
+    .box-product-btn-preview-list {
+      @apply bg-theme-gray px-2;
+    }
+
     .box-product-btn-add-cart {
       @apply flex items-center justify-center w-4/12 py-2 border border-transparent text-base font-bold rounded-tl-2xl rounded-br-2xl text-theme-gray uppercase bg-theme-yellow hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange;
     }
+
+    .box-product-btn-add-cart-list {
+      @apply bg-theme-yellow px-2;
+    }
     /***** BOX PRODUCT *****/
+
+    /***** MODAL PREVIEW PRODUCT *****/
+    .modal-image-product-preview {
+      @apply col-span-1 md:col-span-5;
+    }
+
+    .modal-detail-product-preview {
+      @apply col-span-1 md:col-span-7;
+    }
+
+    /* .main-img-product {
+      @apply w-full
+    }
+
+    .carousel-img-product {
+      @apply w-full inline-block whitespace-nowrap overflow-auto scrollbar scrollbar-thumb-theme-orange scrollbar-track-gray-100 scrollbar-theme-horizontal;
+    } */
+
+    /* .carousel-img-product-item {
+      @apply w-[25%] inline-flex rounded-lg overflow-hidden;
+    } */
+
+    /***** MODAL PREVIEW PRODUCT *****/
+
+    /***** CATEGORIES *****/
+    
+    /***** CATEGORIES *****/
+
+    /*****  PRODUCT DETAIL *****/
+    .section-product-detail {
+      @apply max-w-[90%] md:max-w-[70%] mx-auto row py-4 md:py-8;
+    }
+
+    .container-breadcrumb {
+      @apply mb-4;
+    }
+
+    .container-breadcrumb ol{
+      @apply flex items-center space-x-2 md:space-x-4;
+    }
+
+    .container-product-detail {
+      @apply row w-full;
+    }
+
+    .content-product-detail-image {
+      @apply md:w-3/5 row md:border-r md:border-gray-200;
+    }
+
+    .content-product-detail-image .main-img-product {
+      @apply order-1 md:order-2 w-full md:w-[87%] mx-auto md:px-[10%] relative;
+    }
+
+    .content-product-detail-image .carousel-img-product {
+      @apply order-2 md:order-1 w-full max-md:inline-block max-md:whitespace-nowrap max-md:mt-2 md:w-[13%] max-w-full md:max-h-[550px] md:space-y-2 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme-horizontal md:scrollbar-theme;
+    }
+
+    .content-product-detail-image .carousel-img-product .carousel-img-product-item {
+      @apply relative bg-white max-md:w-[20%] cursor-pointer border hover:bg-gray-50 hover:border-theme-yellow focus:outline-none hover:opacity-75 md:mx-2;
+    }
+
+    .content-product-detail-image .carousel-img-product .carousel-img-product-item.active {
+      @apply border-theme-yellow;
+    }
+
+    .content-product-detail-info-mobile {
+      @apply md:hidden;
+    }
+
+    .content-product-detail-info {
+      @apply w-full md:w-2/5 md:pl-12; 
+    }
+
+    .content-product-detail-info-title {
+      @apply text-lg md:text-2xl font-extrabold uppercase text-theme-gray;
+    }
+    
+    /*****  PRODUCT DETAIL *****/
+
     
 }
 
 @layer utilities {
   .scrollbar-theme::-webkit-scrollbar {
     width: 4px;
+  }
+
+  .scrollbar-theme-horizontal::-webkit-scrollbar {
+    height: 4px;
   }
 }
 

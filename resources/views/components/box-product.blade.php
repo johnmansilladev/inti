@@ -23,7 +23,7 @@
         </a>
     </div>
     <div class="box-product-details">
-        <a href="{{ route('product.index',$item) }}"><h1 class="box-product-detail-title">{{ Str::limit(Str::title($item->name), 50, ' ...') }}</h1></a>
+        <a href="{{ route('product.index',$item) }}"><h1 class="box-product-detail-title">{{ Str::title($item->name) }}</h1></a>
         <p class="box-product-detail-brand">{{ Str::title($item->brand->name) }}</p>
         <div class="box-product-detail-rating">
             <ul>

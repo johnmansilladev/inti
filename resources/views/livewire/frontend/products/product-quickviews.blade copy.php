@@ -23,12 +23,87 @@
                     </button>
                     @if (!empty($product))
                     <div class="grid w-full grid-cols-1 items-start gap-y-8 gap-x-6 md:grid-cols-12 lg:gap-x-8">
-                        <div class="modal-image-product-preview row">
-                            <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full">
-                            {{-- <div class="main-img-product"> --}}
+                        <div class="modal-image-product-preview">
+                            <div class="container-slider" x-data x-init="swiper2 = new Swiper($refs.container, {
+                                spaceBetween: 10,
+                                thumbs: {
+                                    swiper: swiper,
+                                },
+                            })">
+                                <div class="swiper slider-container" x-ref="container">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                                          </div>
+                                          <div class="swiper-slide">
+                                            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                                          </div>
+                                        {{-- @foreach ($sliders as $slider)
+                                            <li class="swiper-slide">
+                                                <a href="{{ $slider->redirect_to }}" class="{{ $slider->is_redirect == 0 ? 'pointer-events-none' : '' }}" target="{{ $slider->new_tab == 1 ? '_blank' : '_self' }}">
+                                                    <div class="relative">
+                                                        <div class="relative">
+                                                            <picture>
+                                                                <source media="(max-width: 640px)" srcset="{{ Storage::url($slider->img_mobile) }}">
+                                                                <img class="w-full h-full object-cover" src="{{ Storage::url($slider->img_desktop) }}" title="{{ $slider->title }}" alt="{{ $slider->keywords }}">
+                                                            </picture>
+                                                        </div>
+                                                        <div class="absolute inset-0 h-full">
+                                                            <div class="container grid md:grid-cols-2 h-full">
+                                                                <div class="col-span-1 md:hidden"></div>
+                                                                <div class="col-span-1 md:pl-16 pb-8 md:pb-32 mt-auto">
+                                                                    @if ($slider->title)
+                                                                        <h1 class="text-xl md:text-4xl text-white text-center md:text-left font-bold md:font-extrabold tracking-tight">{{ $slider->title }}</h1>
+                                                                    @endif
+                                                                    @if ($slider->content)
+                                                                        <p class="text-white text-base md:text-lg text-center md:text-left mt-2 md:mt-6">{{ $slider->content }}⁣</p>   
+                                                                    @endif
+                                                                    @if ($slider->text_button)
+                                                                        <div class="mt-2 md:mt-6 text-center md:text-left">
+                                                                            <button type="button" class="btn btn-gradient">{{ $slider->text_button }}</button>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @endforeach --}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{-- <div class="modal-image-product-preview row"> --}}
+                            {{-- <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full"> --}}
+                            {{-- <div class="main-img-product">
                                 <img src="{{ Storage::url($product->stockKeepingUnits->first()->images->first()->url) }}" alt="{{ $product->name }}" class="object-cover object-center">
                             </div>
-                            {{-- <div class="carousel-img-product">
+                            <div class="carousel-img-product">
                                 @foreach ($product->stockKeepingUnits->first()->images as $image)
                                 <div class="carousel-img-product-item">
                                     <a href="">
@@ -61,7 +136,7 @@
                                         <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{ $sale_price }}</p> 
                                         <p class="text-lg font-bold text-theme-gray line-through">S/. {{ $base_price }}</p> 
                                     @else
-                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{$service_selected->pivot->base_price }}</p> 
+                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{ $base_price }}</p> 
                                     @endif
                                 </div>
                                 @endif

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Product extends Model
 {
     use HasFactory;
@@ -81,6 +82,11 @@ class Product extends Model
 
     public function reviews(){
         return $this->hasMany(Review::class);
+    }
+
+    public function specificationAssociations()
+    {
+        return $this->hasMany(SpecificationAssociation::class);
     }
 
     // Relacion muchos a muchos

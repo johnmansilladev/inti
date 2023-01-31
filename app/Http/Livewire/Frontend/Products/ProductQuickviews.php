@@ -77,6 +77,7 @@ class ProductQuickviews extends Component
         $sale_price = $base_price;
         $dcto = 0;
 
+
         if ($this->sku_selected->hasPromotionsService($this->service_selected->id)) {
             $promotion = $this->sku_selected->discountedPriceService($this->service_selected->id);  
             if ($promotion->type_promotion == 1) {

@@ -4,12 +4,13 @@
     @livewire('frontend.products.product-detail', ['product' => $product])
 
     <section class="bg-theme-swhite">
-        <div class="py-12">
-            <h1 class="text-2xl font-extrabold text-theme-gray text-center uppercase">Productos Relacionados</h1>
+        <div class="container-related-products py-10 md:py-20">
+            <h1 class="title-section">Productos Relacionados</h1>
             <div x-data="{ swiper: null }" x-init="swiper = new Swiper($refs.container, {
                 loop: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
+                lazy: true,
+                slidesPerView: 2,
+                spaceBetween: 10,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -17,8 +18,8 @@
                 },
                 breakpoints: {
                     640: {
-                        slidesPerView: 1,
-                        spaceBetween: 0,
+                        slidesPerView: 2,
+                        spaceBetween: 15,
                     },
                     768: {
                         slidesPerView: 2,
@@ -36,7 +37,7 @@
                 grabCursor: true,
             
             })" class="flex flex-row relative">
-                <div class="absolute inset-y-0 left-16 z-[5] flex items-center">
+                <div class="absolute inset-y-0 left-16 z-[5] hidden md:flex items-center">
                     <button @click="swiper.slidePrev()" class="flex justify-center items-center focus:outline-none">
                         <svg class="w-14 h-14" viewBox="0 0 34 58" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +47,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="swiper max-w-[80%] mx-auto pt-10 pb-14 px-1" x-ref="container">
+                <div class="swiper container pt-10 pb-10 md:pb-20 px-1" x-ref="container">
                     <ul class="swiper-wrapper">
                         @foreach ($related_products as $item)
                             <li class="swiper-slide">
@@ -54,9 +55,9 @@
                             </li>
                         @endforeach
                     </ul>
-                    <div class="swiper-pagination flex justify-center items-center"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="absolute inset-y-0 right-16 z-[5] flex items-center">
+                <div class="absolute inset-y-0 right-16 z-[5] hidden md:flex items-center">
                     <button @click="swiper.slideNext()" class="flex justify-center items-center focus:outline-none">
                         <svg class="w-14 h-14" viewBox="0 0 34 58" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

@@ -248,7 +248,7 @@ class CheckoutController extends Component
         }
 
         $message .= "*Precio Total:*%0A";
-        $message .= "S/. ".numbert_format($total,2);
+        $message .= "S/. ".number_format($total,2);
         
         $url = 'https://api.whatsapp.com/send?phone=' . $number . '&text=' . $message;
 

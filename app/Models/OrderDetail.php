@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Order;
-use App\Models\Service;
-use App\Models\StockKeepingUnit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

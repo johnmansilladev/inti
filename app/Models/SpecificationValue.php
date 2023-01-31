@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SpecificationValue extends Model
 {
@@ -14,4 +14,10 @@ class SpecificationValue extends Model
     protected $casts = [
         'active' => 'boolean',
     ];
+
+    // Relación uno a muchos inversa
+    public function specification()
+    {
+        return $this->belongsTo(Specification::class);
+    }
 }

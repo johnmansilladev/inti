@@ -1,4 +1,5 @@
 <div>
+    @section('title') {{ 'Preguntas frecuentes' }} @endsection
     <section>
         <div class="max-w-[60%] mx-auto my-12">
             @foreach ($sectionQuestions as $indexSection => $sectionQuestion)
@@ -15,7 +16,7 @@
                                                     class="group relative w-full flex justify-between items-center text-left px-4 py-3"
                                                     aria-controls="frequent-question-{{ $indexFrequentQuestion }}" @click="open = !open" x-bind:aria-expanded="open">
                                                     <span class="text-black text-sm font-bold">
-                                                        {{ $frequentQuestion->name }}
+                                                        {!! $frequentQuestion->name !!}
                                                     </span>
                                                     <span class="ml-6 flex items-center">
                                                         <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +35,8 @@
                                                     </span>
                                                 </button>
                                             </h3>
-                                            <div class="text-sm text-justify pt-3" id="frequent-question-{{ $indexFrequentQuestion }}" x-show="open">
-                                                {{ $frequentQuestion->description }}
+                                            <div class="text-sm text-justify break-all pt-3" id="frequent-question-{{ $indexFrequentQuestion }}" x-show="open">
+                                                {!! $frequentQuestion->description !!}
                                             </div>
                                         </div> 
                                     </div>

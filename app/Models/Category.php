@@ -25,9 +25,11 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function specificationGroups() 
+    // Relación muchos a muchos
+
+    public function specificationGroups()
     {
-        return $this->hasMany(SpecificationGroup::class);
+        return $this->belongsToMany(specificationGroup::class);
     }
 
     //Relacion uno a muchos a traves de una tabla

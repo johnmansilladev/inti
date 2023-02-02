@@ -1,6 +1,6 @@
 <section x-data class="bg-gray-100">
-    <div class="max-w-[80%] mx-auto py-4">
-        <div class="relative flex items-center justify-between rounded-lg">
+    <div class="container md:py-4">
+        <div class="relative hidden md:flex items-center justify-between rounded-lg">
             <div class="w-1/2">
                 <div class="mt-1 relative rounded-md shadow-sm">
                     <input type="search" wire:model="search"
@@ -72,14 +72,14 @@
                 </div>
             </div>
         </div>
-        <div aria-labelledby="products-heading" class="pt-4 pb-24">
+        <div aria-labelledby="products-heading" class="py-2 md:pt-4 md:pb-24">
             <h2 id="products-heading" class="sr-only">Products</h2>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-10">
 
                 @if ($products->count())
                     <!-- Filters -->
-                    <div class="sticky min-h-[500px] bg-white rounded-lg shadow-xl col-span-1 py-4 px-4">
+                    <div class="col-span-4 md:col-span-1 max-md:hidden min-h-[500px] bg-white rounded-lg shadow-xl py-4 px-4">
                         {{-- <h3 class="text-lg text-theme-black font-semibold uppercase border-b border-gray-200 pb-2">Filtros</h3> --}}
 
                         @foreach ($filters as $keyFilter => $filter)
@@ -115,14 +115,52 @@
                         @endforeach
                     </div>
 
+                    <!-- Product Action mobile -->
+                    <div class="col-span-4 flex md:hidden justify-between items-center">
+                        <div class="flex items-center">
+                            <p class="text-base text-theme-gray font-semibold"><span class="text-theme-yellow">{{ $products->count() }}</span> resultado(s)</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" class="btn-grid {{ $view=='grid' ? 'active' : '' }}" wire:click="$set('view','grid')">
+                                <svg class="w-[1rem] h-auto" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3C1 1.89543 1.89543 1 3 1H5C6.10457 1 7 1.89543 7 3V5C7 6.10457 6.10457 7 5 7H3C1.89543 7 1 6.10457 1 5V3Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11 3C11 1.89543 11.8954 1 13 1H15C16.1046 1 17 1.89543 17 3V5C17 6.10457 16.1046 7 15 7H13C11.8954 7 11 6.10457 11 5V3Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M1 13C1 11.8954 1.89543 11 3 11H5C6.10457 11 7 11.8954 7 13V15C7 16.1046 6.10457 17 5 17H3C1.89543 17 1 16.1046 1 15V13Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11 13C11 11.8954 11.8954 11 13 11H15C16.1046 11 17 11.8954 17 13V15C17 16.1046 16.1046 17 15 17H13C11.8954 17 11 16.1046 11 15V13Z" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </button>
+                            <button type="button" class="btn-list {{ $view=='list' ? 'active' : '' }}" wire:click="$set('view','list')">
+                                <svg class="w-5 h-auto" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L19 1M1 15L19 15M18 9L18 7C18 5.89543 17.1046 5 16 5L4 5C2.89543 5 2 5.89543 2 7V9C2 10.1046 2.89543 11 4 11L16 11C17.1046 11 18 10.1046 18 9Z" fill="" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button type="button">
+                                <svg class="w-[1rem] h-auto" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 15L5 19M5 19L9 15M5 19V1M13 6H18M13 6V4.5C13 3.11929 14.1193 2 15.5 2V2C16.8807 2 18 3.11929 18 4.5V6M13 6V8M18 6V8M13 12H18L13 18H18" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type="button">
+                                <svg class="w-5 h-auto" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 4H19M9 4C9 5.65685 7.65685 7 6 7C4.34315 7 3 5.65685 3 4M9 4C9 2.34315 7.65685 1 6 1C4.34315 1 3 2.34315 3 4M3 4H1M11 12H1M11 12C11 10.3431 12.3431 9 14 9C15.6569 9 17 10.3431 17 12M11 12C11 13.6569 12.3431 15 14 15C15.6569 15 17 13.6569 17 12M17 12H19" stroke="#323232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Product grid -->
-                    <div class="col-span-3 flex flex-col">
-                        <div class="grid grid-cols-4 gap-x-6 gap-y-8">
+                    <div class="col-span-4 md:col-span-3 flex flex-col">
+                        <div class="grid {{ $view=='grid' ? 'grid-cols-2' : 'grid-cols-1' }} md:grid-cols-4 gap-3 md:gap-x-6 md:gap-y-8">
                             @foreach ($products as $item)
-                                <x-box-product :item="$item" />
+                                @if ($view=='grid')
+                                    <x-box-product :item="$item" />
+                                @else
+                                    <x-box-product-list :item="$item" />
+                                @endif
                             @endforeach
                         </div>
-                        <div class="mt-20">
+                        <div class="mt-6 md:mt-20">
                             {{ $products->links() }}
                         </div>
                     </div>

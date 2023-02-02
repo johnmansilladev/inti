@@ -33,7 +33,7 @@ class Navigation extends Component
 
     public function getTotalQuantityCart() 
     {
-        $this->totalQuantityCart = Cart::getTotalQuantity();
+        $this->totalQuantityCart = Cart::instance('cart')->content()->count();
     }
 
     public function updatingFirstLevelMenu($slug)

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SpecificationGroup extends Model
 {
@@ -15,10 +15,10 @@ class SpecificationGroup extends Model
         'active' => 'boolean',
     ];
 
-    // Relacion uno a muchos inversa
-    public function category()
+    // muchos a muchos inversa
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     // Relación uno a muchos
@@ -26,4 +26,5 @@ class SpecificationGroup extends Model
     {
         return $this->hasMany(Specification::class);
     }
+
 }

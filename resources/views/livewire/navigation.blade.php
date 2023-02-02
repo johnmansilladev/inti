@@ -10,8 +10,10 @@
     {{-- Aqui ira --}}
 
     <header id="header-webpage" class="relative bg-white">
-        <nav id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
+        @if ($announcements->count())
+        <div id="navbar-info-header" class="announcement-container" x-data x-init="swiper = new Swiper($refs.container, {
                 loop: false,
+                slidesPerView: 'auto',
                 autoplay: {
                     delay: 6000,
                     disableOnInteraction: false,
@@ -27,14 +29,15 @@
                     @endforeach
                 </div>
             </div>
-        </nav>
+        </div>
+        @endif  
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
-            <div class="mx-auto max-w-[80%]">
-                <div class="flex h-[4.5rem] items-center">
-                    <button @click="openMenu = !openMenu" type="button" class="mr-8">
+            <div class="container">
+                <div class="navbar ">
+                    <button @click="openMenu = !openMenu" type="button" class="order-1 md:mr-8">
                         <span class="sr-only">Open menu</span>
                         <!-- Heroicon name: outline/bars-3 -->
-                        <svg width="31" height="20" viewBox="0 0 31 20" fill="none"
+                        <svg class="w-7 md:w-8 h-auto" viewBox="0 0 31 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect width="31" height="2.81818" rx="1" fill="#fff" />
                             <rect y="8.45459" width="31" height="2.81818" rx="1" fill="#fff" />
@@ -43,24 +46,24 @@
                     </button>
 
                     <!-- Logo -->
-                    <div class="ml-4 flex-1">
-                        <div class="w-fit">
+                    <div class="md:ml-4 flex md:flex-1 order-2">
+                        <div class="w-full md:w-fit">
                             <a href="{{ route('home') }}">
                                 <span class="sr-only">Inti Diesel</span>
-                                <img class="w-56" src="{{ Storage::url('images/logo-inti.png') }}" title="Inti Diesel"
-                                    alt="Inti Diesel">
+                                <img class="w-40 md:w-56 h-auto" src="{{ Storage::url('images/logo-inti.png') }}" title="Inti Diesel" alt="Inti Diesel">
                             </a>
                         </div>
                     </div>
 
                     <!-- search -->
-                    <div class="flex w-1/2">
+                    <div class="flex w-full pt-2 md:pt-0 md:w-1/2 order-4 md:order-3">
                         @livewire('search')
                     </div>
 
-                    <div class="flex-1 flex items-center justify-end">
+                    <div class="md:flex-1 flex items-center justify-end order-3 md:order-4">
 
                         <!-- Account -->
+                        <div class="hidden md:block">
                         @auth
                             <x-jet-dropdown align="right" width="48">
                                 <x-slot name="trigger">
@@ -81,7 +84,7 @@
                                         <div class="flex-1 flex flex-col">
                                             <span class="ml-3 text-sm font-medium">Hola,</span>
                                             <span
-                                                class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->name, 2, '') }}</span>
+                                                class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->firstname, 2, '') }}</span>
                                         </div>
                                     </a>
                                 </x-slot>
@@ -143,13 +146,13 @@
                                 </x-slot>
                             </x-jet-dropdown>
                         @endauth
-
+                        </div>
 
                         <!-- Cart -->
                         <a type="button" wire:click="$emit('show')"
                             class="relative -m-2 p-2 flex items-center hover:cursor-pointer">
                             <span class="sr-only">Cart</span>
-                            <svg class="w-10 h-10" viewBox="0 0 45 45" fill="none"
+                            <svg class="w-8 md:w-10 h-auto" viewBox="0 0 45 45" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_277_64)">
                                     <path
@@ -165,8 +168,7 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <span
-                                class="absolute -right-0 -top-0 w-5 h-5 border border-theme-yellow rounded-full flex items-center justify-center bg-theme-yellow text-xs font-bold">{{ $totalQuantityCart }}</span>
+                            <span class="cart-count">{{ $totalQuantityCart }}</span>
                         </a>
                     </div>
                 </div>
@@ -271,13 +273,18 @@
             </div>
         </div>
     </header>
-    <nav class="bg-white shadow-3xl">
-        <ul role="list" class="max-w-screen-2xl mx-auto flex items-center justify-center py-1.5">
+    <nav class="bg-white shadow-3xl {{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
+        <ul role="list" class="container flex items-center justify-center py-1.5">
             <li class="flex items-center justify-center">
-                <img src="{{ Storage::url('images/h-pago-seguro.png') }}" alt="">
+                <picture>
+                    <source media="(max-width: 640px)" srcset="{{ Storage::url('images/h-pago-seguro-mobile.png') }}">
+                    <img src="{{ Storage::url('images/h-pago-seguro.png') }}" title="pago seguro" alt="pago seguro">
+                </picture> 
             </li>
-            <li class="flex items-center justify-center ml-4">
-                <img src="{{ Storage::url('images/method-pay.png') }}" alt="">
+            <li class="hidden md:flex items-center justify-center ml-4">
+                <picture>
+                    <img src="{{ Storage::url('images/method-pay.png') }}" title="métodos de pago" alt="métodos de pago">
+                </picture>
             </li>
         </ul>
     </nav>

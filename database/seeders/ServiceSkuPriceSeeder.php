@@ -24,9 +24,7 @@ class ServiceSkuPriceSeeder extends Seeder
                 $sku->services()->attach($service,[
                     'cost_price' => 0,
                     'markup' => 0,
-                    'base_price' => $prices[$key],
-                    'dcto' => 20,
-                    'sale_price' => $prices[$key] - (($prices[$key]*20)/100)
+                    'base_price' => $prices[$key]
                 ]);
             }
         }

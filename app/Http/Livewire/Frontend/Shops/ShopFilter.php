@@ -19,6 +19,7 @@ class ShopFilter extends Component
     public $categories,$interfaces,$brands;
     public $categoriesFilter=[],$interfacesFilter=[],$brandsFilter=[];
     public $sortFilter='OrderByRecommended',$search='';
+    public $view = 'grid'; 
 
     public $filters = [
         'categories' => [],

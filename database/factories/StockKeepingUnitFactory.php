@@ -20,6 +20,7 @@ class StockKeepingUnitFactory extends Factory
         $name = $this->faker->sentence(3);
         return [
             'name' => $name,
+            'description' => $this->faker->paragraph(2),
             'slug' => Str::slug($name),
             'release_date' => $this->faker->date()
         ];

@@ -38,21 +38,28 @@
                                     @foreach ($cartItems as $item)
                                     <li class="bg-theme-swhite rounded-md shadow-md">
                                         <div class="flex p-2">
-                                            <div class="w-[30%] overflow-hidden rounded-md border border-gray-200">
-                                                <a href="{{ route('product.index',['product'=>$item->attributes->product_slug,'version'=>$item->attributes->sku_slug,'service'=>$item->attributes->service_slug]) }}">
-                                                    <img src="{{ Storage::url($item->attributes->sku_image) }}" alt="{{ $item->name }}" class="w-full h-auto object-cover object-center">
+                                            <div class="w-[25%] overflow-hidden rounded-md">
+                                                <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="relative">
+                                                    <img src="{{ Storage::url($item->options->sku_image) }}" alt="{{ $item->name }}" class="w-full h-auto object-cover object-center">
+                                                    @if ($item->options->service_dcto > 0)
+                                                    <div class="absolute top-2 left-2">
+                                                        <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2">
+                                                            <span class="text-[10px] font-bold text-white">-{{ number_format($item->options->service_dcto) }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    @endif
                                                 </a>
                                             </div>
                         
-                                            <div class="pl-4 flex flex-col w-[70%]">
+                                            <div class="pl-4 flex flex-col w-[75%]">
                                                 <div>
-                                                    <h3 class="text-xs font-bold text-theme-gray uppercase"><a href="#">{{ $item->name.' - '.$item->attributes->sku_name }}</a></h3>
-                                                    <p class="mt-1 text-xs text-theme-gray">{{ Str::title($item->attributes->sku_brand) }}</p>
+                                                    <h3 class="text-xs font-bold text-theme-gray uppercase"><a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}">{{ $item->name.' - '.$item->options->sku_name }}</a></h3>
+                                                    <p class="mt-1 text-xs text-theme-gray">{{ $item->options->sku_brand }}</p>
                                                 </div>
                                                 <div class="my-2">
                                                         <div class="flex bg-theme-lgray3 p-2 rounded mb-2">
-                                                            <p class="flex-1 text-xs font-semibold uppercase truncate">{{ $item->attributes->service_name }}</p>
-                                                            <button type="button"  wire:click="removeCart({{ $item->id }})" class="text-theme-gray">
+                                                            <p class="flex-1 text-xs font-semibold uppercase truncate">{{ $item->options->service_name }}</p>
+                                                            <button type="button"  wire:click="removeCart('{{ $item->rowId }}')" class="text-theme-gray">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                                 class="w-4 h-4">
@@ -63,17 +70,17 @@
                                                         </div>
                                                         <div class="flex items-center justify-between">
                                                             <p class="text-sm text-theme-gray font-semibold">
-                                                               $ {{ number_format($item->price *  $item->quantity,2)}}
+                                                               S/. {{ number_format($item->total,2)}}
                                                             </p>
                                                             
                                                             <div class="w-fit bg-theme-yellow p-1 rounded-md">
-                                                                <button type="button" {{ $item->quantity <= 1 ? 'disabled' : '' }}
-                                                                wire:loading.attr="disabled" wire:target="decrementCart" wire:click="decrementCart({{$item->id}})"
+                                                                <button type="button" {{ $item->qty <= 1 ? 'disabled' : '' }}
+                                                                wire:loading.attr="disabled" wire:target="decrementCart" wire:click="decrementCart('{{ $item->rowId }}')"
                                                                 class="inline-flex items-center px-1.5 py-1 bg-white border border-transparent rounded-md font-semibold text-xs text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                                                     −
                                                                 </button>
-                                                                <span class="mx-2 text-theme-gray text-xs font-semibold">{{ $item->quantity }}</span>
-                                                                <button type="button" wire:loading.attr="disabled" wire:target="incrementCart" wire:click="incrementCart({{$item->id}})" 
+                                                                <span class="mx-2 text-theme-gray text-xs font-semibold">{{ $item->qty }}</span>
+                                                                <button type="button" wire:loading.attr="disabled" wire:target="incrementCart" wire:click="incrementCart('{{ $item->rowId }}')" 
                                                                 class="inline-flex items-center px-1.5 py-1 bg-white border border-transparent rounded-md font-semibold text-xs text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                                                     +
                                                                 </button>
@@ -120,14 +127,14 @@
                     <div class="border-t border-gray-200 py-6 px-5">
                         <div class="flex justify-between text-base font-bold text-theme-gray uppercase">
                             <p>Total:</p>
-                            <p>$ {{ $total }}</p>
+                            <p>S/. {{ $total }}</p>
                         </div>
                         <div class="mt-6 space-y-3">
                             <button role="button" @click="open = false" class="flex items-center justify-center w-full rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
                                 Seguir viendo
                             </button>
-                            <a href="{{route('cart')}}" class="flex items-center justify-center w-full rounded-md border border-transparent bg-theme-gray px-6 py-2 text-sm font-medium text-white uppercase shadow hover:opacity-75">
-                                Comprar
+                            <a href="{{route('cart')}}" class="flex items-center justify-center w-full rounded-md border border-transparent px-6 py-2 text-sm uppercase shadow hover:opacity-75 {{ $totalQuantity<=0 ? 'pointer-events-none text-theme-gray font-bold bg-theme-lwgray opacity-75' : 'text-white font-medium bg-theme-gray' }}">
+                                Comprar 
                             </a>
                         </div>
                     </div>

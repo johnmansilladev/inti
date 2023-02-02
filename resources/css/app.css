@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'intl-tel-input/build/css/intlTelInput.css';
 
 @tailwind base;
 @tailwind components;
@@ -9,8 +10,53 @@
       font-family: 'Exo', sans-serif;
     }
 
+
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet,
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    .container-related-products .swiper-pagination .swiper-pagination-bullet,
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
+    {
+      @apply opacity-100 w-3 h-3;
+    }
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active ,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
+    {
+      @apply w-3 h-3;
+    }
+
+    .container-slider .swiper-pagination .swiper-pagination-bullet,
+    .container-slider .swiper-pagination .swiper-pagination-bullet-active,
+    .container-offers .swiper-pagination .swiper-pagination-bullet,
+    .container-offers .swiper-pagination .swiper-pagination-bullet-active 
+    {
+      @apply bg-white;
+    }
+
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet,
+    .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active,
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
+    {
+      @apply bg-theme-gray;
+    }
+
+    .container-offers {
+      @apply bg-gradient-to-b from-theme-yellow to-theme-orange;
+    }
+
+    .container-last-updateds {
+      @apply py-10 md:py-20;
+    }
+
     .float-container {
-      @apply fixed left-0 grid grid-rows-4 grid-flow-col gap-6 bg-black rounded-r-3xl py-6 px-3 z-10;
+      @apply hidden md:fixed left-0 grid grid-rows-4 grid-flow-col gap-6 bg-black rounded-r-3xl py-6 px-3 z-10;
       top: calc(100vh - 60%);
     }
 
@@ -19,7 +65,7 @@
     }
 
     .form-control {
-      @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-transparent focus:ring-theme-yellow sm:text-sm;
+      @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-transparent focus:ring-theme-yellow text-sm;
     }
 
     .btn{
@@ -57,7 +103,7 @@
     }
 
     .announcement-container {
-      @apply flex items-center justify-center bg-gradient-to-r from-theme-yellow to-theme-orange px-[10px] py-[10px] h-[40px];
+      @apply w-full flex items-center justify-center bg-gradient-to-r from-theme-yellow to-theme-orange px-[10px] py-[10px] h-[40px];
     }
 
     .announcement-container .announcement-item {
@@ -69,11 +115,11 @@
     }
 
     .announcement-title {
-      @apply px-4 text-sm font-medium text-black leading-[2.25rem];
+      @apply text-sm font-medium text-black leading-[2.25rem];
     }
 
     .announcement-content {
-      @apply text-sm font-medium text-black leading-[2.25rem];
+      @apply pl-4 text-sm font-medium text-black leading-[2.25rem];
     }
 
     .announcement-countdown {
@@ -105,12 +151,235 @@
     .custom-number-input button:focus {
       outline: none !important;
     }
+
+    .container-last-updates-section {
+      @apply bg-theme-swhite;
+    }
+
+    .container {
+      @apply max-w-[90%] md:max-w-[80%] mx-auto;
+    }
+
+    .title-section {
+      @apply text-xl md:text-4xl font-extrabold text-theme-gray text-center uppercase;
+    }
+
+    .description-section {
+      @apply max-w-[85%] md:max-w-4xl mx-auto text-base md:text-lg text-center text-theme-gray mt-4 mb-10;
+    }
+
+    /******* INPUT SEARCH *******/
+    .input-search {
+      @apply w-full rounded-l-md border border-transparent px-5 py-1.5 md:py-2 text-sm text-black focus:outline-none focus:border-transparent focus:ring-theme-yellow
+    }
+
+    .btn-search {
+      @apply px-3 md:px-5 py-[0.313rem] md:py-[0.45rem] text-white rounded-r-md bg-gradient-to-r from-theme-yellow to-theme-orange hover:bg-gradient-to-l;
+    }
+    /******* INPUT SEARCH *******/
+
+    /******* HEADER *******/
+    .navbar {
+      @apply row items-center justify-between py-3;
+    }
+
+    .cart-count {
+      @apply absolute -right-0 top-1 md:-top-0 w-4 h-4 md:w-5 md:h-5 border border-theme-yellow rounded-full flex items-center justify-center bg-theme-yellow text-xs font-bold
+    }
+
+    /******* HEADER *******/
+
+    /******* GENERAL *******/
+
+    .row {
+      @apply flex flex-wrap flex-row;
+    }
+    /******* GENERAL *******/
+
+    /******* BRANDS CONTAINER *******/
+    .container-brands {
+      @apply bg-white md:bg-theme-lgray py-6;
+    }
+
+    .container-brands ul {
+      @apply grid grid-cols-3 gap-2 md:gap-6 lg:grid-cols-9;
+    }
+
+    .container-brands ul li {
+      @apply flex items-center justify-center;
+    }
+
+    .container-brands ul li .brand-item {
+      @apply max-md:flex max-md:justify-center max-md:items-center max-md:bg-theme-lgray max-md:w-full max-md:h-20 max-md:rounded-lg max-md:p-2
+    }
+
+    /******* BRANDS CONTAINER *******/
+
+    /********** SHOP PRODUCT **********/
+    .btn-grid.active svg path,
+    .btn-list.active svg path {
+      @apply stroke-theme-yellow;
+    }
+    /********** SHOP PRODUCT **********/
+
+    /***** BOX PRODUCT *****/
+    .box-product {
+      @apply relative bg-white flex flex-col h-full overflow-hidden rounded-2xl shadow-xl;
+    }
+
+    .box-product-image {
+      @apply relative overflow-hidden
+    }
+
+    .box-product-details {
+      @apply px-3 md:px-6 pb-2 flex-1 flex flex-col;
+    }
+
+    .box-product-detail-title {
+      @apply text-sm md:text-base font-bold text-black uppercase mb-1;
+    }
+
+    .box-product-detail-brand {
+      @apply text-sm font-semibold mb-1;
+    }
+
+    .box-product-detail-rating {
+      @apply flex items-center mb-1;
+    }
+
+    .box-product-detail-rating ul {
+      @apply flex items-center space-x-1 text-xs mb-1 mr-2;
+    }
+
+    .box-product-detail-rating ul .level-rating {
+      @apply text-sm md:text-xl;
+    }
+
+    .box-product-detail-rating ul .level-rating.active {
+      @apply text-transparent bg-clip-text bg-gradient-to-r from-theme-yellow to-theme-orange;
+    }
+
+    .box-product-detail-rating ul .level-rating.no-active {
+      @apply text-gray-200;
+    }
+
+    .box-product-detail-rating p {
+      @apply text-base md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-theme-yellow to-theme-orange;
+    }
+
+    .box-product-detail-price-sale {
+      @apply text-sm md:text-base font-semibold;
+    }
+
+    .box-product-detail-price-base {
+      @apply line-through text-gray-500 text-xs md:text-sm text-red-500 ml-3;
+    }
+
+    .box-product-btn-preview {
+      @apply flex items-center justify-center w-8/12 py-1 px-2 md:py-2 md:px-0 border border-transparent text-xs md:text-base font-bold  text-white uppercase bg-theme-gray;
+    }
+
+    .box-product-btn-preview-list {
+      @apply bg-theme-gray px-2;
+    }
+
+    .box-product-btn-add-cart {
+      @apply flex items-center justify-center w-4/12 py-2 border border-transparent text-base font-bold rounded-tl-2xl rounded-br-2xl text-theme-gray uppercase bg-theme-yellow hover:bg-gradient-to-r hover:from-theme-yellow hover:to-theme-orange;
+    }
+
+    .box-product-btn-add-cart-list {
+      @apply bg-theme-yellow px-2;
+    }
+    /***** BOX PRODUCT *****/
+
+    /***** MODAL PREVIEW PRODUCT *****/
+    .modal-image-product-preview {
+      @apply col-span-1 md:col-span-5;
+    }
+
+    .modal-detail-product-preview {
+      @apply col-span-1 md:col-span-7;
+    }
+
+    /* .main-img-product {
+      @apply w-full
+    }
+
+    .carousel-img-product {
+      @apply w-full inline-block whitespace-nowrap overflow-auto scrollbar scrollbar-thumb-theme-orange scrollbar-track-gray-100 scrollbar-theme-horizontal;
+    } */
+
+    /* .carousel-img-product-item {
+      @apply w-[25%] inline-flex rounded-lg overflow-hidden;
+    } */
+
+    /***** MODAL PREVIEW PRODUCT *****/
+
+    /***** CATEGORIES *****/
+    
+    /***** CATEGORIES *****/
+
+    /*****  PRODUCT DETAIL *****/
+    .section-product-detail {
+      @apply max-w-[90%] md:max-w-[70%] mx-auto row py-4 md:py-8;
+    }
+
+    .container-breadcrumb {
+      @apply mb-4;
+    }
+
+    .container-breadcrumb ol{
+      @apply flex items-center space-x-2 md:space-x-4;
+    }
+
+    .container-product-detail {
+      @apply row w-full;
+    }
+
+    .content-product-detail-image {
+      @apply md:w-3/5 row md:border-r md:border-gray-200;
+    }
+
+    .content-product-detail-image .main-img-product {
+      @apply order-1 md:order-2 w-full md:w-[87%] mx-auto md:px-[10%] relative;
+    }
+
+    .content-product-detail-image .carousel-img-product {
+      @apply order-2 md:order-1 w-full max-md:inline-block max-md:whitespace-nowrap max-md:mt-2 md:w-[13%] max-w-full md:max-h-[550px] md:space-y-2 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme-horizontal md:scrollbar-theme;
+    }
+
+    .content-product-detail-image .carousel-img-product .carousel-img-product-item {
+      @apply relative bg-white max-md:w-[20%] cursor-pointer border hover:bg-gray-50 hover:border-theme-yellow focus:outline-none hover:opacity-75 md:mx-2;
+    }
+
+    .content-product-detail-image .carousel-img-product .carousel-img-product-item.active {
+      @apply border-theme-yellow;
+    }
+
+    .content-product-detail-info-mobile {
+      @apply md:hidden;
+    }
+
+    .content-product-detail-info {
+      @apply w-full md:w-2/5 md:pl-12; 
+    }
+
+    .content-product-detail-info-title {
+      @apply text-lg md:text-2xl font-extrabold uppercase text-theme-gray;
+    }
+    
+    /*****  PRODUCT DETAIL *****/
+
     
 }
 
 @layer utilities {
   .scrollbar-theme::-webkit-scrollbar {
     width: 4px;
+  }
+
+  .scrollbar-theme-horizontal::-webkit-scrollbar {
+    height: 4px;
   }
 }
 

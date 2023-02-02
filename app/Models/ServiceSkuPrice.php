@@ -20,5 +20,13 @@ class ServiceSkuPrice extends Model
     //     return $this->belongsToMany(Promotion::class,'service_sku_promotion')->withTimestamps();
     // }
     
+
+    //Scope details de productos
+    // public function scopeDetailSku($query,$sku_id,$service_id)
+    // {
+    //     return $query->join('stock_keeping_units','service_sku_prices.stock_keeping_unit_id','=','stock_keeping_units.id')
+    //                 ->join('services','service_sku_prices.service_id','=','')    
+    //     ;
+    // }
     
 }

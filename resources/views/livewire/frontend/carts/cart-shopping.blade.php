@@ -1,14 +1,14 @@
 @section('title') {{ 'Carrito de compras' }} @endsection
 <div>
     <section>
-        <div class="max-w-[80%] mx-auto my-12">
-            <div class="flex my-10 space-x-8">
-                <div class="w-3/4 bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] rounded-lg px-10 py-10">
+        <div class="max-w-full md:max-w-[70%] mx-auto mt-4 md:my-8">
+            <div class="row md:justify-between md:my-10 space-y-4 md:space-y-0">
+                <div class="w-[90%] max-md:mx-auto md:w-[70%] bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] rounded-lg p-4 md:p-10">
                     <div class="flex justify-between border-b pb-3">
-                        <h1 class="font-bold text-lg text-theme-gray uppercase">Carrito de compras</h1>
-                        <h2 class="font-bold text-lg text-theme-gray uppercase">{{$totalQuantity}} articulos</h2>
+                        <h1 class="font-bold text-sm md:text-lg text-theme-gray uppercase">Carrito de compras</h1>
+                        <h2 class="font-bold text-sm md:text-lg text-theme-gray uppercase">{{$totalQuantity}} articulos</h2>
                     </div>
-                    <div class="flex mt-10 mb-5">
+                    <div class="hidden md:flex mt-10 mb-5">
                         <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Producto</h3>
                         <h3 class="font-semibold text-center text-theme-gray text-xs uppercase w-1/5">Cantidad</h3>
                         <h3 class="font-semibold text-center text-theme-gray text-xs uppercase w-1/5">Precio</h3>
@@ -16,8 +16,8 @@
                     </div>
                     @if ($cartItems->count())
                         @foreach ($cartItems as $item)
-                        <div class="flex items-center hover:bg-gray-100 group -mx-8 px-6 py-5  {{ !$loop->last ? 'border-b' : '' }}">
-                            <div class="flex w-2/5">
+                        <div class="row items-center hover:bg-gray-100 group md:-mx-8 md:px-6 py-3 md:py-5  {{ !$loop->last ? 'border-b' : '' }}">
+                            <div class="flex w-full md:w-2/5 mb-2 md:mb-0">
                                 <!-- product -->
                                 <div class="w-24">
                                     <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="relative">
@@ -33,8 +33,8 @@
                                 </div>
                                 <div class="flex flex-col ml-4 flex-grow">
                                     <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="font-bold text-xs uppercase">{{ $item->name.' - '.$item->options->sku_name  }}</a>
-                                    <span class="text-theme-gray font-bold text-xs capitalize mt-2">{{ $item->options->sku_brand }}</span>
-                                    <div class="w-fit flex bg-theme-lwgray group-hover:bg-theme-yellow rounded-md py-2 px-3 mt-2">
+                                    <span class="text-theme-gray font-bold text-xs capitalize mt-1 md:mt-2">{{ $item->options->sku_brand }}</span>
+                                    <div class="w-fit flex bg-theme-lwgray group-hover:bg-theme-yellow rounded-md py-1 md:py-2 px-3 mt-1 md:mt-2">
                                         <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug,'service'=>$item->options->service_slug]) }}" class="text-xs font-semibold uppercase truncate">
                                             {{ $item->options->service_name }}
                                         </a>
@@ -44,29 +44,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-center w-1/5">
+                            <div class="flex justify-center w-[40%] md:w-1/5">
                                 <div class="bg-theme-yellow p-1 rounded-lg">
                                     <button type="button" {{ $item->qty <= 1 ? 'disabled' : '' }}
                                     wire:loading.attr="disabled" wire:target="decrementCart" wire:click="decrementCart('{{$item->rowId}}')"
-                                    class="inline-flex items-center px-2.5 py-1 bg-white border border-transparent rounded-md font-semibold text-base text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
+                                    class="inline-flex items-center px-2 py-0.5 md:px-2.5 md:py-1 bg-white border border-transparent rounded-md font-semibold text-base text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                         -
                                     </button>
-                                    <span class="mx-3 text-theme-gray font-bold">{{ $item->qty }}</span>
+                                    <span class="mx-3 text-sm md:text-base text-theme-gray font-bold">{{ $item->qty }}</span>
                                     <button type="button" wire:loading.attr="disabled" wire:target="incrementCart" wire:click="incrementCart('{{$item->rowId}}')" 
-                                    class="inline-flex items-center px-2.5 py-1 bg-white border border-transparent rounded-md font-semibold text-base text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
+                                    class="inline-flex items-center px-2 py-0.5 md:px-2.5 md:py-1 bg-white border border-transparent rounded-md font-semibold text-base text-theme-gray uppercase tracking-widest disabled:opacity-25 transition">
                                         +
                                     </button>
                                 </div>
                             </div>
-                            <div class="flex flex-col justify-center items-center w-1/5">
+                            <div class="flex flex-col justify-center items-center w-[30%] md:w-1/5">
                                 @if ($item->options->service_dcto > 0 || $item->price < $item->options->service_price)
-                                    <div class="flex text-center font-medium text-sm">S/. {{ number_format($item->price,2) }}</div>
-                                    <div class="flex text-center font-medium text-sm line-through">S/. {{  number_format($item->options->service_price,2) }}</div>
+                                    <div class="flex text-center font-medium text-xs md:text-sm">S/. {{ number_format($item->price,2) }}</div>
+                                    <div class="flex text-center font-medium text-xs md:text-sm line-through">S/. {{  number_format($item->options->service_price,2) }}</div>
                                 @else
                                     <div class="flex text-center font-medium text-sm">S/. {{ number_format($item->price,2) }}</div>
                                 @endif
                             </div>
-                            <span class="text-center w-1/5 font-semibold text-sm">S/. {{ number_format($item->total, 2) }}</span>
+                            <span class="text-center w-[30%] md:w-1/5 font-semibold text-sm">S/. {{ number_format($item->total, 2) }}</span>
                         </div>
                         @endforeach
                     @else
@@ -93,9 +93,9 @@
                         </div>
                     @endif
                 </div>
-                <div class="w-1/4 bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg px-8 py-10">
-                    <h1 class="font-semibold text-lg uppercase border-b pb-3">Resumen de la orden</h1>
-                    <div class="flex justify-between border-b-2 pb-2 mt-10 mb-2">
+                <div class="w-full sticky max-md:bottom-0 md:relative md:w-[28%] bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-t-xl md:rounded-lg p-6 md:px-8 md:py-10">
+                    <h1 class="font-semibold text-sm md:text-lg uppercase border-b pb-3">Resumen de la orden</h1>
+                    <div class="flex justify-between border-b-2 pb-2 mt-2 md:mt-10 mb-2">
                         <span class="font-semibold text-theme-gray text-xs uppercase">Subtotal</span>
                         <span class="font-semibold text-theme-gray text-xs">${{ $subtotal }}</span>
                     </div>
@@ -103,11 +103,11 @@
                         <span class="font-bold text-theme-gray text-sm uppercase">total</span>
                         <span class="font-bold text-theme-yellow text-sm">${{ $total }}</span>
                     </div>
-                    <div class="mt-10">
+                    <div class="mt-2 md:mt-10">
                         <a href="{{ route('checkout') }}"  class="flex items-center justify-center w-full rounded-md border border-transparent px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75 {{ $totalQuantity<=0 ? 'pointer-events-none bg-theme-lwgray opacity-75' : 'bg-theme-yellow' }}">
                             Ir a comprar
                         </a>
-                        <a href="{{ route('shop',['shop_section' => 'categories','shop_section_url'=> '']) }}" class="flex items-center justify-center w-full mt-3 rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
+                        <a href="{{ route('shop',['shop_section' => 'categories','shop_section_url'=> '']) }}" class="hidden md:flex items-center justify-center w-full mt-3 rounded-md border border-transparent bg-theme-lwgray px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75">
                             Agregar más productos
                         </a>
                     </div>

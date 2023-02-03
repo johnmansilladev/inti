@@ -112,7 +112,7 @@
                             <p>{{ $sku_selected->description }}</p>
                         </div>
                     </div>
-                    @if($specification_groups->count()>0)
+
                     <div aria-labelledby="details-heading" class="mt-6 w-full">
                         <h2 id="details-heading" class="sr-only">Caracteristicas destacadas</h2>
                 
@@ -168,12 +168,11 @@
                         @endif
                         
                     </div>
-                    @endif
                 </div>
             </div>
         </div>
     </section>
-    @if ($specification_groups->count()>1)
+    @if ($specification_groups->count())
     <section>
         <div class="container pt-2 pb-6 md:pb-12 md:pt-6">
             <div x-data="{ tab: 1 }">

@@ -1,12 +1,12 @@
 @section('title') {{ 'Chekout' }} @endsection
 <div x-data>
         <section>
-            <div class="max-w-[70%] mx-auto my-12">
-                <div class="flex my-10 space-x-8">
-                    <div class="w-4/6" {{ !$auth ? 'hidden' : '' }} >
-                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg px-8 py-8">
+            <div class="max-w-[90%] md:max-w-[70%] mx-auto my-4 md:my-8">
+                <div class="row md:justify-between md:my-10 space-y-4 md:space-y-0">
+                    <div class="w-full md:w-[65%]" {{ !$auth ? 'hidden' : '' }} >
+                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg p-4 md:p-8">
                             <div class="flex border-b pb-3">
-                                <h1 class="font-bold text-base text-theme-gray uppercase">{{__('Datos de la compra')}}</h1>
+                                <h1 class="font-bold text-sm md:text-base text-theme-gray uppercase">{{__('Datos de la compra')}}</h1>
                             </div>
                             <div class="my-4">
                                 <div class="grid grid-cols-6 gap-6">
@@ -70,8 +70,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-4/6" {{ $auth ? 'hidden' : '' }}>
-                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg px-8 py-8">
+                    <div class="w-full md:w-[65%]" {{ $auth ? 'hidden' : '' }}>
+                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg p-4 md:p-8">
                             <div class="flex flex-col pb-3">
                                 <h1 class="font-bold text-base text-theme-gray uppercase border-b pb-3">{{__('Compra más rápido y fácil')}}</h1>
                             </div>
@@ -94,14 +94,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg px-8 py-6 mt-8">
+                        <div class="w-full bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg p-4 md:p-8 mt-4 md:mt-8">
                             <div class="flex">
-                                <h1 class="font-bold text-base text-theme-gray uppercase">{{__('Datos de la compra')}}</h1>
+                                <h1 class="font-bold text-sm md:text-base text-theme-gray uppercase">{{__('Datos de la compra')}}</h1>
                             </div>
                         </div>
                     </div>
-                    <div class="w-2/6 bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg px-8 py-8">
-                        <h1 class="font-semibold text-base uppercase border-b pb-3 mb-2">{{ __('Resumen de la compra') }}({{ $totalQuantity }})</h1>
+                    <div class="w-full md:w-[33%] bg-white shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] h-fit rounded-lg p-4 md:p-8">
+                        <h1 class="font-semibold text-sm md:text-base uppercase border-b pb-3 mb-2">{{ __('Resumen de la compra') }}({{ $totalQuantity }})</h1>
                         @foreach ($cartItems as $item)
                         <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug,'service'=>$item->options->service_slug]) }}">
                             <div class="flex items-center group py-2 border-b hover:bg-gray-100">

@@ -23,10 +23,10 @@
                     </button>
                     @if (!empty($product))
                     <div class="grid w-full grid-cols-1 items-start gap-y-8 gap-x-6 md:grid-cols-12 lg:gap-x-8">
-                        <div class="modal-image-product-preview row">
-                            <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full">
+                        <div class="modal-image-product-preview">
+                            <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full h-full">
                             {{-- <div class="main-img-product"> --}}
-                                <img src="{{ Storage::url($product->stockKeepingUnits->first()->images->first()->url) }}" alt="{{ $product->name }}" class="object-cover object-center">
+                                <img src="{{ Storage::url($product->stockKeepingUnits->first()->images->first()->url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center">
                             </div>
                             {{-- <div class="carousel-img-product">
                                 @foreach ($product->stockKeepingUnits->first()->images as $image)
@@ -75,7 +75,7 @@
                                     <div class="w-full mt-2">
                                         <label for="version" class="form-label">Versión</label>
                                         <select id="version" wire:model="sku_id" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-theme-yellow focus:outline-none focus:ring-theme-yellow text-sm truncate uppercase">
-                                            @foreach ($product->stockKeepingUnits as $sku)
+                                            @foreach ($product->stockKeepingUnits->where('active',1) as $sku)
                                                 <option value="{{ $sku->id }}">{{ $sku->name }}</option>
                                             @endforeach
                                         </select>
@@ -83,7 +83,7 @@
                                     <div class="w-full mt-2">
                                         <label for="service" class="form-label">Servicio</label>
                                         <select id="service" wire:model="service_id" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-theme-yellow focus:outline-none focus:ring-theme-yellow text-sm truncate uppercase">
-                                            @foreach ($sku_selected->services as $service)
+                                            @foreach ($sku_selected->services->where('active',1) as $service)
                                                 <option value="{{ $service->id }}">{{ $service->name }}</option>
                                             @endforeach
                                         </select>

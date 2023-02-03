@@ -27,7 +27,7 @@
     .container-slider .swiper-pagination .swiper-pagination-bullet-active,
     .container-offers .swiper-pagination .swiper-pagination-bullet-active ,
     .container-last-updateds .swiper-pagination .swiper-pagination-bullet-active
-    .container-related-products .swiper-pagination .swiper-pagination-bullet-active,
+    .container-related-products .swiper-pagination .swiper-pagination-bullet-active
     {
       @apply w-3 h-3;
     }
@@ -294,7 +294,7 @@
 
     /***** MODAL PREVIEW PRODUCT *****/
     .modal-image-product-preview {
-      @apply col-span-1 md:col-span-5;
+      @apply col-span-1 md:col-span-5 md:h-full;
     }
 
     .modal-detail-product-preview {

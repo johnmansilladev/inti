@@ -26,4 +26,9 @@ class Specification extends Model
     {
         return $this->hasMany(SpecificationValue::class);
     }
+
+    public function specificationAssociations()
+    {
+        return $this->hasMany(SpecificationAssociation::class);
+    }
 }

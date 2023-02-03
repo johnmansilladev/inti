@@ -1,13 +1,13 @@
 <div>
     @section('title') {{ 'Preguntas frecuentes' }} @endsection
     <section>
-        <div class="max-w-[60%] mx-auto my-12">
+        <div class="max-w-[90%] md:max-w-[60%] mx-auto my-8 md:my-12">
             @foreach ($sectionQuestions as $indexSection => $sectionQuestion)
                 <div id="sectionQuestion{{ $indexSection }}" class="{{ (!$loop->first)? 'mt-8' : ''}}">
-                    <h1 class="text-2xl font-extrabold uppercase text-transparent bg-clip-text bg-gradient-to-b from-theme-orange to-theme-yellow mb-4">{{ $sectionQuestion->name }}</h1>
-                    <div class="flex space-x-12">
+                    <h1 class="text-2xl text-center md:text-left font-extrabold uppercase text-transparent bg-clip-text bg-gradient-to-b from-theme-orange to-theme-yellow mb-4">{{ $sectionQuestion->name }}</h1>
+                    <div class="row md:justify-between">
                             @foreach ($sectionQuestion->frequentQuestions->chunk(round($sectionQuestion->frequentQuestions->count()/2)) as $chunk)
-                            <div class="w-1/2">
+                            <div class="w-full md:w-[49%]">
                                 @foreach ($chunk as $indexFrequentQuestion => $frequentQuestion)
                                     <div class="bg-theme-lwgray rounded-md p-4 mb-4">
                                         <div class="px-3 border-l-2 border-theme-yellow" x-data="{ open: false }">

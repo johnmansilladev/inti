@@ -22,6 +22,7 @@ class AddCartItemService extends Component
 
     public function mount(Product $product) 
     {
+
         $this->product = $product;
         if ($this->version) {
             $this->sku_selected = $product->whereSkuSlug($this->version);

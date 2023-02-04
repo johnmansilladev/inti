@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('internal_id', 30)->nullable();
             $table->string('name');
+            $table->string('trade_name')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
             $table->string('slug')->unique();

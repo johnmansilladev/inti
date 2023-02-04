@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Products;
 
 use App\Models\Product;
+use App\Models\Service;
 use Livewire\Component;
 use App\Models\StockKeepingUnit;
 use App\Models\SpecificationGroup;
@@ -13,8 +14,12 @@ class ProductDetail extends Component
     public $product, $sku_selected, $img_selected;
     public $specification_groups;
 
+    public $openModalService = false;
+    public $service_selected;
+
     protected $listeners = [
-        'updateSkuSelected'
+        'updateSkuSelected',
+        'showModalService',
     ];
 
     public function mount(Product $product)
@@ -27,9 +32,9 @@ class ProductDetail extends Component
 
     }
 
-    public function updateSkuSelected($value)
+    public function updateSkuSelected($id)
     {
-        $this->sku_selected = StockKeepingUnit::find($value);
+        $this->sku_selected = StockKeepingUnit::find($id);
         $this->updateSpecificationGroups($this->sku_selected);
     }
 
@@ -38,8 +43,23 @@ class ProductDetail extends Component
         $this->specification_groups = SpecificationGroup::with(['specifications' => function ($query) use ($sku) {
             $query->whereHas('specificationAssociations', function ($query) use ($sku) {
                 $query->where('stock_keeping_unit_id', $sku->id);
-            })->with('specificationValues');
+            })->with(['specificationValues' => function ($query) use ($sku) {
+                $query->whereHas('specificationAssociations', function ($query) use ($sku) {
+                    $query->where('stock_keeping_unit_id', $sku->id);
+                });
+            }]);
         }])->get();
+
+    }
+
+    public function showModalService($id) 
+    {
+        $this->openModalService = true;
+        $this->service_selected = Service::find($id);
+    }
+
+    public function hydrate() {
+        $this->updateSpecificationGroups($this->sku_selected);
     }
 
     public function render()

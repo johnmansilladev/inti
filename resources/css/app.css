@@ -294,7 +294,7 @@
 
     /***** MODAL PREVIEW PRODUCT *****/
     .modal-image-product-preview {
-      @apply col-span-1 md:col-span-5;
+      @apply col-span-1 md:col-span-5 md:h-full;
     }
 
     .modal-detail-product-preview {

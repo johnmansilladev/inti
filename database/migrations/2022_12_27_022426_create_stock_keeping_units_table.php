@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('internal_id')->nullable();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('slug')->unique();
             $table->date('release_date');
             $table->boolean('active')->default(true);

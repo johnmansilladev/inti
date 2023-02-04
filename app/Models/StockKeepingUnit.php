@@ -21,10 +21,10 @@ class StockKeepingUnit extends Model
         return $query->where('active',1);
     }
 
-    public function scopeWithSpecifications($query)
-    {
-        return $query;
-    }
+    // public function scopeWithSpecifications($query)
+    // {
+    //     return $query;
+    // }
 
     public function scopeFirstService($query)
     {

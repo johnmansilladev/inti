@@ -26,7 +26,7 @@
                         <div class="modal-image-product-preview">
                             <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full h-full">
                             {{-- <div class="main-img-product"> --}}
-                                <img src="{{ Storage::url($product->stockKeepingUnits->first()->images->first()->url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center">
+                                <img src="{{ Storage::url($product->firstSkuImage()->url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center">
                             </div>
                             {{-- <div class="carousel-img-product">
                                 @foreach ($product->stockKeepingUnits->first()->images as $image)

@@ -51,6 +51,7 @@ class Product extends Model
     public function scopeFirstSkuImage($query)
     {
         return $this->stockKeepingUnits()
+                    ->where('active',1)
                     ->orderBy('release_date', 'desc')
                     ->first()
                     ->images()->first();

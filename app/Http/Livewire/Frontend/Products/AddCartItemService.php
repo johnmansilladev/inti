@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Service;
 use Livewire\Component;
 use App\Models\Promotion;
+use App\Models\Configuration;
 use App\Models\StockKeepingUnit;
 
 class AddCartItemService extends Component
@@ -48,7 +49,7 @@ class AddCartItemService extends Component
     public function addServiceItemCart() 
     {
 
-        $base_price = $this->service_selected->pivot->base_price;
+        $base_price = $this->service_selected->basePrice();
 
         $item = [
             'id' => $this->sku_selected->id.$this->service_selected->id,

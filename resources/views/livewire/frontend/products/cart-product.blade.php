@@ -40,7 +40,7 @@
                                         <div class="flex p-2">
                                             <div class="w-[25%] overflow-hidden rounded-md">
                                                 <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="relative">
-                                                    <img src="{{ Storage::url($item->options->sku_image) }}" alt="{{ $item->name }}" class="w-full h-auto object-cover object-center">
+                                                    <img src="{{ Storage::url($item->options->sku_image ?? 'products/no-image.jpg') }}" title="{{ $item->name }}" alt="{{ $item->name }}" class="w-full h-auto object-cover object-center">
                                                     @if ($item->options->service_dcto > 0)
                                                     <div class="absolute top-2 left-2">
                                                         <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2">

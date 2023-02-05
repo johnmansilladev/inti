@@ -120,9 +120,9 @@ class CheckoutController extends Component
                    $service = $services->find($item['options']['service_id']);
                     if($service) {
 
-                        $price_base = $service->pivot->base_price;
+                        $price_base = $service->basePrice();
                         $dcto = 0;
-                        $price_sale = $service->pivot->base_price;
+                        $price_sale = $price_base;
 
                         $addItem = [
                             'product_name' => $sku->product->name.' - '.$sku->name,

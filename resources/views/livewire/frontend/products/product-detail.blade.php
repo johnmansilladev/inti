@@ -68,7 +68,7 @@
                     <div class="carousel-img-product">    
                         @foreach ($sku_selected->images as $key => $image)
                         <button type="button" wire:click="$set('img_selected','{{ Storage::url($image->url) }}')" class="carousel-img-product-item {{ $img_selected == Storage::url($image->url) ? 'active' : '' }}">
-                            <img src="{{ Storage::url($image->url) }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-auto object-center object-cover">
+                            <img src="{{ Storage::url($image->url ?? 'products/no-image.jpg') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-auto object-center object-cover">
                         </button>
                         @endforeach
                     </div>

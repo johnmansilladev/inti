@@ -14,7 +14,7 @@
             class="flex w-full transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-3xl">
                 <div class="relative flex w-full items-center overflow-hidden bg-white px-4 pt-14 pb-8 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8 md:rounded-lg">
                     <button  @click="open = false" type="button"
-                        class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8">
+                        class="absolute top-4 right-4 text-black bg-theme-lwgray p-1 rounded-full hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8">
                         <span class="sr-only">Close</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -22,22 +22,9 @@
                         </svg>
                     </button>
                     @if (!empty($product))
-                    <div class="grid w-full grid-cols-1 items-start gap-y-8 gap-x-6 md:grid-cols-12 lg:gap-x-8">
+                    <div class="grid w-full grid-cols-1 items-start gap-y-8 gap-x-4 md:grid-cols-12 lg:gap-x-6">
                         <div class="modal-image-product-preview">
-                            <div class="aspect-w-2 aspect-h-3 overflow-hidden rounded-lg bg-gray-100 w-full h-full">
-                            {{-- <div class="main-img-product"> --}}
-                                <img src="{{ Storage::url($product->firstSkuImage()->url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center">
-                            </div>
-                            {{-- <div class="carousel-img-product">
-                                @foreach ($product->stockKeepingUnits->first()->images as $image)
-                                <div class="carousel-img-product-item">
-                                    <a href="">
-                                        <img src="{{ Storage::url($image->url) }}" title="{{ $product->name }}" alt="{{ $product->name }}">
-                                    </a>
-                                </div>
-                                @endforeach
-                                
-                            </div> --}}
+                                <img src="{{ Storage::url($product->firstSku()->images->first()->url ?? 'products/no-image.jpg') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                         </div>
                         <div class="modal-detail-product-preview">
                             <p class="text-xl font-bold text-theme-gray uppercase">{{ $product->brand->name }}</p>
@@ -50,7 +37,7 @@
                                     @if ($sku_selected->hasPromotionsService($service_selected->id))
                                         @php
                                             $promotion = $sku_selected->discountedPriceService($service_selected->id);  
-                                            $base_price = $service_selected->pivot->base_price;
+                                            $base_price = $service_selected->basePrice();
                                                 
                                             if ($promotion->type_promotion == 1) {
                                                 $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
@@ -61,12 +48,12 @@
                                         <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{ $sale_price }}</p> 
                                         <p class="text-lg font-bold text-theme-gray line-through">S/. {{ $base_price }}</p> 
                                     @else
-                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{$service_selected->pivot->base_price }}</p> 
+                                        <p class="text-2xl font-bold text-theme-yellow mr-3">S/. {{$service_selected->basePrice() }}</p> 
                                     @endif
                                 </div>
                                 @endif
                                 <div class="mt-2">
-                                    <p class="text-sm text-justify">{{ $product->description_short }}</p>
+                                    <p class="text-sm text-justify">{{ $sku_selected->description }}</p>
                                 </div>
                             </section>
 

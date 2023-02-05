@@ -54,7 +54,7 @@ class ProductQuickviews extends Component
         $this->service_selected =  StockKeepingUnit::active()->find($this->sku_selected->id)
                                                     ->services->where('active',1)->find($this->service_selected->id);
 
-        $base_price = $this->service_selected->pivot->base_price;
+        $base_price = $this->service_selected->basePrice();
 
         $item = [
             'id' => $this->sku_selected->id.$this->service_selected->id,

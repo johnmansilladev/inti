@@ -165,7 +165,7 @@ class ShopFilter extends Component
             
         }
         
-        $products = $productsQuery->paginate(12);
+        $products = $productsQuery->active()->paginate(12);
         
         return view('livewire.frontend.shops.shop-filter',[ 
             'products' => $products

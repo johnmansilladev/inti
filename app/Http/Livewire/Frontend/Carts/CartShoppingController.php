@@ -26,9 +26,9 @@ class CartShoppingController extends Component
                     if($services->count() > 0) {
                         $service = $services->find($item->options->service_id);
                         if($service) {
-                            $price_base = $service->pivot->base_price;
+                            $price_base = $service->basePrice();
                             $dcto = 0;
-                            $price_sale = $service->pivot->base_price;
+                            $price_sale = $price_base;
 
                             if($sku->hasPromotionsService($service->id)) {
                                 $promotion = $sku->discountedPriceService($service->id);

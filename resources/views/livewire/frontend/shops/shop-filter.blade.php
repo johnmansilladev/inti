@@ -79,15 +79,58 @@
 
                 @if ($products->count())
                     <!-- Filters -->
-                    <div class="col-span-4 md:col-span-1 max-md:hidden min-h-[500px] bg-white rounded-lg shadow-xl py-4 px-4">
-                        {{-- <h3 class="text-lg text-theme-black font-semibold uppercase border-b border-gray-200 pb-2">Filtros</h3> --}}
+                    <div class="col-span-4 md:col-span-1 max-md:hidden min-h-[500px] bg-white rounded-xl shadow-xl p-6">
+                        <h3 class="row items-center text-base text-theme-black font-bold uppercase border-b border-gray-200 pb-2">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.45245 3.64247C3.03926 3.64247 2.63705 3.64247 2.23426 3.64247C1.72282 3.64247 1.21081 3.64728 0.699372 3.64067C0.298893 3.63526 -0.0027676 3.31189 0.00301133 2.91039C0.00879026 2.51789 0.306405 2.20715 0.69995 2.20474C1.53558 2.19933 2.37179 2.20294 3.20801 2.20294C3.28602 2.20294 3.36461 2.20294 3.45245 2.20294C3.4825 1.82067 3.59173 1.48708 3.84195 1.2166C4.10894 0.927496 4.43603 0.771221 4.82206 0.76521C5.22543 0.758599 5.62938 0.763407 6.03275 0.763407C6.98974 0.763407 7.48557 1.20338 7.63235 2.20294H7.88431C10.976 2.20294 14.0672 2.20294 17.1589 2.20294C17.245 2.20294 17.3329 2.19813 17.4178 2.21256C17.7651 2.27086 18.0171 2.60385 17.9963 2.96688C17.9755 3.32091 17.6998 3.61182 17.3542 3.63947C17.2757 3.64548 17.1959 3.64187 17.1167 3.64187C14.0395 3.64187 10.9622 3.64187 7.88547 3.64187H7.63351C7.50984 4.46953 7.13305 4.97382 6.4627 5.04534C5.85071 5.11086 5.22138 5.11026 4.6094 5.04354C3.94251 4.97081 3.54029 4.43407 3.45303 3.64247H3.45245Z" fill="black"/>
+                                <path d="M8.98905 7.96297C9.09249 7.02292 9.63109 6.52404 10.5101 6.52344C10.8632 6.52344 11.2162 6.52344 11.5693 6.52344C12.5263 6.52344 13.021 6.96341 13.1689 7.96297C13.2435 7.96297 13.3215 7.96297 13.3989 7.96297C14.6888 7.96297 15.9787 7.95997 17.2691 7.96417C17.8302 7.96598 18.1741 8.54059 17.9088 9.02804C17.7644 9.29371 17.5349 9.40431 17.2431 9.40371C15.9677 9.4007 14.6923 9.4025 13.4163 9.4025H13.1713C13.1516 9.5125 13.1366 9.61408 13.1158 9.71325C12.98 10.3522 12.45 10.8222 11.8242 10.8378C11.3272 10.8505 10.8296 10.8511 10.3326 10.8378C9.60739 10.8186 9.08787 10.2638 8.98905 9.4019C8.90814 9.4019 8.82377 9.4019 8.7394 9.4019C6.07993 9.4019 3.42105 9.4025 0.761586 9.4013C0.2149 9.4013 -0.132992 8.92166 0.0484666 8.42579C0.155955 8.13127 0.405027 7.96297 0.745983 7.96237C1.95667 7.96117 3.16735 7.96237 4.37804 7.96237C5.83375 7.96237 7.28946 7.96237 8.74518 7.96237H8.98962L8.98905 7.96297Z" fill="black"/>
+                                <path d="M7.62431 15.1598C7.59599 15.5715 7.4677 15.9214 7.188 16.1966C6.92044 16.4605 6.59971 16.5963 6.23043 16.5982C5.79066 16.6006 5.35146 16.6006 4.91168 16.5982C4.11997 16.5951 3.56288 16.0788 3.46521 15.2608C3.46175 15.2325 3.45655 15.2049 3.44961 15.1586C3.2225 15.1586 3.00059 15.1586 2.7781 15.1586C2.10081 15.1586 1.42352 15.1604 0.745651 15.158C0.309919 15.1562 -0.0015649 14.8479 0.00248035 14.4301C0.0065256 14.0208 0.313387 13.7215 0.739294 13.7197C1.56106 13.7173 2.38224 13.7191 3.20401 13.7191C3.28202 13.7191 3.36062 13.7191 3.43574 13.7191C3.4733 13.5526 3.49527 13.3975 3.54323 13.2515C3.72989 12.6762 4.23439 12.2922 4.81864 12.2814C5.23646 12.2735 5.65427 12.2796 6.07267 12.2796C6.98805 12.2796 7.50295 12.749 7.62951 13.7191C7.71099 13.7191 7.79594 13.7191 7.88089 13.7191C10.9871 13.7191 14.0927 13.7179 17.1988 13.7233C17.3514 13.7233 17.5184 13.7557 17.6542 13.8255C17.9183 13.9619 18.0472 14.3009 17.9819 14.5912C17.9125 14.902 17.6617 15.1304 17.3572 15.1556C17.2786 15.1622 17.1988 15.1586 17.1197 15.1586C14.0424 15.1586 10.9651 15.1586 7.88841 15.1586H7.62489L7.62431 15.1598Z" fill="black"/>
+                            </svg>    
+                            Filtros <span class="text-sm font-medium ml-2">({{ $products->total() . ' resultados' }})</span>
+                        </h3>
+
+                        @if ($totalfiltersApplied > 0)
+                        <div x-data="{ open: true }" class="border-b border-gray-200 py-4">
+                            <h3 class="-my-3 flow-root">
+                            <button type="button" class="py-3 w-full flex items-center justify-between text-sm text-theme-black" aria-controls="filter-section-applied" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
+                                <span class="text-theme-black font-bold uppercase">{{ __('Filtros aplicados') }}</span>
+                                <span class="ml-6 flex items-center">
+                                <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="display: none;">
+                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                </span>
+                            </button>
+                            </h3>
+                            <div class="mt-4 max-h-[300px] overflow-auto scrollbar scrollbar-thumb-theme-orange scrollbar-track-gray-100 scrollbar-theme" id="filter-section-applied" x-show="open">
+                                <div class="row">
+                                    @foreach($filtersApplied as $filterType => $filterValues)
+                                        @if(count($filterValues))
+                                            @foreach($filterValues as $filterValue)
+                                                <div class="row text-sm text-theme-gray bg-theme-lwgray border border-theme-lwgray hover:border-theme-yellow hover:cursor-pointer group rounded-xl px-2 py-1 ml-1 mb-1">
+                                                    <span>{{ Str::title(__($filterValue)) }}</span>
+                                                    <button type="button"  wire:loading.attr="disabled" wire:target="removeFilter" wire:click="removeFilter('{{ $filterType }}','{{ $filterValue }}')" class="ml-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="group-hover:stroke-theme-yellow w-4 h-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                          </svg>                                                          
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div> 
+                        @endif
 
                         @foreach ($filters as $keyFilter => $filter)
                             @if (count($filter))
                                 <div x-data="{ open: true }" class="border-b border-gray-200 py-4">
                                     <h3 class="-my-3 flow-root">
                                     <button type="button" class="py-3 w-full flex items-center justify-between text-sm text-theme-black" aria-controls="filter-section-category" @click="open = !open" aria-expanded="true" x-bind:aria-expanded="open.toString()">
-                                        <span class="text-theme-black font-bold uppercase">{{ $keyFilter }}</span>
+                                        <span class="text-theme-black font-bold uppercase">{{ __($keyFilter) }}</span>
                                         <span class="ml-6 flex items-center">
                                         <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" style="display: none;">
                                             <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -102,9 +145,9 @@
                                         <div class="space-y-4">
                                             @foreach ($filter as $keyItem => $item)
                                                 <div class="flex items-center m-2">
-                                                    <input id="filter-{{ $keyFilter }}-{{ $keyItem }}" type="checkbox" wire:model="filtersApplied.{{ $keyFilter }}" value="{{ $item['id'] }}" class="h-4 w-4 border-gray-300 rounded text-theme-yellow focus:ring-theme-yellow">
+                                                    <input id="filter-{{ $keyFilter }}-{{ $keyItem }}" type="checkbox" wire:model="filtersApplied.{{ $keyFilter }}" value="{{ $item['name'] }}" class="h-4 w-4 border-gray-300 rounded text-theme-yellow focus:ring-theme-yellow" {{ $checkboxesLocked ? 'disabled' : '' }}>
                                                     <label for="filter-{{ $keyFilter }}-{{ $keyItem }}" class="ml-3 text-sm text-theme-black truncate">
-                                                        {{ Str::title($item['name']) }}
+                                                        {{ __(Str::title($item['name'])) }}
                                                     </label>
                                                 </div>
                                             @endforeach

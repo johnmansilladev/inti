@@ -3,9 +3,9 @@
     <div class="box-product-image">
         <a href="{{ route('product.index',$item) }}">
             <figure class="aspect-w-16 aspect-h-9">
-                <img class="object-cover object-center" src="{{ Storage::url($item->firstSkuImage()->url) }}" alt="{{ Str::title($item->name) }}">
+                <img class="object-cover object-center" src="{{ Storage::url( $item->firstSku()->images->first()->url ?? 'products/no-image.jpg') }}" title="{{ Str::title($item->name) }}" alt="{{ Str::title($item->name) }}">
             </figure>
-
+            
             @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
             <div class="absolute top-2 left-2">
                 <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2 py-1">
@@ -47,7 +47,7 @@
         @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
             @php
                 $promotion = $item->firstSku()->discountedPriceService($item->firstSku()->firstService()->id);  
-                $base_price = $item->firstSku()->firstService()->pivot->base_price;
+                $base_price = $item->firstSku()->firstServicePriceBase();
                 
                 if ($promotion->type_promotion == 1) {
                     $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
@@ -57,7 +57,7 @@
             @endphp
             <p class="box-product-detail-price-sale">S/. {{ number_format($sale_price,2) }}<span class="box-product-detail-price-base">S/. {{ number_format($base_price,2) }}</span></p>
         @else 
-            <p class="box-product-detail-price-sale">S/. {{ number_format($item->firstSku()->firstService()->pivot->base_price,2) }}</p>
+            <p class="box-product-detail-price-sale">S/. {{ number_format($item->firstSku()->firstServicePriceBase(),2) }}</p>
         @endif
     </div>
     <div class="flex flex-row bg-theme-gray rounded-b-3xl">

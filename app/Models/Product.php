@@ -37,7 +37,7 @@ class Product extends Model
 
     public function scopeFirstSku($query)
     {
-        return $this->stockKeepingUnits()->active()->orderBy('release_date', 'desc')->first();
+        return $this->stockKeepingUnits()->where('active',1)->orderBy('release_date', 'desc')->first();
     }
 
     public function scopeWhereSkuSlug($query,$slug) 
@@ -51,6 +51,7 @@ class Product extends Model
     public function scopeFirstSkuImage($query)
     {
         return $this->stockKeepingUnits()
+                    ->where('active',1)
                     ->orderBy('release_date', 'desc')
                     ->first()
                     ->images()->first();

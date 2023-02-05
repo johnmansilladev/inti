@@ -21,7 +21,7 @@
                                 <!-- product -->
                                 <div class="w-24">
                                     <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="relative">
-                                        <img class="h-auto" src="{{ Storage::url($item->options->sku_image) }}" alt="{{ $item->name.' - '.$item->options->sku_name }}">
+                                        <img class="h-auto" src="{{ Storage::url($item->options->sku_image ?? 'products/no-image.jpg') }}" alt="{{ $item->name.' - '.$item->options->sku_name }}">
                                         @if ($item->options->service_dcto > 0)
                                         <div class="absolute top-2 left-2">
                                             <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2">
@@ -97,11 +97,11 @@
                     <h1 class="font-semibold text-sm md:text-lg uppercase border-b pb-3">Resumen de la orden</h1>
                     <div class="flex justify-between border-b-2 pb-2 mt-2 md:mt-10 mb-2">
                         <span class="font-semibold text-theme-gray text-xs uppercase">Subtotal</span>
-                        <span class="font-semibold text-theme-gray text-xs">${{ $subtotal }}</span>
+                        <span class="font-semibold text-theme-gray text-xs">S/. {{ $subtotal }}</span>
                     </div>
                     <div class="flex justify-between mt-4 mb-5">
                         <span class="font-bold text-theme-gray text-sm uppercase">total</span>
-                        <span class="font-bold text-theme-yellow text-sm">${{ $total }}</span>
+                        <span class="font-bold text-theme-yellow text-sm">S/.{{ $total }}</span>
                     </div>
                     <div class="mt-2 md:mt-10">
                         <a href="{{ route('checkout') }}"  class="flex items-center justify-center w-full rounded-md border border-transparent px-6 py-2 text-sm font-bold text-theme-gray uppercase shadow hover:opacity-75 {{ $totalQuantity<=0 ? 'pointer-events-none bg-theme-lwgray opacity-75' : 'bg-theme-yellow' }}">

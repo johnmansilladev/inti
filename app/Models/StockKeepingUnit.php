@@ -21,10 +21,13 @@ class StockKeepingUnit extends Model
         return $query->where('active',1);
     }
 
-    // public function scopeWithSpecifications($query)
-    // {
-    //     return $query;
-    // }
+    public function scopeFirstServicePriceBase() 
+    {
+        $base_price = $this->services()->active()->orderBy('position','asc')->first()->pivot->base_price;
+        $exchange_rate = floatval(Configuration::where('key','exchange_rate')->first()->value);
+
+        return $base_price * $exchange_rate;
+    }
 
     public function scopeFirstService($query)
     {
@@ -81,7 +84,7 @@ class StockKeepingUnit extends Model
 
 
     // Relación uno a muchos inversa
-public function product()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

@@ -25,8 +25,8 @@ class ProductDetail extends Component
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->sku_selected = $product->stockKeepingUnits->first();
-        $this->img_selected = Storage::url($this->sku_selected->images->first()->url);
+        $this->sku_selected = $product->stockKeepingUnits->where('active',1)->first();
+        $this->img_selected = Storage::url($this->sku_selected->images->first()->url ?? 'products/no-image.jpg');
 
         $this->updateSpecificationGroups($this->sku_selected);
 
@@ -35,6 +35,8 @@ class ProductDetail extends Component
     public function updateSkuSelected($id)
     {
         $this->sku_selected = StockKeepingUnit::find($id);
+        $this->img_selected = Storage::url($this->sku_selected->images->first()->url ?? 'products/no-image.jpg');
+
         $this->updateSpecificationGroups($this->sku_selected);
     }
 

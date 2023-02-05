@@ -5,7 +5,7 @@
 
             @php
                 $promotion = $sku_selected->discountedPriceService($service_selected->id);  
-                $base_price = $service_selected->pivot->base_price;
+                $base_price = $service_selected->basePrice();
                     
                 if ($promotion->type_promotion == 1) {
                     $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
@@ -30,7 +30,7 @@
         @else
             <div class="flex justify-between items-center">
                 <p class="text-base font-medium text-theme-gray">Normal</p>
-                <p class="text-base font-medium text-theme-gray">S/. {{  number_format($service_selected->pivot->base_price,2) }}
+                <p class="text-base font-medium text-theme-gray">S/. {{  number_format($service_selected->basePrice(),2) }}
                 </p>
             </div>
         @endif

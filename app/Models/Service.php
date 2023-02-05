@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Configuration;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,6 +20,12 @@ class Service extends Model
     public function scopeActive($query) 
     {
         return $query->where('active',1);
+    }
+
+    public function scopeBasePrice($query)
+    {
+        $exchange_rate = floatval(Configuration::where('key', 'exchange_rate')->first()->value);
+        return $this->pivot->base_price * $exchange_rate;
     }
 
     // Relación muchos a muchos inversa

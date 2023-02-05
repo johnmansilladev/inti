@@ -1,8 +1,8 @@
 <x-app-layout>
+
+    @section('title')  {{ Str::title(__($shop_section)) . (!empty($data_section) ? ' '.  Str::title(__($data_section->name)) : '') }} @endsection
     
     @if ($data_section)
-
-    @section('title') {{ Str::title($shop_section) }} @endsection
 
     <section>
         <div class="bg-gray-100 md:bg-white md:relative">
@@ -18,8 +18,8 @@
                             <li>
                                 <div class="flex items-center">
                                     <a href="/" class="mr-1 md:mr-4 text-[11px] md:text-sm font-bold text-theme-gray uppercase">Home</a>
-                                    <svg viewBox="0 0 6 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-auto text-theme-gray">
-                                        <path d="M4.878 4.34H3.551L.27 16.532h1.327l3.281-12.19z" fill="currentColor" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="h-5 w-auto text-theme-gray">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                     </svg>
                                 </div>
                             </li>
@@ -27,8 +27,8 @@
                             <li>
                                 <div class="flex items-center">
                                     <a href="" class="mr-1 md:mr-4 text-[11px] md:text-sm font-bold text-theme-gray uppercase">{{__($shop_section) }}</a>
-                                    <svg viewBox="0 0 6 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-auto text-theme-gray">
-                                        <path d="M4.878 4.34H3.551L.27 16.532h1.327l3.281-12.19z" fill="currentColor" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="h-5 w-auto text-theme-gray">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                     </svg>
                                 </div>
                             </li>

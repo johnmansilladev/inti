@@ -106,7 +106,7 @@
                         <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug,'service'=>$item->options->service_slug]) }}">
                             <div class="flex items-center group py-2 border-b hover:bg-gray-100">
                                 <div class="flex flex-row justify-start items-stretch w-full">
-                                    <img class="w-16 h-auto" src="{{ Storage::url($item->options->sku_image) }}" alt="{{ $item->name.' - '.$item->options->sku_name }}">
+                                    <img class="w-16 h-auto" src="{{ Storage::url($item->options->sku_image ?? 'products/no-image.jpg') }}" title="{{ $item->name }}" alt="{{ $item->name }}">
                                     <div class="flex flex-col justify-start items-stretch w-full ml-4">
                                         <span></span>
                                         <div class="text-[11px] text-theme-gray font-bold uppercase">{{$item->name .' - '. $item->options->sku_name}}</div>

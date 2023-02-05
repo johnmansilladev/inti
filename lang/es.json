@@ -194,6 +194,12 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Firstname": "Nombres",
     "Lastname": "Apellidos",
-    "Category": "Categorias",
-    "category": "categorias"
+    "Category": "Categoria",
+    "category": "categoria",
+    "Categories": "Categorias",
+    "categories": "categorias",
+    "Brand": "Marca",
+    "brand": "marca",
+    "Brands": "Marcas",
+    "brands": "marcas"
 }

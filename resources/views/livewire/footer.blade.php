@@ -251,7 +251,7 @@
             </div>
         </div>
         <div class="bg-white py-4 md:py-1">
-            <ul role="list" class="container grid grid-cols-3 lg:grid-cols-9 gap-6">
+            <ul role="list" class="container grid grid-cols-3 lg:grid-cols-8 gap-6">
                 <li class="col-span-3 flex md:hidden items-center justify-center">
                     <picture>
                         <img class="w-44" src="{{ Storage::url('images/h-pago-seguro.png') }}" title="pago seguro" alt="pago seguro">
@@ -297,11 +297,11 @@
                         <img class="w-full h-auto" src="{{ Storage::url('images/scotiabank.png') }}" title="scotiabank" alt="scotiabank">
                     </picture>
                 </li>
-                <li class="flex items-center justify-center">
+                {{-- <li class="flex items-center justify-center">
                     <picture>
                         <img class="w-16 md:w-full h-auto" src="{{ Storage::url('images/paypal.png') }}" title="paypal" alt="paypal">
                     </picture>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="py-3">

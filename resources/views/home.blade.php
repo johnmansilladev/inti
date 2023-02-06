@@ -36,7 +36,7 @@
                                                         <h1 class="text-xl md:text-4xl text-white text-center md:text-left font-bold md:font-extrabold tracking-tight">{{ $slider->title }}</h1>
                                                     @endif
                                                     @if ($slider->content)
-                                                        <p class="text-white text-base md:text-lg text-center md:text-left mt-2 md:mt-6">{{ $slider->content }}⁣</p>   
+                                                        <p class="text-white text-base md:text-lg text-center md:text-left mt-2">{!! $slider->content !!}⁣</p>   
                                                     @endif
                                                     @if ($slider->text_button)
                                                         <div class="mt-2 md:mt-6 text-center md:text-left">
@@ -60,7 +60,7 @@
         <div class="container py-4 md:py-10">
             <div class="max-w-4xl mx-auto">
                 <h1 class="title-section">INTI DIESEL</h1>
-                <p class="description-section my-2 md:mb-10 md:mt-4">Contamos con una amplia cobertura en software de diagnostico y catálogo de partes.</p>
+                <p class="description-section my-2 md:mb-10 md:mt-4">Contamos con una amplia cobertura en software de diagnóstico y catálogo de partes.</p>
             </div>
         </div>
     </section>

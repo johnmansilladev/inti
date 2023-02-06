@@ -120,8 +120,44 @@
 
                     @if($specification_groups->count()>0)
                     <div aria-labelledby="details-heading" class="mt-6 w-full">
-                        <h2 id="details-heading" class="sr-only">Caracteristicas destacadas</h2>
-                
+                        <h2 id="details-heading" class="sr-only">Caracteristicas</h2>
+                        
+                        @if ($product->interfases->count())
+                        <div class="bg-theme-lwgray rounded-lg p-4 md:p-6 mb-2">
+                            <div x-data="{ open: true }">
+                                <h3>
+                                    <button type="button"
+                                        class="group relative w-full flex justify-between items-center text-left"
+                                        :class="open ? 'pb-2' : ''" aria-controls="interface-1"
+                                        @click="open = !open" x-bind:aria-expanded="open">
+                                        <span class="text-theme-gray text-sm font-semibold">Interfaces Probadas</span>
+                                        <span class="ml-6 flex items-center">
+                                            <svg class="h-5 w-5" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                                                style="display: none;">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            <svg class="h-5 w-5" x-show="open" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="prose prose-sm" id="interface-1" x-show="open">
+                                    <div role="list">
+                                        @foreach ($product->interfases as $interfase)
+                                            <span>{{ $interfase->name}} {{ $loop->last ? '' : ',' }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
 
                         @foreach ($specification_groups as $specification_group)
                             @if ($loop->first)

@@ -53,7 +53,7 @@
                                 </div>
                                 @endif
                                 <div class="mt-2">
-                                    <p class="text-sm text-justify">{{ Str::limit($sku_selected->description, 255, '...') }}</p>
+                                    <p class="text-sm text-justify">{{ Str::limit($sku_selected->description, 150, '...') }}</p>
                                 </div>
                             </section>
 

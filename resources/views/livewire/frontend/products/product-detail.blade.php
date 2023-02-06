@@ -231,6 +231,16 @@
     </section>
     @endif
 
+    @if ($sku_selected->videos->count())
+    <section>
+        <div class="max-w-[90%] lg:max-w-[50%] mx-auto pb-10">
+            <div class="embed-responsive">
+                {!! $sku_selected->videos->first()->iframe !!}
+            </div>
+        </div>
+    </section>
+    @endif
+
 
     <div x-data="{open: @entangle('openModalService')}" x-init="$watch('open', toggleOverflow)" @keydown.window.escape="open = false" class="relative z-10" aria-labelledby="modal-title" x-ref="dialog" aria-modal="true"  x-show="open" style="display: none">
         <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" 

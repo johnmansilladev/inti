@@ -43,6 +43,11 @@ class ShopFilter extends Component
 
     public function mount()
     {
+        $this->filters();
+    }
+
+    public function filters()
+    {
         switch ($this->shop_section) {
             case 'search':
                 $this->data_section = [];
@@ -128,14 +133,13 @@ class ShopFilter extends Component
     public function updatingFiltersApplied() 
     {
         $this->resetPage();
-        $this->totalFilterApplied();
     }
 
-    public function removeFilter($filterType, $filterValue)
+    public function removeFilter($filterType, $filterKey)
     {
-        if (array_key_exists($filterType, $this->filtersApplied) && in_array($filterValue, $this->filtersApplied[$filterType])) {
-            $key = array_search($filterValue, $this->filtersApplied[$filterType]);
-            unset($this->filtersApplied[$filterType][$key]);
+        if (array_key_exists($filterType, $this->filtersApplied)) {
+            unset($this->filtersApplied[$filterType][$filterKey]);
+            $this->filtersApplied[$filterType] = array_values($this->filtersApplied[$filterType]);
         }
     }
 
@@ -148,8 +152,6 @@ class ShopFilter extends Component
 
     public function render()
     {
-        $this->checkboxesLocked = true;
-
         $productsQuery = Product::query()->active();
         
         if ($this->shop_section == 'search') {
@@ -179,7 +181,6 @@ class ShopFilter extends Component
             });
         });
 
-
          //search input
         if (!empty($this->search)) {
             $productsQuery = $productsQuery->where('name','like','%'.$this->search.'%'); 
@@ -193,16 +194,14 @@ class ShopFilter extends Component
         } else if ($this->sortFilter == 'OrderByNameDESC') {
             $productsQuery = $productsQuery->orderBy('name','desc');
         } else if ($this->sortFilter == 'OrderByPriceASC') {
-            
+            // $productsQuery = 
         } else if ($this->sortFilter == 'OrderByPriceDESC') {
-            
+            // $productsQuery = 
         }
         
         $products = $productsQuery->paginate(12);
 
         $this->totalFilterApplied();
-
-        $this->checkboxesLocked = false;
         
         return view('livewire.frontend.shops.shop-filter',[ 
             'products' => $products

@@ -17,7 +17,7 @@ class HomeController extends Controller
             $query->whereNull('date_from')
                 ->whereNull('date_to');
         })->where('active',true)
-        ->orderBy('position','desc')
+        ->orderBy('position','asc')
         ->get();
 
         $categories = Category::where('active',true)

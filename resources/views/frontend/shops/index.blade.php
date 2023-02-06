@@ -14,7 +14,7 @@
             <div class="md:absolute md:inset-0 py-2 md:py-8">
                 <div class="container w-full h-full">
                     <nav aria-label="Breadcrumb">
-                        <ol role="list" class="flex items-center space-x-2 md:space-x-4">
+                        <ol role="list" class="row items-center space-x-2 md:space-x-4">
                             <li>
                                 <div class="flex items-center">
                                     <a href="/" class="mr-1 md:mr-4 text-[11px] md:text-sm font-bold text-theme-gray uppercase">Home</a>
@@ -34,7 +34,7 @@
                             </li>
                             <li>
                                 <div class="flex items-center">
-                                    <a href="" aria-current="page" class="text-[11px] md:text-sm font-bold text-theme-gray uppercase pointer-events-none">{{__($data_section->name) }}</a>
+                                    <a href="" aria-current="page" class="text-[11px] md:text-sm font-bold text-theme-yellow uppercase pointer-events-none">{{__($data_section->name) }}</a>
                                 </div>
                             </li>
                         </ol>

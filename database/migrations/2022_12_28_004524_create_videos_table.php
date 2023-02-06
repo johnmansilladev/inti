@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->text('iframe');
             $table->unsignedBigInteger('videoable_id');
             $table->string('videoable_type');
             $table->integer('position')->default(0);

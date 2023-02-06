@@ -68,7 +68,7 @@
                     <div class="carousel-img-product">    
                         @foreach ($sku_selected->images as $key => $image)
                         <button type="button" wire:click="$set('img_selected','{{ Storage::url($image->url) }}')" class="carousel-img-product-item {{ $img_selected == Storage::url($image->url) ? 'active' : '' }}">
-                            <img src="{{ Storage::url($image->url ?? 'products/no-image.jpg') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-auto object-center object-cover">
+                            <img src="{{ Storage::url($image->url ?? 'products/no-image.png') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-auto object-center object-cover">
                         </button>
                         @endforeach
                     </div>
@@ -116,6 +116,8 @@
                             <p>{{ $sku_selected->description }}</p>
                         </div>
                     </div>
+
+
                     @if($specification_groups->count()>0)
                     <div aria-labelledby="details-heading" class="mt-6 w-full">
                         <h2 id="details-heading" class="sr-only">Caracteristicas destacadas</h2>

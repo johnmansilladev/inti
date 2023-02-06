@@ -21,7 +21,7 @@
                                 <!-- product -->
                                 <div class="w-24">
                                     <a href="{{ route('product.index',['product'=>$item->options->product_slug,'version'=>$item->options->sku_slug]) }}" class="relative">
-                                        <img class="h-auto" src="{{ Storage::url($item->options->sku_image ?? 'products/no-image.jpg') }}" alt="{{ $item->name.' - '.$item->options->sku_name }}">
+                                        <img class="h-auto" src="{{ Storage::url($item->options->sku_image ?? 'products/no-image.png') }}" alt="{{ $item->name.' - '.$item->options->sku_name }}">
                                         @if ($item->options->service_dcto > 0)
                                         <div class="absolute top-2 left-2">
                                             <div class="flex justify-center items-center bg-[#FF0000] rounded-lg drop-shadow-3xl px-2">

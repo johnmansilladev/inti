@@ -3,7 +3,7 @@
     <div class="box-product-image">
         <a href="{{ route('product.index',$item) }}">
             <figure class="aspect-w-16 aspect-h-9">
-                <img class="object-cover object-center" src="{{ Storage::url( $item->firstSku()->images->first()->url ?? 'products/no-image.jpg') }}" title="{{ Str::title($item->name) }}" alt="{{ Str::title($item->name) }}">
+                <img class="object-cover object-center" src="{{ Storage::url( $item->firstSku()->images->first()->url ?? 'products/no-image.png') }}" title="{{ Str::title($item->name) }}" alt="{{ Str::title($item->name) }}">
             </figure>
             
             @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))

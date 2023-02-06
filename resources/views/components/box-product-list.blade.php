@@ -2,7 +2,7 @@
 <article class="bg-white overflow-hidden rounded-xl shadow-xl">
     <div class="flex flex-row justify-start items-stretch w-full">
         <div class="relative flex w-40 py-4 pl-2">
-            <img src="{{ Storage::url($item->firstSku()->images->first()->url ?? 'products/no-image.jpg') }}" class="w-24 h-24" title="{{ Str::title($item->name) }}" alt="{{ Str::title($item->name) }}">
+            <img src="{{ Storage::url($item->firstSku()->images->first()->url ?? 'products/no-image.png') }}" class="w-24 h-24" title="{{ Str::title($item->name) }}" alt="{{ Str::title($item->name) }}">
 
             @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
             <div class="absolute top-2 left-2">

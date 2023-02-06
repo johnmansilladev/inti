@@ -24,7 +24,7 @@
                     @if (!empty($product))
                     <div class="grid w-full grid-cols-1 items-start gap-y-8 gap-x-4 md:grid-cols-12 lg:gap-x-6">
                         <div class="modal-image-product-preview">
-                                <img src="{{ Storage::url($product->firstSku()->images->first()->url ?? 'products/no-image.jpg') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                <img src="{{ Storage::url($product->firstSku()->images->first()->url ?? 'products/no-image.png') }}" title="{{ $product->name }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                         </div>
                         <div class="modal-detail-product-preview">
                             <p class="text-xl font-bold text-theme-gray uppercase">{{ $product->brand->name }}</p>

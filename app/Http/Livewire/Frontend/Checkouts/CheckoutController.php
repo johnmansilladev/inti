@@ -242,7 +242,8 @@ class CheckoutController extends Component
                 $message .= "*Precio:* S/. ".number_format($item->price_sale,2)." %0A";
             }
 
-            $message .= "*Url:* ".env('APP_URL').Storage::url($item->stockKeepingUnit->images->first()->url)."%0A%0A";
+            // $message .= "*Url:* ".env('APP_URL').Storage::url($item->stockKeepingUnit->images->first()->url)."%0A%0A";
+            $message .= "*Url:* ".route('product.index',['product'=>$item->stockKeepingUnit->product->slug,'version'=>$item->stockKeepingUnit->slug])."%0A%0A";
 
             $total += $item->price_sale;
         }

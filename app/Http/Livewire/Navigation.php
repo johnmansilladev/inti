@@ -26,8 +26,14 @@ class Navigation extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
-        $this->interfaces = Interfase::all();
+        $this->categories = Category::where('active',true)
+                                    ->orderBy('position','asc')
+                                    ->get();
+                                    
+        $this->interfaces = Interfase::where('active',true)
+                                    ->orderBy('position','asc')
+                                    ->get();
+
         $this->announcements = Announcement::active()->get();
     }
 

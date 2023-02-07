@@ -31,9 +31,9 @@
                                         <div class="absolute inset-0 h-full">
                                             <div class="container grid md:grid-cols-2 h-full">
                                                 <div class="col-span-1 md:hidden"></div>
-                                                <div class="col-span-1 md:pl-16 pb-8 md:pb-32 mt-auto">
+                                                <div class="col-span-1 md:pl-16 pb-12 md:pb-32 mt-auto">
                                                     @if ($slider->title)
-                                                        <h1 class="text-xl md:text-4xl text-white text-center md:text-left font-bold md:font-extrabold tracking-tight">{{ $slider->title }}</h1>
+                                                        <h1 class="text-2xl md:text-4xl text-white text-center md:text-left font-bold md:font-extrabold tracking-tight">{{ $slider->title }}</h1>
                                                     @endif
                                                     @if ($slider->content)
                                                         <p class="text-white text-base md:text-lg text-center md:text-left mt-2">{!! $slider->content !!}⁣</p>   

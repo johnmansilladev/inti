@@ -190,7 +190,7 @@
                                         <a href="{{ route('shop', 'categories') }}"
                                             @mouseover="firstLevelMenu = 'categories'"
                                             class="flex text-base font-bold {{ $firstLevelMenu == 'categories' ? 'text-theme-yellow' : 'text-white' }} text-center hover:text-theme-yellow uppercase">
-                                            <span>Categorias</span>
+                                            <span>Categorías</span>
                                         </a>
                                     </li>
                                     <li class="relative py-2 px-10">

@@ -25,7 +25,7 @@
     <div class="box-product-details">
         <a href="{{ route('product.index',$item) }}"><h1 class="box-product-detail-title">{{ Str::title($item->name) }}</h1></a>
         <p class="box-product-detail-brand">{{ Str::title($item->brand->name) }}</p>
-        <div class="box-product-detail-rating">
+        {{-- <div class="box-product-detail-rating">
             <ul>
                 <li>
                     <i class='bx bxs-star level-rating {{ $item->rating >= 1 ? 'active' : 'no-active' }}'></i>
@@ -43,7 +43,7 @@
                 </li>
             </ul>
             <p>{{ $item->rating }}</p>
-        </div>
+        </div> --}}
         @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
             @php
                 $promotion = $item->firstSku()->discountedPriceService($item->firstSku()->firstService()->id);  

@@ -22,7 +22,7 @@ class ShopFilter extends Component
     public $view = 'grid'; 
     public $totalfiltersApplied = 0;
     public $checkboxesLocked = false;
-    // public $products = [];
+    protected $products = [];
 
     public $filters = [
         'categories' => [],
@@ -45,6 +45,7 @@ class ShopFilter extends Component
     public function mount()
     {
         $this->filters();
+        $this->applyFilters();
     }
 
     public function filters()
@@ -153,65 +154,64 @@ class ShopFilter extends Component
 
     public function applyFilters() {
 
+        $productsQuery = Product::query()->active();
+
+        // if ($this->shop_section == 'search') {
+        //     $productsQuery = $productsQuery->like('name',$this->shop_section_url);
+           
+        // }else if ($this->shop_section == 'category') {
+        //     $productsQuery = $productsQuery->where([['category_id',$this->data_section->id],['active',true]]);
+        // } else if ($this->shop_section == 'interface') {
+        //     $productsQuery = $productsQuery->whereHas('interfases',function($query){
+        //         $query->where([['interfases.id',$this->data_section->id],['active',true]]);
+        //     });
+        // } else if ($this->shop_section == 'collection') {
+        //     // pendiente
+        // }
+
+        // $productsQuery = $productsQuery->when($this->filtersApplied['brands'], function($query){
+        //     $query->whereHas('brand', function($query) {
+        //         $query->whereIn('name', $this->filtersApplied['brands']);
+        //     });
+        // })->when($this->filtersApplied['categories'], function($query){
+        //     $query->whereHas('category', function($query) {
+        //         $query->whereIn('name',$this->filtersApplied['categories']);
+        //     });
+        // })->when($this->filtersApplied['interfaces'], function($query){
+        //     $query->whereHas('interfases',function($query){
+        //         $query->whereIn('name',$this->filtersApplied['interfaces']);
+        //     });
+        // });
+
+        // //  Order products
+        // if ($this->sortFilter == 'OrderByRecommended') {
+        //     $productsQuery = $productsQuery->skuOrder();
+        // } else if ($this->sortFilter == 'OrderByNameASC') {
+        //     $productsQuery = $productsQuery->orderBy('name');
+        // } else if ($this->sortFilter == 'OrderByNameDESC') {
+        //     $productsQuery = $productsQuery->orderBy('name','desc');
+        // } else if ($this->sortFilter == 'OrderByPriceASC') {
+        //     // $productsQuery = 
+        // } else if ($this->sortFilter == 'OrderByPriceDESC') {
+        //     // $productsQuery = 
+        // }
+
+        $this->products = $productsQuery->paginate(12);
+
     }
-
-
 
     public function render()
     {
-        $productsQuery = Product::query()->active();
+
+        //  //search input
+        // if (!empty($this->search)) {
+        //     $productsQuery = $productsQuery->where('name','like','%'.$this->search.'%'); 
+        // }
+
+        // $this->totalFilterApplied();
         
-        if ($this->shop_section == 'search') {
-            $productsQuery = $productsQuery->like('name',$this->shop_section_url);
-           
-        }else if ($this->shop_section == 'category') {
-            $productsQuery = $productsQuery->where([['category_id',$this->data_section->id],['active',true]]);
-        } else if ($this->shop_section == 'interface') {
-            $productsQuery = $productsQuery->whereHas('interfases',function($query){
-                $query->where([['interfases.id',$this->data_section->id],['active',true]]);
-            });
-        } else if ($this->shop_section == 'collection') {
-            // $productsQuery = ;
-        }
-
-        $productsQuery = $productsQuery->when($this->filtersApplied['brands'], function($query){
-            $query->whereHas('brand', function($query) {
-                $query->whereIn('name', $this->filtersApplied['brands']);
-            });
-        })->when($this->filtersApplied['categories'], function($query){
-            $query->whereHas('category', function($query) {
-                $query->whereIn('name',$this->filtersApplied['categories']);
-            });
-        })->when($this->filtersApplied['interfaces'], function($query){
-            $query->whereHas('interfases',function($query){
-                $query->whereIn('name',$this->filtersApplied['interfaces']);
-            });
-        });
-
-         //search input
-        if (!empty($this->search)) {
-            $productsQuery = $productsQuery->where('name','like','%'.$this->search.'%'); 
-        }
-
-        //  Order products
-        if ($this->sortFilter == 'OrderByRecommended') {
-            $productsQuery = $productsQuery->skuOrder();
-        } else if ($this->sortFilter == 'OrderByNameASC') {
-            $productsQuery = $productsQuery->orderBy('name');
-        } else if ($this->sortFilter == 'OrderByNameDESC') {
-            $productsQuery = $productsQuery->orderBy('name','desc');
-        } else if ($this->sortFilter == 'OrderByPriceASC') {
-            // $productsQuery = 
-        } else if ($this->sortFilter == 'OrderByPriceDESC') {
-            // $productsQuery = 
-        }
-        
-        $products = $productsQuery->paginate(12);
-
-        $this->totalFilterApplied();
-        
-        return view('livewire.frontend.shops.shop-filter',[ 
-            'products' => $products
+        return view('livewire.frontend.shops.shop-filter',[
+            'products' => $this->products ?? []
         ]);
     }
 }

@@ -44,7 +44,7 @@
             @if ($item->firstSku()->hasPromotionsService($item->firstSku()->firstService()->id))
                 @php
                     $promotion = $item->firstSku()->discountedPriceService($item->firstSku()->firstService()->id);  
-                    $base_price = $item->firstSku()->firstService()->pivot->base_price;
+                    $base_price = $item->firstSku()->firstServicePriceBase();
                     
                     if ($promotion->type_promotion == 1) {
                         $sale_price = round($base_price - (($base_price * $promotion->discount_rate) / 100),1);
@@ -54,7 +54,7 @@
                 @endphp
             <p class="box-product-detail-price-sale">S/. {{ number_format($sale_price,2) }}<span class="box-product-detail-price-base">S/. {{ number_format($base_price,2) }}</span></p>
             @else 
-            <p class="box-product-detail-price-sale">S/. {{ number_format($item->firstSku()->firstService()->pivot->base_price,2) }}</p>
+            <p class="box-product-detail-price-sale">S/. {{ number_format($item->firstSku()->firstServicePriceBase(),2) }}</p>
             @endif
         </div>
         <div class="flex flex-col justify-start items-stretch">

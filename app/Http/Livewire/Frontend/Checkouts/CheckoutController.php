@@ -9,6 +9,7 @@ use App\Models\Promotion;
 use App\Models\ServiceSkuPrice;
 use Illuminate\Validation\Rule;
 use App\Models\StockKeepingUnit;
+use App\Rules\ContactInfoValidator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -40,7 +41,7 @@ class CheckoutController extends Component
             'first_name' => 'required|min:3',
             'last_name' => 'required|min:3',
             'contact_medium' => ['required',Rule::in(['whatsapp','email','facebook','skype','telegram','wechat'])],
-            'contact_info' => 'required|min:3',
+            'contact_info' => ['required','min:3',new ContactInfoValidator($this->type_contact,$this->validPhone)],
             'email' => 'required|email',
             'privacy_policies' => 'accepted'
         ];
@@ -213,6 +214,8 @@ class CheckoutController extends Component
                 $this->contact_info='';
                 break;
         }
+
+        $this->emit('reset-Input-phone');
     }
 
     public function sendWhatsAppMessageOrder(Order $order)
@@ -242,7 +245,6 @@ class CheckoutController extends Component
                 $message .= "*Precio:* S/. ".number_format($item->price_sale,2)." %0A";
             }
 
-            // $message .= "*Url:* ".env('APP_URL').Storage::url($item->stockKeepingUnit->images->first()->url)."%0A%0A";
             $message .= "*Url:* ".route('product.index',['product'=>$item->stockKeepingUnit->product->slug,'version'=>$item->stockKeepingUnit->slug])."%0A%0A";
 
             $total += $item->price_sale;
@@ -253,6 +255,7 @@ class CheckoutController extends Component
         
         $url = 'https://api.whatsapp.com/send?phone=' . $number . '&text=' . $message;
 
+        $this->emit('reset-Input-phone');
         $this->emit('openWhatsApp',$url);
     }
 

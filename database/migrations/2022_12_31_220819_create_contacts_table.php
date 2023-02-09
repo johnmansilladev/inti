@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('subject');
-            $table->string('phone');
+            $table->string('contact_medium');
+            $table->string('contact_info');
             $table->text('message');
+            $table->string('email');
             $table->timestamps();
         });
     }

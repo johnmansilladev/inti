@@ -140,4 +140,5 @@ return [
     'uppercase'            => 'El campo :attribute debe estar en mayúscula.',
     'url'                  => ':Attribute debe ser una URL válida.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
+    ''
 ];

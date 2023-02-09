@@ -35,7 +35,7 @@ class Subscription extends Component
     {
         $this->validate();
         
-        subscribe::create([
+        subscribe::updateOrCreate([
             'email' => $this->email,
             'data' => [
                 'name' => $this->name
@@ -43,8 +43,7 @@ class Subscription extends Component
         ]);
 
         $this->resetForm();
-
-        // session()->flash('success_message', '¡Suscripción Exitosa!');
+        $this->emit('show-alert','Suscripción exitosa','success');
 
     }
 

@@ -2,9 +2,9 @@
     <section>
         <div class="section-product-detail">
             <nav aria-label="Breadcrumb" class="container-breadcrumb">
-                <ol role="list">
+                <ol role="list" class="row">
                     <li>
-                        <div class="flex items-center">
+                        <div class="row items-center">
                             <a href="{{ route('home') }}" class="mr-1 md:mr-4 text-sm font-semibold text-theme-gray capitalize hover:opacity-75">Home</a>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="h-5 w-auto text-theme-gray">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -12,19 +12,15 @@
                               
                         </div>
                     </li>
-
                     <li>
-                        <div class="flex items-center">
+                        <div class="row items-center">
                             <a href="{{ route('shop',['shop_section' => 'category', 'shop_section_url' => $product->category->slug]) }}" class="mr-1 md:mr-4 text-sm font-semibold text-theme-gray capitalize hover:opacity-75">{{ Str::title($product->category->name) }}</a>
-                            {{-- <svg viewBox="0 0 6 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-auto text-theme-gray">
-                                <path d="M4.878 4.34H3.551L.27 16.532h1.327l3.281-12.19z" fill="currentColor" />
-                            </svg> --}}
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="h-5 w-auto text-theme-gray">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                             </svg>
                         </div>
                     </li>
-                    <li class="text-sm">
+                    <li class="row text-sm">
                         <a href="#" aria-current="page" class="font-semibold text-theme-yellow hover:opacity-75 pointer-events-none">{{ Str::title($product->name) }}</a>
                     </li>
                 </ol>
@@ -151,7 +147,7 @@
                                 <div class="prose prose-sm" id="interface-1" x-show="open">
                                     <div role="list">
                                         @foreach ($product->interfases as $interfase)
-                                            <span>{{ $interfase->name}} {{ $loop->last ? '' : ',' }}</span>
+                                            <a href="{{ route('shop',['shop_section' => 'interface', 'shop_section_url' => $interfase]) }}" class="no-underline hover:text-theme-yellow"><span class="font-normal uppercase">{{ $interfase->name}}</span></a> {{ $loop->last ? '' : ',' }}
                                         @endforeach
                                     </div>
                                 </div>

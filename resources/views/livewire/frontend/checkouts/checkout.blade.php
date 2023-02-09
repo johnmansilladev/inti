@@ -153,13 +153,16 @@
         @push('script')
             <script>
             const inputPhone = document.querySelector('#phone');
-                inputPhone.addEventListener('telchange', function(e) {
-                console.log(e);
+            inputPhone.addEventListener('telchange', function(e) {
                 @this.set('phone', e.detail.number);
                 @this.set('contact_info',e.detail.number);
                 @this.set('validPhone', e.detail.valid);
             });
 
+            window.livewire.on('reset-Input-phone', () => {
+                document.querySelectorAll(".iti--laravel-tel-input")[0].value= '';
+            });
+            
             window.livewire.on('openWhatsApp', (url) => {
                 window.open(url, '_blank');
             });

@@ -14,11 +14,17 @@
         <!-- Swipper CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
+        <!-- Alertify CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/alertify/alertify.min.css') }}">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Swipper JS -->
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+        <!-- Alertify JS -->
+        <script src="{{ asset('assets/js/alertify/alertify.min.js') }}"></script>
 
         <!-- Styles -->
         @livewireStyles
@@ -45,7 +51,7 @@
         @laravelTelInputScripts
 
         <script>
-           
+
             window.addEventListener('DOMContentLoaded', (event) => {
                 
                 const header_webpage = document.getElementById("header-webpage");
@@ -60,6 +66,11 @@
                         if (navbar_info_header) { $(navbar_info_header).slideDown(200); }
                     }
                 }  
+
+                window.livewire.on('show-alert', (msg,type) => {
+                    alertify.notify(msg,type);
+                });
+
             });
 
             const showModalQuickViewsProduct = (item) => {

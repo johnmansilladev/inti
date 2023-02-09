@@ -16,13 +16,12 @@ class Announcement extends Model
 
     public function scopeActive($query)
     {
-        return $query->where(function($query){
+        return $query->where('active',true)->where(function($query){
             $query->where([['date_from', '<=', now()],['date_to', '>=', now()]]);
         })->orWhere(function($query){
             $query->whereNull('date_from')
                 ->whereNull('date_to');
-        })->where('active',true)
-        ->orderBy('position','desc');
+        })->orderBy('position','desc');
     }
 
 }

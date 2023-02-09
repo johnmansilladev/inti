@@ -103,27 +103,27 @@
     }
 
     .announcement-container {
-      @apply w-full flex items-center justify-center bg-gradient-to-r from-theme-yellow to-theme-orange px-[10px] py-[10px] h-[40px];
+      @apply w-full row items-center justify-center bg-gradient-to-r from-theme-yellow to-theme-orange;
     }
 
     .announcement-container .announcement-item {
-      @apply flex items-center justify-center
+      @apply row items-center justify-center py-1 lg:py-0
     }
 
     .announcement-description {
-      @apply flex items-center;
+      @apply row items-center;
     }
 
     .announcement-title {
-      @apply text-sm font-medium text-black leading-[2.25rem];
+      @apply text-sm text-center font-medium text-black lg:leading-[2.25rem] w-fit;
     }
 
     .announcement-content {
-      @apply pl-4 text-sm font-medium text-black leading-[2.25rem];
+      @apply text-sm text-center font-medium text-black lg:leading-[2.25rem] hidden w-fit lg:block lg:pl-4;
     }
 
     .announcement-countdown {
-      @apply flex justify-center items-center pl-8 space-x-6;
+      @apply row justify-center items-center pl-4 lg:pl-8 space-x-6 w-fit;
     }
 
     .announcement-countdown .clock {
@@ -131,11 +131,11 @@
     }
 
     .announcement-countdown .clock .clock-time {
-      @apply text-base text-sm font-bold leading-none;
+      @apply text-xs lg:text-sm font-semibold lg:font-bold leading-none;
     }
 
     .announcement-countdown .clock .clock-text {
-      @apply text-[10px] text-center font-semibold uppercase leading-none;
+      @apply text-[9px] lg:text-[10px] text-center font-medium lg:font-semibold uppercase leading-none;
     }
 
     input[type='number']::-webkit-inner-spin-button,
@@ -357,7 +357,7 @@
     }
 
     .content-product-detail-info-mobile {
-      @apply md:hidden;
+      @apply md:hidden w-full;
     }
 
     .content-product-detail-info {
@@ -377,7 +377,6 @@
     }
     
     /*****  PRODUCT DETAIL *****/
-
     
 }
 

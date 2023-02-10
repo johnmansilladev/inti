@@ -46,65 +46,92 @@
                    
                 <nav>
                     <ul>
-                        <li x-data="{open: false}" class="border-b border-theme-gray">
-                            <a role="button" type="button" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.50rem] px-[1.25rem] border-l-4 border-l-transparent" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
-                                <span class="text-base text-white font-semibold uppercase">Categorías</span>
+                        <li x-data="{open: true}" class="border-b border-theme-gray">
+                            <a role="button" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.65rem] px-[1.25rem]">
+                                <span class="text-base font-semibold uppercase" :class="open ? 'text-theme-yellow' : 'text-white'">Menú</span>
                                 <span class="ml-6 flex items-center">
-                                    <svg class="h-5 w-5 text-white" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                                        style="display: none;">
-                                        <path fill-rule="evenodd"
-                                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                            clip-rule="evenodd"></path>
+                                    <svg x-show="!(open)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white" style="display: none;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                     </svg>
-                                    <svg class="h-5 w-5 text-white" x-show="open" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
-                                            clip-rule="evenodd"></path>
+                                    <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5" :class="open ? 'text-theme-yellow' : 'text-white'">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                                     </svg>
                                 </span>
                             </a>
                             <ul x-show="open">
-                                @foreach ($categories as $category)
-                                    <li><a role="button"  @click="secondLevelMenu='{{ $category->slug }}'" class="flex justify-between items-center py-[0.45rem] px-[1.25rem]"><span class="text-white text-sm capitalize">{{ $category->name }}</span></a></li>
-                                @endforeach
+                                <li x-data="{open: false}" class="border-b border-theme-gray">
+                                    <a role="button" type="button" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.65rem] px-[1.25rem] border-l-4 border-l-transparent" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
+                                        <span class="text-[15px] text-white font-semibold capitalize ml-4">Categorías</span>
+                                        <span class="ml-6 flex items-center">
+                                            <svg x-show="!(open)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white" style="display: none;">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                            </svg>
+                                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <ul x-show="open">
+                                        @foreach ($categories as $category)
+                                            <li><a href="{{ route('shop',['shop_section' => 'category', 'shop_section_url' => $category->slug]) }}" class="flex justify-between items-center py-[0.45rem] px-[1.25rem]"><span class="text-white text-sm capitalize ml-6">{{ $category->name }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li x-data="{open: false}">
+                                    <a role="button" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.65rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
+                                        <span class="text-[15px] text-white font-semibold capitalize ml-4">Interfaces</span>
+                                        <span class="ml-6 flex items-center">
+                                            <svg x-show="!(open)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white" style="display: none;">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                            </svg>
+                                            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-white">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    </a>    
+                                    <ul x-show="open">
+                                        @foreach ($interfaces as $interface)
+                                            <li><a href="{{ route('shop',['shop_section' => 'interface', 'shop_section_url' => $interface->slug]) }}" class="flex justify-between items-center py-[0.45rem] px-[1.25rem]" href=""><span class="text-white text-sm capitalize ml-6">{{ $interface->name }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li x-data="{open: false}" class="border-b border-theme-gray">
-                            <a role="button" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.50rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
-                                <span class="text-base text-white font-semibold uppercase">Interfaces</span>
-                                <span class="ml-6 flex items-center">
-                                    <svg class="h-5 w-5 text-white" x-show="!(open)" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                                        style="display: none;">
-                                        <path fill-rule="evenodd"
-                                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg class="h-5 w-5 text-white" x-show="open" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </a>    
-                            <ul x-show="open">
-                                @foreach ($interfaces as $interface)
-                                    <li><a role="button" @click="secondLevelMenu='{{ $interface->slug }}'" class="flex justify-between items-center py-[0.45rem] px-[1.25rem]" href=""><span class="text-white text-sm">{{ $interface->name }}</span></a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li x-data="{open: false}" class="border-b border-theme-gray">
-                            <a {{ route('about') }} @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.50rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
+                            <a href="{{ route('about') }}" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.65rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
                                 <span class="text-base text-white font-semibold uppercase">Nosotros</span>
                             </a>
                         </li>
-                        <li x-data="{open: false}" class="border-b border-theme-gray">
-                            <a href="{{ route('contact') }}" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.50rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
+                        <li x-data="{open: false}">
+                            <a href="{{ route('contact') }}" @click="open = !open" class="group relative w-full flex justify-between items-center text-left py-[0.65rem] px-[1.25rem] border-l-4" :class="open ? 'bg-[#1c1c1cfa] border-l-theme-yellow' : 'border-l-transparent'">
                                 <span class="text-base text-white font-semibold uppercase">Contacto</span>
                             </a>
+                            <ul>
+                                <li>
+                                    <div class="flex items-center text-white py-[0.65rem] px-[1.25rem]">
+                                        <svg class="w-8 h-8" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20.1845 6.70915C19.6548 5.39617 18.8954 4.21767 17.9275 3.20543C16.9595 2.19563 15.8298 1.401 14.5689 0.850869C13.2798 0.286068 11.9111 0 10.5001 0H10.4533C9.03295 0.00733507 7.65716 0.300738 6.36341 0.877764C5.1142 1.43523 3.99388 2.22742 3.03529 3.23721C2.0767 4.24701 1.32435 5.42062 0.804039 6.72871C0.264977 8.08325 -0.00689828 9.52337 0.000132967 11.0051C0.00716422 12.7019 0.396227 14.3865 1.12513 15.8927V19.6091C1.12513 20.2301 1.60795 20.7338 2.20326 20.7338H5.7681C7.21185 21.4942 8.8267 21.9001 10.4533 21.9074H10.5025C11.9064 21.9074 13.2681 21.6238 14.5501 21.0688C15.804 20.5235 16.9314 19.7411 17.897 18.7411C18.865 17.7411 19.6267 16.5724 20.1587 15.2692C20.7119 13.9195 20.9931 12.4843 21.0001 11.0026C21.0072 9.51359 20.7306 8.06858 20.1845 6.70915V6.70915ZM16.6431 17.4184C15.0001 19.1152 12.8204 20.0492 10.5001 20.0492H10.4603C9.04701 20.0419 7.6431 19.6751 6.40326 18.9856L6.20638 18.8756H2.90638V15.433L2.80091 15.2276C2.13998 13.9342 1.78841 12.4696 1.78138 10.9953C1.77201 8.55759 2.66498 6.26904 4.30326 4.5453C5.9392 2.82156 8.12591 1.868 10.4626 1.85822H10.5025C11.6744 1.85822 12.8111 2.09539 13.8822 2.56483C14.9275 3.02205 15.865 3.67976 16.6712 4.52085C17.4751 5.35949 18.1079 6.33995 18.5462 7.43043C19.0009 8.56003 19.2283 9.75809 19.2236 10.9953C19.2095 13.4305 18.2931 15.7117 16.6431 17.4184V17.4184Z" fill="white"/>
+                                            <path d="M15.2228 13.103C14.9673 12.9661 13.6946 12.3157 13.4579 12.2277C13.2212 12.1348 13.0478 12.0908 12.8767 12.3646C12.7032 12.636 12.211 13.2399 12.0563 13.4233C11.9063 13.6042 11.754 13.6262 11.4985 13.4918C9.97978 12.6996 8.98369 12.0785 7.98291 10.2863C7.71807 9.80954 8.24775 9.84377 8.74228 8.81442C8.82666 8.63349 8.78447 8.47945 8.71885 8.34253C8.65322 8.20561 8.1376 6.8804 7.92197 6.34005C7.71338 5.81437 7.49775 5.88772 7.34072 5.87794C7.19072 5.86816 7.01963 5.86816 6.84619 5.86816C6.67275 5.86816 6.39385 5.93663 6.15713 6.20313C5.92041 6.47453 5.25244 7.12735 5.25244 8.45256C5.25244 9.77776 6.17822 11.0614 6.30478 11.2423C6.43603 11.4233 8.12588 14.1421 10.7204 15.3133C12.361 16.0517 13.0032 16.1153 13.8235 15.9881C14.3228 15.9099 15.3517 15.3377 15.5649 14.7045C15.7782 14.0737 15.7782 13.5333 15.7149 13.4208C15.6517 13.301 15.4782 13.2326 15.2228 13.103Z" fill="white"/>
+                                        </svg>
+                                        <a href="https://api.whatsapp.com/send?phone=51930825355" class="relative flex-1 flex flex-col">
+                                            <span class="ml-3 text-sm font-medium">Whatsapp</span>
+                                            <span class="ml-3 text-sm font-medium">+51 930 825 355</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center text-white py-[0.65rem] px-[1.25rem]">
+                                        <svg class="w-8 h-8" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 0.444336H2C0.9 0.444336 0.00999999 1.38323 0.00999999 2.53076L0 15.0493C0 16.1968 0.9 17.1357 2 17.1357H18C19.1 17.1357 20 16.1968 20 15.0493V2.53076C20 1.38323 19.1 0.444336 18 0.444336ZM18 15.0493H2V4.61718L10 9.83323L18 4.61718V15.0493ZM10 7.74681L2 2.53076H18L10 7.74681Z" fill="white"/>
+                                        </svg>
+                                        <a href="mailto:intidiesel@gmail.com" class="relative flex-1 flex flex-col">
+                                            <span class="ml-3 text-sm font-medium">{{ __('Escribenos a') }}</span>
+                                            <span
+                                                class="ml-3 text-sm font-medium">intidiesel@gmail.com</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -114,7 +141,7 @@
                      <!-- Account -->
                      <div>
                         @auth
-                            <a role="button" class="flex items-center text-white mr-10">
+                            <a role="button" class="flex items-center text-white">
                                 <svg class="w-10 h-10" viewBox="0 0 45 45" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_277_61)">
@@ -135,7 +162,7 @@
                                 </div>
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="flex items-center text-white mr-10">
+                            <a href="{{ route('login') }}" class="flex items-center text-white">
                                 <svg class="w-10 h-10" viewBox="0 0 45 45" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_277_61)">

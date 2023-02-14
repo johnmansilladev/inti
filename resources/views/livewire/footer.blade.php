@@ -96,7 +96,7 @@
                     </a>
                     <p class="max-w-sm text-white text-sm text-justify mt-6 md:mt-10">
                         Inti diesel proporciona soluciones de software para diagnóstico, calibración, 
-                        mantenimiento, reprogramación y piezas de repuesto en vehículos ligeros, pesados, maquinaria agrícola y pesada, 
+                        mantenimiento, reprogramación y piezas de repuesto en vehículos ligeros, pesados, maquinaria agrícola, pesada, 
                         camiones, motores y más.
                     </p>
                 </div>

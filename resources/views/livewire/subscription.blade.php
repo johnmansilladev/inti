@@ -1,4 +1,4 @@
-<section class="{{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
+<section>
     <div class="bg-image-newsletter">
         <div class="bg-layer-newsletter">
             <div class="max-w-[90%] md:max-w-[50%] lg:max-w-[60%] mx-auto py-16">
@@ -23,7 +23,7 @@
                                 <input id="subscriber-terms-policy" wire:model="terms_policy" aria-describedby="subscriber-terms-policy" type="checkbox" class="w-4 h-4 text-theme-yellow bg-transparent rounded border-2 border-white focus:ring-theme-yellow dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             </div>
                             <div class="ml-2 text-sm">
-                                <label for="subscriber-terms-policy" class="text-sm text-white">Aceptar la política de protección de datos.</label>
+                                <label for="subscriber-terms-policy" class="text-sm text-white">Aceptar la <a href="/about/privacy-policy" class="underline">política de protección de datos</a>.</label>
                             </div>
                         </div>
                         @error('terms_policy') <span class="error italic text-xs text-red-600">*{{ $message }}</span> @enderror
@@ -32,7 +32,7 @@
                                 <input id="subscriber-terms-conditions"  wire:model="terms_conditions" aria-describedby="subscriber-terms-conditions" type="checkbox" class="w-4 h-4 text-theme-yellow bg-transparent rounded border-2 border-white focus:ring-theme-yellow dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             </div>
                             <div class="ml-2 text-sm">
-                                <label for="subscriber-terms-conditions" class="text-sm text-white">Aceptar los términos y condiciones.</label>
+                                <label for="subscriber-terms-conditions" class="text-sm text-white">Aceptar los <a href="/about/terms-and-conditions" class="underline">términos y condiciones</a>.</label>
                             </div>
                         </div>
                         @error('terms_conditions') <span class="error italic text-xs text-red-600">*{{ $message }}</span> @enderror

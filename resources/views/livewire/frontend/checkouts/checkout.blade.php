@@ -61,7 +61,7 @@
                                                 <input id="privacy-policies" wire:model="privacy_policies" name="privacy-policies" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-theme-yellow focus:ring-transparent">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="privacy-policies" class="text-black">Sus datos personales se utilizarán para procesar su pedido, apoyar su experiencia en este sitio web y para otros fines descritos en nuestra <a class="font-bold hover:cursor-pointer ">política de privacidad</a>.</label>
+                                                <label for="privacy-policies" class="text-black">Sus datos personales se utilizarán para procesar su pedido, apoyar su experiencia en este sitio web y para otros fines descritos en nuestra <a href="/about/privacy-policy" class="font-bold hover:cursor-pointer underline" target="_blank">política de privacidad</a>.</label>
                                             </div>
                                         </div>
                                         @error('privacy_policies') <span class="error">*{{ $message }}</span> @enderror
@@ -153,13 +153,16 @@
         @push('script')
             <script>
             const inputPhone = document.querySelector('#phone');
-                inputPhone.addEventListener('telchange', function(e) {
-                console.log(e);
+            inputPhone.addEventListener('telchange', function(e) {
                 @this.set('phone', e.detail.number);
                 @this.set('contact_info',e.detail.number);
                 @this.set('validPhone', e.detail.valid);
             });
 
+            window.livewire.on('reset-Input-phone', () => {
+                document.querySelectorAll(".iti--laravel-tel-input")[0].value= '';
+            });
+            
             window.livewire.on('openWhatsApp', (url) => {
                 window.open(url, '_blank');
             });

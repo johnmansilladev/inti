@@ -35,6 +35,7 @@ class Navigation extends Component
                                     ->get();
 
         $this->announcements = Announcement::active()->get();
+
     }
 
     public function getTotalQuantityCart() 

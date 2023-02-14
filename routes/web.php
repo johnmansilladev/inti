@@ -24,10 +24,24 @@ use App\Http\Livewire\Frontend\Abouts\FrequentQuestionController;
 
 Route::get('/',HomeController::class)->name('home');
 Route::get('about/contact',ContactController::class)->name('contact');
-Route::get('about',AboutController::class)->name('about');
-Route::get('about/frequent-questions',FrequentQuestionController::class)->name('frequent-question');
 Route::get('shop/{shop_section}/{shop_section_url?}', [ShopController::class,'shop'])->name('shop');
 Route::get('product/{product}', [ProductController::class, 'index'])->name('product.index');
 Route::get('cart',CartShoppingController::class)->name('cart');
 Route::get('checkout',CheckoutController::class)->name('checkout');
 Route::get('order/{order}',[OrderController::class, 'show'])->name('order.show');
+
+Route::get('about',AboutController::class)->name('about');
+Route::get('about/frequent-questions',FrequentQuestionController::class)->name('frequent-question');
+
+Route::get('about/terms-and-conditions', function () {
+    return view('frontend.abouts.terms-and-conditions');
+});
+Route::get('about/how-to-buy', function () {
+    return view('frontend.abouts.how-to-buy');
+});
+Route::get('about/bills-and-invoices',function () {
+    return view('frontend.abouts.bills-and-invoices');
+});
+Route::get('about/privacy-policy',function () {
+    return view('frontend.abouts.privacy-policy');
+});

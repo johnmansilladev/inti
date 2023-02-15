@@ -32,16 +32,7 @@ Route::get('order/{order}',[OrderController::class, 'show'])->name('order.show')
 
 Route::get('about',AboutController::class)->name('about');
 Route::get('about/frequent-questions',FrequentQuestionController::class)->name('frequent-question');
-
-Route::get('about/terms-and-conditions', function () {
-    return view('frontend.abouts.terms-and-conditions');
-});
-Route::get('about/how-to-buy', function () {
-    return view('frontend.abouts.how-to-buy');
-});
-Route::get('about/bills-and-invoices',function () {
-    return view('frontend.abouts.bills-and-invoices');
-});
-Route::get('about/privacy-policy',function () {
-    return view('frontend.abouts.privacy-policy');
-});
+Route::view('about/terms-and-conditions','frontend.abouts.terms-and-conditions');
+Route::view('about/how-to-buy','frontend.abouts.how-to-buy');
+Route::view('about/bills-and-invoices','frontend.abouts.bills-and-invoices');
+Route::view('about/privacy-policy','frontend.abouts.privacy-policy');

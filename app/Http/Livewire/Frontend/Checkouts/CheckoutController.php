@@ -5,12 +5,13 @@ namespace App\Http\Livewire\Frontend\Checkouts;
 use Cart;
 use App\Models\Order;
 use Livewire\Component;
+use App\Mail\OrderCreate;
 use App\Models\Promotion;
-use App\Models\ServiceSkuPrice;
 use Illuminate\Validation\Rule;
 use App\Models\StockKeepingUnit;
 use App\Rules\ContactInfoValidator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
@@ -168,7 +169,13 @@ class CheckoutController extends Component
             $order->orderDetails()->create($addItem);
         }
 
-        Cart::instance('cart')->destroy();     
+        Cart::instance('cart')->destroy();   
+        
+        
+        //Envia correo electrónico
+        $mail = new OrderCreate($order);
+        // Mail::to('contacto@intidiesel.pe')->send($mail);
+        Mail::to('contacto@intidiesel.pe')->queue($mail);
 
         $this->sendWhatsAppMessageOrder($order);
 
@@ -234,7 +241,7 @@ class CheckoutController extends Component
         foreach ($order->orderDetails as $item) {
 
             $message .= "*".strtoupper($item->stockKeepingUnit->product->name)."*%0A";
-            $message .= "*Version:* ".strtoupper($item->stockKeepingUnit->name)."%0A";
+            $message .= "*Versión:* ".strtoupper($item->stockKeepingUnit->name)."%0A";
             $message .= "*Servicio:* ".strtoupper($item->service->name)."%0A";
             $message .= "*Cantidad:* $item->qty%0A";
 
@@ -247,7 +254,7 @@ class CheckoutController extends Component
 
             $message .= "*Url:* ".route('product.index',['product'=>$item->stockKeepingUnit->product->slug,'version'=>$item->stockKeepingUnit->slug])."%0A%0A";
 
-            $total += $item->price_sale;
+            $total += $item->price_sale * $item->qty;
         }
 
         $message .= "*Precio Total:*%0A";

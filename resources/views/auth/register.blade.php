@@ -272,25 +272,25 @@
 
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="mt-4">
-                            <x-jet-label for="terms">
+                            <x-jet-label for="terms_and_conditions">
                                 <div class="flex items-center">
-                                    <x-jet-checkbox name="terms" id="terms" required />
+                                    <x-jet-checkbox name="terms_and_conditions" id="terms_and_conditions" required />
 
                                     <div class="ml-2">
-                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' =>
-                                                '<a target="_blank" href="' .
-                                                route('terms.show') .
-                                                '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                                __('Terms of Service') .
-                                                '</a>',
-                                            'privacy_policy' =>
-                                                '<a target="_blank" href="' .
-                                                route('policy.show') .
-                                                '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                                __('Privacy Policy') .
-                                                '</a>',
-                                        ]) !!}
+                                        {{ __('Acepto los ') }}
+                                        <a target="_blank" href="/about/terms-and-conditions" class="underline text-sm text-theme-orange hover:font-bold">{{ __('Términos y condiciones') }}</a>
+                                    </div>
+                                </div>
+                            </x-jet-label>
+                        </div>
+                        <div class="mt-2">
+                            <x-jet-label for="privacy_policy">
+                                <div class="flex items-center">
+                                    <x-jet-checkbox name="privacy_policy" id="privacy_policy" required />
+
+                                    <div class="ml-2">
+                                        {{ __('Acepto las Políticas de ') }}
+                                        <a target="_blank" href="/about/privacy-policy" class="underline text-sm text-theme-orange hover:font-bold">{{ __('Protección de Datos') }}</a>
                                     </div>
                                 </div>
                             </x-jet-label>

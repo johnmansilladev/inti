@@ -26,11 +26,16 @@ class Order extends Model
 
     protected $guarded = ['id','status'];
 
-
     //Relacion uno a muchos
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    //Relacion uno a muchos inversa
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     // URL amigable

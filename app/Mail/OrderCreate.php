@@ -42,7 +42,7 @@ class OrderCreate extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject:  'Nro Orden ' . $this->order->nro_order,
+            subject:  'Recibimos la solicitud de compra N° ' . $this->order->nro_order,
         );
     }
 

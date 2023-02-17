@@ -6,6 +6,7 @@ use Cart;
 use App\Models\Order;
 use Livewire\Component;
 use App\Mail\OrderCreate;
+use App\Models\Configuration;
 use App\Models\Promotion;
 use Illuminate\Validation\Rule;
 use App\Models\StockKeepingUnit;
@@ -174,8 +175,12 @@ class CheckoutController extends Component
         
         //Envia correo electrónico
         $mail = new OrderCreate($order);
+        $email_ecom = Configuration::where('key','email_contact')->first()->value;
         // Mail::to('contacto@intidiesel.pe')->send($mail);
-        Mail::to('contacto@intidiesel.pe')->queue($mail);
+        // Mail::to('contacto@intidiesel.pe')->queue($mail);
+        Mail::to($order->email)
+            ->bcc($email_ecom)
+            ->queue($mail);
 
         $this->sendWhatsAppMessageOrder($order);
 

@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+         {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+         <title> Inti Diesel | @yield('title')</title>
 
 
         <!-- Google Tag Manager -->
@@ -15,8 +17,15 @@
         </script>
         <!-- End Google Tag Manager -->
 
-        {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-        <title> Inti Diesel | @yield('title')</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XRCB36CTE"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7XRCB36CTE');
+        </script>
 
         <!-- Boxicons CSS -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

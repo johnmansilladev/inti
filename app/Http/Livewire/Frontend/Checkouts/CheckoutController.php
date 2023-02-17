@@ -165,6 +165,7 @@ class CheckoutController extends Component
                 if (isset($sku->internal_id)) {
                     $addItem['internal_id'] =  $sku->internal_id;
                 }
+                
             }
 
             $order->orderDetails()->create($addItem);

@@ -158,7 +158,7 @@
                                 <div class="flex-1 flex flex-col">
                                     <span class="ml-3 text-sm font-medium">Hola,</span>
                                     <span
-                                        class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->firstname, 2, '') }}</span>
+                                        class="ml-3 text-sm font-medium">{{ Str::words(Auth::user()->firstname .' '.  Auth::user()->lastname, 2, '') }}</span>
                                 </div>
                             </a>
                         @else

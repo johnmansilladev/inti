@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
@@ -25,6 +26,22 @@ class Order extends Model
     const WECHAT = 'wechat';
 
     protected $guarded = ['id','status'];
+
+
+    protected function total(): Attribute 
+    {
+        return Attribute::make(
+            get: function () {
+                $totalPrice = 0;
+
+                foreach ($this->orderDetails as $detail) {
+                    $totalPrice += $detail->qty * $detail->price_sale;
+                }
+
+                return $totalPrice;
+            }
+        );
+    }
 
     //Relacion uno a muchos
     public function orderDetails()

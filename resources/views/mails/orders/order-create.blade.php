@@ -20,12 +20,11 @@
                 <tbody>
                     <tr>
                         <td align="center">
-                            <table cellspacing="0" cellpadding="0" border="0" width="600"
-                                class="m_1055041782638827573container" align="center">
+                            <table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <table class="m_1055041782638827573tb_properties" style="background-color:#e8e7e7;border:0px solid transparent;font-size:16px;font-family:'Lato',Arial,sans-serif;line-height:100%;color:#333333" cellspacing="0" cellpadding="0" bgcolor="#E8E7E7" width="100%">
+                                            <table style="background-color:#e8e7e7;border:0px solid transparent;font-size:16px;font-family:'Lato',Arial,sans-serif;line-height:100%;color:#333333" cellspacing="0" cellpadding="0" bgcolor="#E8E7E7" width="100%">
                                                 <tbody>
                                                     <tr>
                                                         <td align="center" valign="top">
@@ -33,49 +32,23 @@
                                                                 cellspacing="0" width="100%">
                                                                 <tbody>
                                                                     <tr>
-
                                                                         <td style="padding:0px">
-
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%">
+                                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td align="center"
-                                                                                            class="m_1055041782638827573header"
-                                                                                            valign="top">
-                                                                                            <table align="left"
-                                                                                                border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                width="100%">
+                                                                                        <td align="center" valign="top">
+                                                                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                                                 <tbody>
                                                                                                     <tr>
-                                                                                                        <td align="left"
-                                                                                                            valign="top">
-                                                                                                            <table
-                                                                                                                cellspacing="0"
-                                                                                                                cellpadding="0"
-                                                                                                                style="width:100%">
+                                                                                                        <td align="left" valign="top">
+                                                                                                            <table cellspacing="0" cellpadding="0" style="width:100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td class="m_1055041782638827573responsive-td"
-                                                                                                                            valign="top"
-                                                                                                                            style="width:100%">
-                                                                                                                            <table
-                                                                                                                                cellpadding="0"
-                                                                                                                                cellspacing="0"
-                                                                                                                                width="100%"
-                                                                                                                                role="presentation"
-                                                                                                                                style="min-width:100%">
+                                                                                                                        <td class="" valign="top" style="width:100%">
+                                                                                                                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width:100%">
                                                                                                                                 <tbody>
                                                                                                                                     <tr>
-                                                                                                                                        <td>
-
-
-
-
-
-                                                                                                                                        </td>
+                                                                                                                                        <td></td>
                                                                                                                                     </tr>
                                                                                                                                 </tbody>
                                                                                                                             </table>
@@ -136,11 +109,7 @@
                                                                                                                                                             align="center">
                                                                                                                                                             <p
                                                                                                                                                                 style="font-family:'Lato',Arial,sans-serif!important;width:100%;font-size:32px;color:#ffffff;margin-bottom:0px">
-                                                                                                                                                                <b>Recibimos
-                                                                                                                                                                    tu
-                                                                                                                                                                    solicitud
-                                                                                                                                                                    de
-                                                                                                                                                                    compra</b>
+                                                                                                                                                                <b>¡RECIBIMOS TU SOLICITUD CON ÉXITO!</b>
                                                                                                                                                             </p>
 
                                                                                                                                                         </td>
@@ -154,20 +123,12 @@
 
                                                                                                                                                             <p
                                                                                                                                                                 style="font-family:'Lato',Arial,sans-serif!important;width:100%;text-align:center;font-size:22px;color:#ffffff;padding-bottom:20px;line-height:25px;margin:0">
-                                                                                                                                                                ¡Genial!
-                                                                                                                                                                Te
-                                                                                                                                                                estaremos
-                                                                                                                                                                comunicando
-                                                                                                                                                                cualquier
-                                                                                                                                                                novedad.
+                                                                                                                                                                Nuestro equipo de soporte técnico se contactará de inmediato.
                                                                                                                                                             </p>
                                                                                                                                                         </td>
                                                                                                                                                     </tr>
                                                                                                                                                 </tbody>
                                                                                                                                             </table>
-
-
-
                                                                                                                                         </td>
                                                                                                                                     </tr>
                                                                                                                                 </tbody>
@@ -582,7 +543,8 @@
                                                                                                                                                 role="presentation">
                                                                                                                                                 <tbody>
                                                                                                                                                     <tr>
-                                                                                                                                                        <td><a href="https://intidiesel.pe/user/profile"
+                                                                                                                                                        <td>
+                                                                                                                                                            <a href="https://intidiesel.pe/user/profile"
                                                                                                                                                                 title="{{ __('Mis compras') }}"
                                                                                                                                                                 target="_blank">
                                                                                                                                                                 <img src="https://intidiesel.pe/storage/email/my_orders.png"
@@ -590,7 +552,7 @@
                                                                                                                                                                     height="100%"
                                                                                                                                                                     width="100%"
                                                                                                                                                                     style="display:block;padding:0px;height:100%;width:100%">
-                                                                                                                                                                </a>
+                                                                                                                                                            </a>
                                                                                                                                                         </td>
                                                                                                                                                     </tr>
                                                                                                                                                 </tbody>

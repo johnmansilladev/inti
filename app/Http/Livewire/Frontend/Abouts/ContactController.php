@@ -85,7 +85,6 @@ class ContactController extends Component
     public function updatingContactMedium($value) 
     {
         switch ($value) {
-            case 'skype':
             case 'telegram':
             case 'whatsapp':
             case 'wechat':
@@ -97,6 +96,7 @@ class ContactController extends Component
                 break;
 
             case 'facebook':
+            case 'skype':
             case 'email':
                 $this->type_contact='text';
                 $this->contact_info='';

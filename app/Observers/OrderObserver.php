@@ -13,7 +13,7 @@ class OrderObserver
         HistoryOrder::create([
             'order_id' => $order->id,
             'new_status' => Order::PENDING,
-            'description' => 'orden registrada',
+            'description' => 'orden registrada'
         ]);
     }
 

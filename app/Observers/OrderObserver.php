@@ -14,7 +14,6 @@ class OrderObserver
             'order_id' => $order->id,
             'new_status' => Order::PENDING,
             'description' => 'orden registrada',
-            'user_id' => Auth::user()->id
         ]);
     }
 

@@ -228,16 +228,16 @@
                 </div> --}}
                 <div class="w-full">
                   <div class="flex justify-between items-center">
-                    <p class="text-gray-900">{{ $order->payment->issuer_name }}</p>
-                    <p class="text-gray-900">S/. {{ $order->payment->amount }}</p>
+                    <p class="text-sm text-gray-900">{{ $order->payment->issuer_name }}</p>
+                    <p class="text-sm text-gray-900">S/. {{ $order->payment->amount }}</p>
                   </div>   
                   <div class="flex justify-between items-center">
-                    <p class="text-gray-900 capitalize">{{ $order->payment->method }}  {{ $order->payment->country_id ? '- '.$order->payment->country->name : '' }}</p>
-                    <p class="text-gray-900"> {{ $order->payment->transaction_code ? '#'.$order->payment->transaction_code : '' }}</p>
+                    <p class="text-sm text-gray-900 capitalize">{{ $order->payment->method }}  {{ $order->payment->country_id ? '- '.$order->payment->country->name : '' }}</p>
+                    <p class="text-sm text-gray-900"> {{ $order->payment->transaction_code ? '#'.$order->payment->transaction_code : '' }}</p>
                   </div> 
                   <div class="flex justify-between items-center">
-                    <p class="text-gray-900 capitalize">{{ $order->payment->email }}</p>
-                    <p class="text-gray-900 capitalize">{{ $order->payment->created_at->format('d/m/Y') }}</p>
+                    <p class="text-sm text-gray-900 capitalize">{{ $order->payment->email }}</p>
+                    <p class="text-sm text-gray-900 capitalize">{{ $order->payment->created_at->format('d/m/Y') }}</p>
                   </div>                   
                 </div>
               </div>

@@ -69,6 +69,7 @@ class OrderEdit extends Component
                 $this->order->refresh();
             } else {
                 $this->emit('show-alert','Agregue detalle de pago','warning');
+                return;
             }
         } else {
             return;

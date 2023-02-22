@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('history_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('old_status',[Order::PENDING,Order::PAID,Order::CANCELLED])->nullable();
             $table->enum('new_status',[Order::PENDING,Order::PAID,Order::CANCELLED]);
             $table->string('description')->nullable();

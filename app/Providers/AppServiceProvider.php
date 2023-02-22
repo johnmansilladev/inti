@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
+use App\Observers\OrderObserver;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Order::observe(OrderObserver::class);
+
         // \Blade::directive('svg', function($arguments) {
         //     // Funky madness to accept multiple arguments into the directive
         //     list($path, $class) = array_pad(explode(',', trim($arguments, "() ")), 2, '');

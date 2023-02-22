@@ -109,7 +109,7 @@
                                                                                                                                                             align="center">
                                                                                                                                                             <p
                                                                                                                                                                 style="font-family:'Lato',Arial,sans-serif!important;width:100%;font-size:32px;color:#ffffff;margin-bottom:0px">
-                                                                                                                                                                <b>¡RECIBIMOS TU SOLICITUD CON ÉXITO!</b>
+                                                                                                                                                                <b>¡Recibimos tu solicitud de compra!</b>
                                                                                                                                                             </p>
 
                                                                                                                                                         </td>
@@ -121,8 +121,7 @@
                                                                                                                                                             valign="middle"
                                                                                                                                                             align="center">
 
-                                                                                                                                                            <p
-                                                                                                                                                                style="font-family:'Lato',Arial,sans-serif!important;width:100%;text-align:center;font-size:22px;color:#ffffff;padding-bottom:20px;line-height:25px;margin:0">
+                                                                                                                                                            <p style="font-family:'Lato',Arial,sans-serif!important;width:100%;text-align:center;font-size:22px;color:#ffffff;padding-bottom:20px;line-height:25px;margin:0">
                                                                                                                                                                 Nuestro equipo de soporte técnico se contactará de inmediato.
                                                                                                                                                             </p>
                                                                                                                                                         </td>
@@ -268,14 +267,8 @@
                                                                                                                                                     </td>
 
                                                                                                                                                     <td>
-                                                                                                                                                        <p style="color:#333333;font-size:16px;font-weight:400;font-family:'Lato',Arial,sans-serif!important;line-height:150%!important;margin:0!important;letter-spacing:0;min-width:55px;text-align:right;padding:5px 0 15px;">
-                                                                                                                                                            @switch($order->status)
-                                                                                                                                                                @case(1)
-                                                                                                                                                                    PENDIENTE
-                                                                                                                                                                    @break
-                                                                                                                                                                @default
-                                                                           
-                                                                                                                                                            @endswitch
+                                                                                                                                                        <p style="color:#333333;font-size:16px;font-weight:400;font-family:'Lato',Arial,sans-serif!important;line-height:150%!important;margin:0!important;letter-spacing:0;min-width:55px;text-align:right;padding:5px 0 15px;text-transform: uppercase">
+                                                                                                                                                            {{ __($order->status) }}
                                                                                                                                                         </p>
                                                                                                                                                     </td>
                                                                                                                                                 </tr>

@@ -13,9 +13,14 @@ class OrderIndex extends Component
     use WithPagination;
     protected $orders = [];
     public $search;
+    public $sortField='nro_order';
+    public $sortDirection = 'asc';
+
     public $date_from;
     public $date_to;
     public $status;
+
+    protected $queryString = ['sortField', 'sortDirection'];
 
 
     public function mount() 
@@ -24,6 +29,18 @@ class OrderIndex extends Component
         $this->date_to = Carbon::now()->format('Y-m-d');
 
         $this->applyFilters();
+    }
+
+    public function sortBy($field) 
+    {
+        $this->sortDirection = $this->sortField === $field 
+            ? $this->sortDirection = $this->sortDirection  === 'asc' ? 'desc' : 'asc'
+            : 'asc';
+
+        $this->sortField = $field;
+
+        $this->applyFilters();
+        
     }
 
     public function updatedSearch() 
@@ -58,6 +75,10 @@ class OrderIndex extends Component
 
         if (!empty($this->status)) {
             $ordersQuery = $ordersQuery->where('status',$this->status);
+        }
+
+        if (!empty($this->sortField)) {
+            $ordersQuery = $ordersQuery->orderBy($this->sortField, $this->sortDirection);
         }
 
         $this->orders = $ordersQuery->paginate(10);

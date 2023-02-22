@@ -1,5 +1,5 @@
 <section>
-    <div class="bg-white m-8 rounded-md shadow-lg">
+    <div class="max-w-[95%] mx-auto my-8 bg-white rounded-md shadow-lg">
         <div class="p-8">
             <div class="row flex-col">
                 <div class="sm:flex-auto">
@@ -10,7 +10,7 @@
                     <div class="w-1/4">
                         <label for="search" class="form-label">{{ __('Buscar') }} :</label>
                         <div class="mt-1 relative">
-                            <input type="search" wire:model="search" i class="form-control pl-10" placeholder="Buscar">
+                            <input type="search" id="search" wire:model="search" class="form-control pl-10" placeholder="Buscar">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -20,9 +20,9 @@
                     </div>
                     <div class="row space-x-2">
                         <div>
-                            <label for="first-name" class="form-label">{{ __('Desde') }} :</label>
+                            <label for="date_from" class="form-label">{{ __('Desde') }} :</label>
                             <div class="mt-1 relative">
-                                <input type="date" wire:model.defer="date_from" class="form-control pl-10">
+                                <input type="date" id="date_from" wire:model.defer="date_from" class="form-control pl-10">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
@@ -31,9 +31,9 @@
                             </div>
                         </div>
                         <div>
-                            <label for="first-name" class="form-label">{{ __('Hasta') }} :</label>
+                            <label for="date_to" class="form-label">{{ __('Hasta') }} :</label>
                             <div class="mt-1 relative">
-                                <input type="date" wire:model.defer="date_to" class="form-control pl-10">
+                                <input type="date" id="date_to" wire:model.defer="date_to" class="form-control pl-10">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
@@ -42,14 +42,16 @@
                             </div>
                         </div> 
                         <div>
-                            <label for="location" class="form-label">{{ __('Estado') }}</label>
-                            <select wire:model.defer="status" id="location" name="location" class="form-control">
+                            <label for="status" class="form-label">{{ __('Estado') }}</label>
+                            <select wire:model.defer="status" id="status" class="form-control">
                               <option value="" selected>Todos</option>
                               <option value="1">Pendiente</option>
+                              <option value="2">Pagado</option>
+                              <option value="3">Cancelado</option>
                             </select>
                         </div>
                         <div class="flex items-end">
-                            <button type="button" wire:click="applyFiltersBtn"  class="w-full flex justify-center items-center rounded-md border border-transparent bg-theme-lyellow py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-theme-yellow focus:outline-none focus:ring-2 focus:ring-transparent focus:ring-offset-2 focus:ring-offset-gray-50 uppercase">
+                            <button type="button" wire:click="applyFiltersBtn" wire:loading.attr="disabled" wire:target="applyFiltersBtn" class="w-full flex justify-center items-center rounded-md border border-transparent bg-theme-lyellow py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-theme-yellow focus:outline-none focus:ring-2 focus:ring-transparent focus:ring-offset-2 focus:ring-offset-gray-50 uppercase disabled:opacity-75">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
                                 </svg>
@@ -67,21 +69,52 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-black">
                             <tr>
-                                <th scope="col" class="py-4 pl-4 pr-3 text-center text-sm font-semibold text-white sm:pl-6 md:pl-0 capitalize">#</th>
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Nro orden') }}</th>
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Fecha') }}</th>
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Email') }}</th>
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Medio contacto') }}</th>
-                                {{-- <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Información contacto') }}</th> --}}
-                                {{-- <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Productos') }}</th> --}}
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Total') }}</th>
-                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">{{ __('Estado') }}</th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize cursor-pointer" wire:click="sortBy('nro_order')">
+                                    {{ __('Nro orden') }}
+                                    <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'nro_order' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'hidden' }}"></i>
+                                        <i class="bx {{ $sortField == 'nro_order' && $sortDirection == 'desc' ? 'bx-sort-a-z' : 'hidden' }}"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize cursor-pointer" wire:click="sortBy('created_at')">
+                                    {{ __('Fecha') }}
+                                    <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'created_at' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'hidden' }}"></i> 
+                                        <i class="bx {{ $sortField == 'created_at' && $sortDirection == 'desc' ? 'bx-sort-a-z' : 'hidden' }}"></i>                                                                               
+                                    </span>
+                                </th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize cursor-pointer" wire:click="sortBy('email')">
+                                    {{ __('Email') }}
+                                    <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'email' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'hidden' }}"></i>   
+                                        <i class="bx {{ $sortField == 'email' && $sortDirection == 'desc' ? 'bx-sort-a-z' : 'hidden' }}"></i>                                                                                                                                                          
+                                    </span>
+                                </th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize cursor-pointer" wire:click="sortBy('contact_medium')">
+                                    {{ __('Medio contacto') }}
+                                    <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'contact_medium' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'hidden' }}"></i>  
+                                        <i class="bx {{ $sortField == 'contact_medium' && $sortDirection == 'desc' ? 'bx-sort-a-z' : 'hidden' }}"></i>                                                                             
+                                    </span>
+                                </th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize">
+                                    {{ __('Total') }}
+                                    {{-- <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'total' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'bx-sort-a-z' }}"></i>                                                                               
+                                    </span> --}}
+                                </th>
+                                <th scope="col" class="py-4 px-3 text-center text-sm font-semibold text-white capitalize cursor-pointer" wire:click="sortBy('status')">
+                                    {{ __('Estado') }}
+                                    <span class="inline-flex float-right text-sm">
+                                        <i class="bx {{ $sortField == 'status' && $sortDirection == 'asc' ? 'bx-sort-z-a' : 'hidden' }}"></i> 
+                                        <i class="bx {{ $sortField == 'status' && $sortDirection == 'desc' ? 'bx-sort-a-z' : 'hidden' }}"></i>                                                                               
+                                    </span>
+                                </th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @foreach ($orders as $key => $order)
-                                <tr class="hover:bg-gray-100">
-                                    <td class="whitespace-nowrap text-center py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6 md:pl-0">{{ $order->id }}</td>
+                                @forelse ($orders as $key => $order)
+                                <tr class="hover:bg-gray-100" wire:loading.class="opacity-50">
                                     <td class="whitespace-nowrap text-center py-4 px-3 text-sm text-black">
                                         <a href="{{ route('admin.orders.edit',$order) }}" class="hover:underline hover:text-theme-yellow">{{ $order->nro_order }}</a>
                                     </td>
@@ -99,23 +132,32 @@
                                                 {{ $order->contact_medium .' '. $order->contact_information }}
                                         @endswitch
                                     </td>
-                                    {{-- <td class="whitespace-nowrap text-center py-4 px-3 text-sm text-gray-500">{{ $order->contact_information }}</td> --}}
-                                    {{-- <td class="whitespace-nowrap text-center py-4 px-3 text-sm text-gray-500">{{ $order->contact_information }}</td> --}}
                                     <td class="whitespace-nowrap text-center py-4 px-3 text-sm text-gray-500">S/. {{ $order->total }}</td>
                                     <td class="whitespace-nowrap text-center py-4 px-4 text-sm text-gray-500">
                                         @switch($order->status)
-                                            @case(1)
-                                                <span class="inline-flex rounded-full bg-yellow-200 px-2 text-xs font-semibold leading-5 text-yellow-800">{{__('Pendiente') }}</span>
+                                            @case(App\Models\Order::PENDING)
+                                                <span class="inline-flex rounded-full bg-yellow-200 px-2 text-xs font-semibold leading-5 text-yellow-800 capitalize">{{ __($order->status) }}</span>
                                                 @break
-                                            @case(2)
-                                                <span class="inline-flex rounded-full bg-green-200 px-2 text-xs font-semibold leading-5 text-green-800">{{__('Recibido') }}</span>
+                                            @case(App\Models\Order::PAID)
+                                                <span class="inline-flex rounded-full bg-green-200 px-2 text-xs font-semibold leading-5 text-green-800 capitalize">{{ __($order->status) }}</span>
+                                                @break
+                                            @case(App\Models\Order::CANCELLED)
+                                                <span class="inline-flex rounded-full bg-red-200 px-2 text-xs font-semibold leading-5 text-red-800 capitalize">{{ __($order->status) }}</span>
                                                 @break
                                             @default
                                                 
                                         @endswitch
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="flex justify-center items-center">
+                                            <span class="font-medium py-4 text-theme-gray text-sm">{{ __('No se ha encontrado ninguna orden ') }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforelse
                 
                             <!-- More people... -->
                             </tbody>

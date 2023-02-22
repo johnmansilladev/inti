@@ -21,12 +21,12 @@ return new class extends Migration
             $table->unsignedBigInteger('stock_keeping_unit_id');
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('product_name');
+            $table->char('currency',10)->default('S/.');
             $table->decimal('qty', 14, 2)->default(1);
             $table->decimal('price_base', 14, 2)->default(0);
             $table->decimal('dcto', 14, 2)->default(0);
             $table->decimal('price_sale', 14, 2)->default(0);
             $table->json('metadata')->nullable();
-
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('service_id')->references('id')->on('services');
             $table->foreign('stock_keeping_unit_id')->references('id')->on('stock_keeping_units');

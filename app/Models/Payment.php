@@ -5,14 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Payment extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function payments()
+    public function order()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasOne(Order::class);
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class); 
+    }
+
 }

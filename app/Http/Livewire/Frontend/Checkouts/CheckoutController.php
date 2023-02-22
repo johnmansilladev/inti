@@ -131,6 +131,7 @@ class CheckoutController extends Component
                             'product_name' => $sku->product->name.' - '.$sku->name,
                             'stock_keeping_unit_id' => $sku->id,
                             'service_id' => $service->id,
+                            'currency' => Configuration::where('key','sale_currency')->first()->value,
                             'qty' =>  $item['qty'],
                             'price_base' => floatval($price_base),
                             'metadata' => []

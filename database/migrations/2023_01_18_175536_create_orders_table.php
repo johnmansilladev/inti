@@ -23,7 +23,11 @@ return new class extends Migration
             $table->string('email');
             $table->enum('contact_medium',[Order::WHATSAPP,Order::EMAIL,Order::FACEBOOK,Order::SKYPE,Order::TELEGRAM,Order::WECHAT])->default(Order::WHATSAPP);
             $table->string('contact_information');
-            $table->enum('status',[Order::PENDING,Order::RECEIVED,Order::IN_PROCESS,Order::DELIVERED,Order::CANCELLED])->default(Order::PENDING);
+            $table->unsignedBigInteger('payment_id')->nullable();
+            $table->enum('status',[Order::PENDING,Order::PAID,Order::CANCELLED])->default(Order::PENDING);
+
+            $table->foreign('payment_id')->references('id')->on('payments');
+
             $table->timestamps();
         });
     }

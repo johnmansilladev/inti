@@ -202,5 +202,8 @@
     "Brand": "Marca",
     "brand": "marca",
     "Brands": "Marcas",
-    "brands": "marcas"
+    "brands": "marcas",
+    "pending": "pendiente",
+    "paid": "pagado",
+    "cancelled": "cancelado"
 }

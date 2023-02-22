@@ -11,11 +11,9 @@ class Order extends Model
     use HasFactory;
 
     // Estados de orden
-    const PENDING = 1;
-    const RECEIVED = 2;
-    const IN_PROCESS = 3;
-    const DELIVERED = 4;
-    const CANCELLED = 5;
+    const PENDING = 'pending';
+    const PAID = 'paid';
+    const CANCELLED = 'cancelled';
 
     // Medios de contacto
     const WHATSAPP = 'whatsapp';
@@ -25,7 +23,7 @@ class Order extends Model
     const TELEGRAM = 'telegram';
     const WECHAT = 'wechat';
 
-    protected $guarded = ['id','status'];
+    protected $guarded = ['id','payment_id','status'];
 
 
     protected function total(): Attribute 
@@ -49,11 +47,24 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
+    public function historyOrders()
+    {
+        return $this->hasMany(HistoryOrder::class);
+    }
+
     //Relacion uno a muchos inversa
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
+    
 
     // URL amigable
     public function getRouteKeyName()

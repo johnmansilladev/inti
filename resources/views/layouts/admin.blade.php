@@ -9,8 +9,14 @@
         <!-- Boxicons CSS -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+        <!-- Alertify CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/alertify/alertify.min.css') }}">
+    
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Alertify JS -->
+        <script src="{{ asset('assets/js/alertify/alertify.min.js') }}"></script>
 
         <!-- Styles -->
         @livewireStyles
@@ -41,5 +47,13 @@
     </div>
 
         @livewireScripts
+
+        <script>
+             window.addEventListener('DOMContentLoaded', (event) => {
+                window.livewire.on('show-alert', (msg,type) => {
+                    alertify.notify(msg,type);
+                });
+             });
+        </script>
     </body>
 </html>

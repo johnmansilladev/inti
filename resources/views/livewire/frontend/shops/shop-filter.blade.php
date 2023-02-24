@@ -19,7 +19,7 @@
                 <label id="listbox-label" class="block text-xs font-semibold text-gray-700"> Ordenar por: </label>
                 <div x-data="{ open: false }" class="mt-1 relative">
                     <button @click="open = !open" type="button"
-                        class="relative w-full pr-10 text-left cursor-default focus:outline-none focus:ring-transparent focus:ring-transparent focus:border-transparent text-sm hover:cursor-pointer"
+                        class="relative w-full pr-10 text-left cursor-default focus:outline-none focus:ring-transparent focus:border-transparent text-sm hover:cursor-pointer"
                         aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
                         @if ($sortFilter == 'OrderByRecommended')
                             <span class="block truncate">Recomendados </span>

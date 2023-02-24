@@ -58,10 +58,6 @@
     @endif
     <section>
         <div class="max-w-[90%] md:max-w-[80%] mx-auto py-4 md:py-10">
-            {{-- @foreach ($super_offers as $item)
-              {{$item->category}}  
-            @endforeach --}}
-           
             <div class="max-w-4xl mx-auto">
                 <h1 class="title-section">INTI DIESEL</h1>
                 <p class="description-section my-2 md:mb-10 md:mt-4">Contamos con una amplia cobertura en software de diagnóstico y catálogo de partes.</p>
@@ -72,7 +68,7 @@
     <section>
         <div class="container-offers">
             <div class="py-10 md:py-20">
-                <h1 class="title-section text-white">SÚPER OFERTAS DEL AÑO</h1>
+                <h1 class="title-section text-white">OFERTAS POR APERTURA</h1>
                 <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
                     loop: true,
                     lazy: true,

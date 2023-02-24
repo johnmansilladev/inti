@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Interfase;
 use App\Models\Collection;
@@ -18,16 +19,20 @@ class ShopController extends Controller
             case 'interface':
                 $data_section = Interfase::where('slug',$shop_section_url)->first();
                 break;
+            case 'brand':
+                $data_section = Brand::where('slug',$shop_section_url)->first();
+                break;
             case 'collection':
                 $data_section = Collection::where('slug',$shop_section_url)->first();
                 break;
             case 'search':
             case 'categories':
             case 'interfaces':
+            case 'brands':
                 $data_section = [];
                 break;           
             default:
-                // no existe url section
+                $data_section = [];
                 break;
         }
 

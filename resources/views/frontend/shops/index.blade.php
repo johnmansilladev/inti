@@ -2,7 +2,7 @@
 
     @section('title')  {{ Str::title(__($shop_section)) . (!empty($data_section) ? ' '.  Str::title(__($data_section->name)) : '') }} @endsection
     
-    @if ($data_section)
+    @if ($data_section && !is_null($data_section->image))
 
     <section>
         <div class="bg-gray-100 md:bg-white md:relative">

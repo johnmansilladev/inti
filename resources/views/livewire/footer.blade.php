@@ -37,47 +37,47 @@
             <div class="max-w-[90%] md:max-w-[80%] mx-auto">
                 <ul role="list">
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/mtu" class="brand-item">
                             <img class="w-16 md:w-full h-auto" src="{{ Storage::url('brands/mtu-dark.png') }}" title="mtu" alt="mtu">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/scania" class="brand-item">
                             <img class="w-14 md:w-full h-auto" src="{{ Storage::url('brands/scania-dark.png') }}" title="scania" alt="scania">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/scania" class="brand-item">
                             <img class="w-10 md:w-full h-auto" src="{{ Storage::url('brands/internacional-dark.png') }}" title="internacional" alt="internacional">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/doosan" class="brand-item">
                             <img class="w-14 md:w-full h-auto" src="{{ Storage::url('brands/doosan-dark.png') }}" title="doosan" alt="doosan">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/caterpillar" class="brand-item">
                             <img class="w-18 md:w-full h-auto" src="{{ Storage::url('brands/caterpiller-dark.png') }}" title="caterpiller" alt="caterpiller">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/jcb" class="brand-item">
                             <img class="w-12 md:w-full h-auto" src="{{ Storage::url('brands/jcb-dark.png') }}" title="jcb" alt="jcb">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/bobcat" class="brand-item">
                             <img class="w-16 md:w-full h-auto" src="{{ Storage::url('brands/bobcat-dark.png') }}" title="bobcat" alt="bobcat">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/isuzu" class="brand-item">
                             <img class="w-16 md:w-full h-auto" src="{{ Storage::url('brands/isuzu-dark.png') }}" title="isuzu" alt="isuzu">
                         </a>
                     </li>
                     <li>
-                        <a href="" class="brand-item">
+                        <a href="/shop/brand/volvo" class="brand-item">
                             <img class="w-16 md:w-full h-auto" src="{{ Storage::url('brands/volvo-dark.png') }}" title="volvo" alt="volvo">
                         </a>
                     </li>

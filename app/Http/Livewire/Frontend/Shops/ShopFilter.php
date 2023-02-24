@@ -102,10 +102,29 @@ class ShopFilter extends Component
                 $this->filters['interfaces'] = [];
 
                 break;
+
+            case 'brand':
+                $this->data_section = Brand::where('slug',$this->shop_section_url)->first();
+
+                $this->filters['categories'] = Category::whereHas('products',function ($query){
+                    $query->active()->whereHas('brand',function($query){
+                        $query->where('id', $this->data_section->id);
+                    });
+                })->get()->toArray();
+
+                $this->filters['interfaces'] = Interfase::whereHas('products',function ($query){
+                    $query->active()->whereHas('brand',function($query){
+                        $query->where('id', $this->data_section->id);
+                    });
+                })->get()->toArray();
+
+                $this->filters['brands'] = [];
+
+                break;
             case 'categories':
             case 'interfaces':
+            case 'brands':
                 $this->data_section = [];
-
 
                 $this->filters['brands'] = Brand::whereHas('products',function ($query) {
                     $query->active();
@@ -170,6 +189,8 @@ class ShopFilter extends Component
             $productsQuery = $productsQuery->whereHas('interfases',function($query){
                 $query->where([['interfases.id',$this->data_section->id],['active',true]]);
             });
+        } else if ($this->shop_section == 'brand') { 
+            $productsQuery = $productsQuery->where([['brand_id',$this->data_section->id],['active',true]]);
         } else if ($this->shop_section == 'collection') {
             // $productsQuery = ;
         }

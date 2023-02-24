@@ -47,7 +47,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="swiper container pt-10 pb-10 md:pb-20 px-1" x-ref="container">
+                <div class="swiper max-w-[90%] md:max-w-[80%] mx-auto pt-10 pb-10 md:pb-20 px-1" x-ref="container">
                     <ul class="swiper-wrapper">
                         @foreach ($related_products as $item)
                             <li class="swiper-slide">
@@ -71,17 +71,72 @@
         </div>
     </section>
 
-    {{-- @push('script')
+    @push('script')
         <script>
-            var options = {
-                width: 400,
-                zoomWidth: 250,
-                offset: {vertical: 0, horizontal: 10},
-                scale: 1.5
-            };
+            function isDefaultOption(o) {
+                return magicJS.$A(magicJS.$(o).byTag('option')).filter(function(opt) {
+                    return opt.selected && opt.defaultSelected;
+                }).length > 0;
+            }
 
-            
-            new ImageZoom(document.getElementById("img-container-zoom"), options);
+            function toOptionValue(v) {
+                if (/^(true|false)$/.test(v)) {
+                    return 'true' === v;
+                }
+                if (/^[0-9]{1,}$/i.test(v)) {
+                    return parseInt(v, 10);
+                }
+                return v;
+            }
+
+            function makeOptions(optType) {
+                var value = null,
+                    isDefault = true,
+                    newParams = Array(),
+                    newParamsS = '',
+                    options = {};
+                magicJS.$(magicJS.$A(magicJS.$(optType).getElementsByTagName("INPUT"))
+                        .concat(magicJS.$A(magicJS.$(optType).getElementsByTagName('SELECT'))))
+                    .forEach(function(param) {
+                        value = ('checkbox' == param.type) ? param.checked.toString() : param.value;
+
+                        isDefault = ('checkbox' == param.type) ? value == param.defaultChecked.toString() :
+                            ('SELECT' == param.tagName) ? isDefaultOption(param) : value == param.defaultValue;
+
+                        if (null !== value && !isDefault) {
+                            options[param.name] = toOptionValue(value);
+                        }
+                    });
+                return options;
+            }
+
+            function updateScriptCode() {
+                var code = '&lt;script&gt;\nvar mzOptions = ';
+                code += JSON.stringify(mzOptions, null, 2).replace(/\"(\w+)\":/g, "$1:") + ';';
+                code += '\n&lt;/script&gt;';
+
+                magicJS.$('app-code-sample-script').changeContent(code);
+            }
+
+            function updateInlineCode() {
+                var code = '&lt;a class="MagicZoom" data-options="';
+                code += JSON.stringify(mzOptions).replace(/\"(\w+)\":(?:\"([^"]+)\"|([^,}]+))(,)?/g, "$1: $2$3; ").replace(/\{([^{}]*)\}/, "$1").replace(/\s*$/, '');
+                code += '"&gt;';
+
+                magicJS.$('app-code-sample-inline').changeContent(code);
+            }
+
+            function applySettings() {
+                MagicZoom.stop('Zoom-1');
+                mzOptions = makeOptions('params');
+                mzMobileOptions = makeOptions('mobile-params');
+                MagicZoom.start('Zoom-1');
+                updateScriptCode();
+                updateInlineCode();
+                try {
+                    prettyPrint();
+                } catch (e) {}
+            }
         </script>
-    @endpush --}}
+    @endpush 
 </x-app-layout>

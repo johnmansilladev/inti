@@ -10,8 +10,6 @@
       font-family: 'Exo', sans-serif;
     }
 
-
-
     .container-slider .swiper-pagination .swiper-pagination-bullet,
     .container-slider .swiper-pagination .swiper-pagination-bullet-active,
     .container-offers .swiper-pagination .swiper-pagination-bullet,
@@ -156,7 +154,7 @@
       @apply bg-theme-swhite;
     }
 
-    .container {
+    .container-theme {
       @apply max-w-[90%] md:max-w-[80%] mx-auto;
     }
 

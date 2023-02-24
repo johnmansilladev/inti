@@ -213,7 +213,7 @@
         </div>
         @endif  
         <nav aria-label="Top" style="background-image: url({{ Storage::url('images/bg-header.png') }})">
-            <div class="container">
+            <div class="max-w-[90%] md:max-w-[80%] mx-auto">
                 <div class="navbar ">
                     <button @click="openMenu = !openMenu" type="button" class="order-1 md:mr-8">
                         <span class="sr-only">Open menu</span>
@@ -455,7 +455,7 @@
         </div>
     </header>
     <nav class="bg-white shadow-3xl {{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
-        <ul role="list" class="container flex items-center justify-center py-1.5">
+        <ul role="list" class="max-w-[90%] md:max-w-[80%] mx-auto flex items-center justify-center py-1.5">
             <li class="flex items-center justify-center">
                 <picture>
                     <source media="(max-width: 640px)" srcset="{{ Storage::url('images/h-pago-seguro-mobile.png') }}">

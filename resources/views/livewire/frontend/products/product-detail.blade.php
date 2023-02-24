@@ -213,7 +213,7 @@
     </section>
     @if ($specification_groups->count()>1)
     <section>
-        <div class="container pt-2 pb-6 md:pb-12 md:pt-6">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto pt-2 pb-6 md:pb-12 md:pt-6">
             <div x-data="{ tab: 1 }">
                 <ul class="grid grid-cols-3 gap-2 md:gap-20">
                     @foreach ($specification_groups as $key => $specification_group)

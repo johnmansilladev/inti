@@ -187,7 +187,7 @@ class CheckoutController extends Component
         $this->sendWhatsAppMessageOrder($order);
 
         return redirect()->route('order.show',$order->nro_order)
-                        ->with("message", "Su orden ha sido registrada exitosamente, en breve nuestro equipo de atencion al cliente se comunicara con usted.");
+                        ->with("message", "Su orden ha sido registrada exitosamente, en breve nuestro equipo de atencion al cliente se comunicará con usted.");
     }
 
     public function setAuth() 

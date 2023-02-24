@@ -34,7 +34,7 @@
     </section>
     <section class="{{ request()->route()->getName()!='home' ? 'max-md:hidden' : '' }}">
         <div class="container-brands">
-            <div class="container">
+            <div class="max-w-[90%] md:max-w-[80%] mx-auto">
                 <ul role="list">
                     <li>
                         <a href="" class="brand-item">
@@ -88,7 +88,7 @@
     @livewire('subscription')
     <footer aria-labelledby="footer-heading" style="background-image: url({{ Storage::url('images/bg-footer.png') }})">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
-        <div class="container w-full py-8 md:py-12">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto w-full py-8 md:py-12">
             <div class="grid grid-cols-12 gap-y-4 md:gap-x-8 md:gap-y-12">
                 <div class="col-span-12 lg:col-span-4">
                     <a href="/" class="max-w-sm flex justify-center items-center">
@@ -258,7 +258,7 @@
             </div>
         </div>
         <div class="bg-white py-4 md:py-1">
-            <ul role="list" class="container grid grid-cols-3 lg:grid-cols-8 gap-6">
+            <ul role="list" class="max-w-[90%] md:max-w-[80%] mx-auto grid grid-cols-3 lg:grid-cols-8 gap-6">
                 <li class="col-span-3 flex md:hidden items-center justify-center">
                     <picture>
                         <img class="w-44" src="{{ Storage::url('images/h-pago-seguro.png') }}" title="pago seguro" alt="pago seguro">

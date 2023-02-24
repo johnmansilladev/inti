@@ -29,7 +29,7 @@
                                             </picture>
                                         </div>
                                         <div class="absolute inset-0 h-full">
-                                            <div class="container grid md:grid-cols-2 h-full">
+                                            <div class="max-w-[90%] md:max-w-[80%] mx-auto grid md:grid-cols-2 h-full">
                                                 <div class="col-span-1 md:hidden"></div>
                                                 <div class="col-span-1 md:pl-16 pb-12 md:pb-32 mt-auto">
                                                     @if ($slider->title)
@@ -57,14 +57,18 @@
         </section>
     @endif
     <section>
-        <div class="container py-4 md:py-10">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto py-4 md:py-10">
+            {{-- @foreach ($super_offers as $item)
+              {{$item->category}}  
+            @endforeach --}}
+           
             <div class="max-w-4xl mx-auto">
                 <h1 class="title-section">INTI DIESEL</h1>
                 <p class="description-section my-2 md:mb-10 md:mt-4">Contamos con una amplia cobertura en software de diagnóstico y catálogo de partes.</p>
             </div>
         </div>
     </section>
-    @if ($last_updates->count())
+    @if ($super_offers->count())
     <section>
         <div class="container-offers">
             <div class="py-10 md:py-20">
@@ -111,9 +115,9 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="swiper container pt-10 pb-10 md:pb-20 px-1" x-ref="container">
+                    <div class="swiper max-w-[90%] md:max-w-[80%] mx-auto pt-10 pb-10 md:pb-20 px-1" x-ref="container">
                         <ul class="swiper-wrapper">
-                            @foreach ($last_updates as $item)
+                            @foreach ($super_offers as $item)
                                 <li class="swiper-slide">
                                     <x-box-product :item="$item"/>
                                 </li>
@@ -176,7 +180,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="swiper container pt-10 py-10 md:pb-20 px-1" x-ref="container">
+                <div class="swiper max-w-[90%] md:max-w-[80%] mx-auto pt-10 py-10 md:pb-20 px-1" x-ref="container">
                     <ul class="swiper-wrapper">
                         @foreach ($last_updates as $item)
                             <li class="swiper-slide">
@@ -218,14 +222,14 @@
         </div>
     </section>
     @endif
-    @if ($last_updates->count())
+    @if ($best_sellers->count())
     <section class="container-last-updates-section">
-        <div class="container py-10 md:py-20">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto py-10 md:py-20">
             <h1 class="title-section">LO MÁS VENDIDO EN PERÚ</h1>
             <p class="description-section">Se requieren algunos activos para instalar, utilizar y actualizar software, ofrecemos servicio y soporte técnico para todos los programas.⁣⁣⁣</p>
             <ul role="list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-8">
-                @foreach ($last_updates as $item)
-                    <li class="">
+                @foreach ($best_sellers  as $item)
+                    <li>
                         <x-box-product :item="$item"/>
                     </li>
                 @endforeach
@@ -237,7 +241,7 @@
     </section> 
     @endif
     <section class="bg-theme-lwgray">
-        <div class="container text-center py-10 md:pt-20 md:pb-12">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto text-center py-10 md:pt-20 md:pb-12">
             <h1 class="title-section mb-8">COMPRA FÁCIL Y RÁPIDO</h1>
             <div class="flex justify-center">
                 <picture>

@@ -12,7 +12,7 @@
                 </picture>
             </div>
             <div class="md:absolute md:inset-0 py-2 md:py-8">
-                <div class="container w-full h-full">
+                <div class="max-w-[90%] md:max-w-[80%] mx-auto w-full h-full">
                     <nav aria-label="Breadcrumb">
                         <ol role="list" class="row items-center space-x-2 md:space-x-4">
                             <li>

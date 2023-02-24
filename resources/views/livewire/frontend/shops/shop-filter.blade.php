@@ -1,5 +1,5 @@
 <section x-data class="bg-gray-100">
-    <div class="container md:py-4">
+    <div class="max-w-[90%] md:max-w-[80%] mx-auto md:py-4">
         <div class="relative hidden md:flex items-center justify-between rounded-lg">
             <div class="w-1/2">
                 <div class="mt-1 relative rounded-md shadow-sm">

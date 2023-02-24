@@ -42,7 +42,7 @@ class ProductDetail extends Component
 
     public function updateSpecificationGroups($sku) {
 
-        $this->specification_groups = SpecificationGroup::with(['specifications' => function ($query) use ($sku) {
+        $this->specification_groups = SpecificationGroup::where('active',true)->with(['specifications' => function ($query) use ($sku) {
             $query->whereHas('specificationAssociations', function ($query) use ($sku) {
                 $query->where('stock_keeping_unit_id', $sku->id);
             })->with(['specificationValues' => function ($query) use ($sku) {

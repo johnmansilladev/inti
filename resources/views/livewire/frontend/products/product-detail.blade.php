@@ -221,17 +221,29 @@
                             <li @click="tab = {{ $key }}" class="py-2 text-xs md:text-base text-center flex items-center justify-center font-bold text-theme-gray rounded-lg hover:cursor-pointer" :class="tab == {{ $key }} ? 'bg-theme-yellow' : 'bg-theme-lwgray'">{{ $specification_group->name }}</li>
                         @endif
                     @endforeach
-                    {{-- <li @click="tab = 1" class="py-2 text-xs md:text-base text-center flex items-center justify-center font-bold text-theme-gray rounded-lg hover:cursor-pointer" :class="tab == 1 ? 'bg-theme-yellow' : 'bg-theme-lwgray'">Información General</li> --}}
-                    {{-- <li @click="tab = 2" class="py-2 text-xs md:text-base text-center flex items-center justify-center font-bold text-theme-gray rounded-lg hover:cursor-pointer" :class="tab == 2 ? 'bg-theme-yellow' : 'bg-theme-lwgray'">Actualización</li> --}}
-                    {{-- <li @click="tab = 3" class="py-2 text-xs md:text-base text-center flex items-center justify-center font-bold text-theme-gray rounded-lg hover:cursor-pointer" :class="tab == 3 ? 'bg-theme-yellow' : 'bg-theme-lwgray'">Vehiculos Compatibles</li> --}}
                 </ul>
                 <div class="mt-4 md:mt-8">
                     @foreach($specification_groups as $key => $specification_group)
                         @if($specification_group->id != 1)
                         <div x-show="tab === {{ $key }}" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme">
-                            no hay nada
+                            @foreach ($specification_group->specifications as $specification)
+                            <div class="">
+                                <ul role="list" class="grid grid-rows-6 grid-flow-col gap-4 list-disc">
+                                    @foreach ($specification_group->specifications as $specification)
+                                    
+                                        @foreach (array_unique($specification->specificationValues->pluck('name')->toArray()) as $specification_value)
+                                        <li class="ml-4"> 
+                                            <span>{{ $specification_value}}</span>
+                                        </li>
+                                        @endforeach 
+                                    
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endforeach
                         </div>
                         @endif
+                        
                     @endforeach
                   
 

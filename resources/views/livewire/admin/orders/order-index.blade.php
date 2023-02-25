@@ -45,9 +45,9 @@
                             <label for="status" class="form-label">{{ __('Estado') }}</label>
                             <select wire:model.defer="status" id="status" class="form-control">
                               <option value="" selected>Todos</option>
-                              <option value="1">Pendiente</option>
-                              <option value="2">Pagado</option>
-                              <option value="3">Cancelado</option>
+                              <option value="pending">Pendiente</option>
+                              <option value="paid">Pagado</option>
+                              <option value="cancelled">Cancelado</option>
                             </select>
                         </div>
                         <div class="flex items-end">

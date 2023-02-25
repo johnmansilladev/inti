@@ -228,17 +228,17 @@
                         <div x-show="tab === {{ $key }}" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme">
                             @foreach ($specification_group->specifications as $specification)
                             <div class="">
-                                <ul role="list" class="grid grid-rows-6 grid-flow-col gap-4 list-disc">
                                     @foreach ($specification_group->specifications as $specification)
-                                    
-                                        @foreach (array_unique($specification->specificationValues->pluck('name')->toArray()) as $specification_value)
-                                        <li class="ml-4"> 
-                                            <span>{{ $specification_value}}</span>
-                                        </li>
+                                        @foreach ($specification->specificationValues->chunk(round($specification->specificationValues->count()/4)) as $chunk)
+                                        <ul role="list" class="grid grid-cols-4 gap-4 list-disc">
+                                            @foreach ($chunk as $indexSpecificationValues => $specificationValues)
+                                            <li class="ml-4"> 
+                                                <span>{{ $specificationValues->name}}</span>
+                                            </li>
+                                            @endforeach
+                                        </ul>
                                         @endforeach 
-                                    
                                     @endforeach
-                                </ul>
                             </div>
                             @endforeach
                         </div>

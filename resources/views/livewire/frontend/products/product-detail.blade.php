@@ -225,52 +225,29 @@
                 <div class="mt-4 md:mt-8">
                     @foreach($specification_groups as $key => $specification_group)
                         @if($specification_group->id != 1)
-                        <div x-show="tab === {{ $key }}" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme">
-                            @foreach ($specification_group->specifications as $specification)
-                            <div class="">
-                                    @foreach ($specification_group->specifications as $specification)
-                                        @foreach ($specification->specificationValues->chunk(round($specification->specificationValues->count()/4)) as $chunk)
-                                        <ul role="list" class="grid grid-cols-4 gap-4 list-disc">
-                                            @foreach ($chunk as $indexSpecificationValues => $specificationValues)
-                                            <li class="ml-4"> 
-                                                <span>{{ $specificationValues->name}}</span>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                        @endforeach 
-                                    @endforeach
+                        <div x-show="tab === {{ $key }}" class="bg-theme-lwgray py-6 pl-4 pr-2 rounded-lg text-sm">
+                            <div class="max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme">
+                                @forelse ($specification_group->specifications as $specification)
+                                <div class="">
+                                        @foreach ($specification_group->specifications as $specification)
+                                            @foreach ($specification->specificationValues->chunk(round($specification->specificationValues->count()/4)) as $chunk)
+                                            <ul role="list" class="grid grid-cols-4 gap-4 list-disc">
+                                                @foreach ($chunk as $indexSpecificationValues => $specificationValues)
+                                                <li class="ml-4"> 
+                                                    <span>{{ $specificationValues->name}}</span>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                            @endforeach 
+                                        @endforeach
+                                </div>
+                                @empty
+                                    {{__('No existe información disponible')}}
+                                @endforelse
                             </div>
-                            @endforeach
                         </div>
                         @endif
-                        
                     @endforeach
-                  
-
-                    {{-- <div x-show="tab === 1" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aliquam recusandae eos
-                        doloribus ex hic quam voluptate, autem nisi debitis magni atque similique exercitationem
-                        molestiae dolores dignissimos! Beatae, ipsam sed?
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aliquam recusandae eos
-                        doloribus ex hic quam voluptate, autem nisi debitis magni atque similique exercitationem
-                        molestiae dolores dignissimos! Beatae, ipsam sed?
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aliquam recusandae eos
-                        doloribus ex hic quam voluptate, autem nisi debitis magni atque similique exercitationem
-                        molestiae dolores dignissimos! Beatae, ipsam sed?
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aliquam recusandae eos
-                        doloribus ex hic quam voluptate, autem nisi debitis magni atque similique exercitationem
-                        molestiae dolores dignissimos! Beatae, ipsam sed?
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aliquam recusandae eos
-                        doloribus ex hic quam voluptate, autem nisi debitis magni atque similique exercitationem
-                        molestiae dolores dignissimos! Beatae, ipsam sed?
-                    </div>
-                     --}}
-                    {{-- <div x-show="tab === 2" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Repellendus obcaecati, reiciendis ipsum possimus pariatur enim, unde repellat delectus dolorum
-                        ab hic optio deleniti tenetur ipsa, quaerat quisquam maxime dolorem provident? </div>
-                    <div x-show="tab === 3" class="text-sm max-h-80 overflow-auto scrollbar scrollbar-thumb-theme-yellow scrollbar-track-gray-100 scrollbar-theme"> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Eaque, quam provident voluptatibus libero iure, dolores dolor delectus animi non nesciunt
-                        perspiciatis ad pariatur maiores sunt. Ratione reiciendis velit labore minima! </div> --}}
                 </div>
             </div>
         </div>

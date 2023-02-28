@@ -1,7 +1,7 @@
 <x-app-layout>
     @section('title') {{ 'Inicio de Sesión' }} @endsection
     <section class="bg-theme-lwgray">
-        <div class="container py-10">
+        <div class="container-theme py-10">
             <div class="w-full md:max-w-md mx-auto p-6 bg-white  shadow-[0_4px_6px_4px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] overflow-hidden rounded-lg">
                 
                 <div class="flex justify-center items-center">

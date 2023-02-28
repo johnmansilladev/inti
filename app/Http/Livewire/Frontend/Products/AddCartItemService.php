@@ -26,13 +26,32 @@ class AddCartItemService extends Component
 
         $this->product = $product;
         if ($this->version) {
-            $this->sku_selected = $product->whereSkuSlug($this->version);
+            // $this->sku_selected = $product->whereSkuSlug($this->version);  
+            $this->sku_selected = $product->stockKeepingUnits
+                                    ->where('slug',$this->version)
+                                    ->where('active',true)
+                                    ->first();
+
+            if (!$this->sku_selected) {
+                abort(404);
+            }
+
+
         } else {
             $this->sku_selected = $product->firstSku();
         }
 
         if ($this->service) {
-            $this->service_selected = $this->sku_selected->whereServiceSlug($this->service);  
+            // $this->service_selected = $this->sku_selected->whereServiceSlug($this->service);  
+            $this->service_selected = $this->sku_selected->services
+                                        ->where('slug',$this->service)
+                                        ->where('active',true)
+                                        ->first();
+
+            if (!$this->service_selected) {
+                abort(404);
+            }
+
         } else {
             $this->service_selected = $this->sku_selected->firstService();
         }

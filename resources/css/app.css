@@ -375,6 +375,41 @@
     }
     
     /*****  PRODUCT DETAIL *****/
+
+    /*****  NOT FOUND 404 *****/
+    .error-page-img {
+      @apply w-full relative flex overflow-hidden;
+    }
+
+    .error-page-img-content {
+      @apply z-[-1] w-full;
+    }
+
+    .error-page-caption {
+      @apply absolute w-full inset-0 z-[1] flex;
+    }
+
+    .error-page-caption-content {
+      @apply m-auto pr-[25%];
+    }
+
+    .error-page-title {
+      @apply text-7xl font-semibold text-theme-gray mb-0;
+    }
+
+    .error-page-title-line {
+      @apply mt-0 mb-8;
+    }
+
+    .error-page-subtitle-1 {
+      @apply text-xl font-medium text-theme-gray mb-4;
+    }
+
+    .error-page-subtitle-2 {
+      @apply text-lg font-normal text-theme-gray;
+    }
+
+    /*****  NOT FOUND 404 *****/
     
 }
 
